@@ -1,13 +1,62 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: arial, sans-serif;
+}
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.grid-container {
+  display: grid;
+  grid-template-rows: auto 100vh auto;
+  background: linear-gradient(to left, #1fc3f9 0%, #dbdeff 100%);
+}
+/* #profile-link {
+} */
+#welcome-section {
+  height: 100vh;
+  grid-row: 2 / 2;
+  text-align: center;
+}
+.welcome-title {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateY(-50%);
+  transform: translateX(-50%);
+  font-size: 4rem;
+  margin: 0;
+}
+/* back to top */
+#topBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  background-color: rgb(212, 214, 232);
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 10px;
+}
+#topBtn:hover {
+  background-color: azure;
+}
+@media only screen and (max-width: 800px) {
+  .project-tile {
+    width: 100%;
+  }
+  .welcome-title {
+    font-size: 2rem;
+  }
+  #topBtn {
+    right: 20px;
+    bottom: 10px;
+    padding: 5px;
+  }
 }
