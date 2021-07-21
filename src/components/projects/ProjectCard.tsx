@@ -1,27 +1,28 @@
 import "./projectCard.css";
-import React from "react";
+import React, { useRef } from "react";
 
 interface Info {
   title: string;
+  proName: string;
   desc: string;
   proLink: string;
-  cpenLink: string;
 }
 
-interface Word {
-  keyWord: string;
-}
+const ProjectCard: React.FC<Info> = ({ title, proName, desc, proLink }) => {
+  const cardInfo = useRef(desc);
+  const startStr = cardInfo.current.split(proName).slice(0, 1);
+  const endStr = cardInfo.current.split(proName).slice(-1);
 
-const ProjectCard: React.FC<Info> = ({ title, desc, proLink, cpenLink }) => {
-  const createWords = (paragraph: Word) => {
-    const findWord = JSON.stringify(paragraph);
-    console.log(findWord);
-  };
-  /* const cardInfo = createWords(desc); */
   return (
     <div className="project-tile">
       <h3>{title}</h3>
-      {/* {createWords(desc)} */}
+      <p>
+        {startStr}
+        <a href={proLink} target="_blank">
+          {proName}
+        </a>
+        {endStr}
+      </p>
     </div>
   );
 };
