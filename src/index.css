@@ -8,11 +8,6 @@ body {
   margin: 0;
   padding: 0;
 }
-.grid-container {
-  display: grid;
-  grid-template-rows: auto 100vh auto;
-  background: linear-gradient(to left, #1fc3f9 0%, #dbdeff 100%);
-}
 /* #profile-link {
 } */
 #welcome-section {
