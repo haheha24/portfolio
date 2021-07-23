@@ -1,0 +1,12 @@
+.projectsCP {
+  grid-row: 2 / 3;
+  background: linear-gradient(0deg, rgba(77,77,77,1) 0%, rgb(46, 161, 20) 100%);
+}
+.project-main-title {
+  text-align: center;
+}
+.project-flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}

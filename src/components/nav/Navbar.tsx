@@ -1,28 +1,24 @@
 import "./navbar.css";
-/* import Menu from "../buttons/Menu"; */
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
       <nav id="navbar">
-        <ul className="nav-ul nav-right">
+        <ul className="nav-ul nav-left nav-center">
           <li className="nav-li">
-            <Link to="/">Home</Link>
+            <Link to="/" className="nav-link">Home</Link>
           </li>
           <li className="nav-li">
-            <Link to="/About">About Me</Link>
+            <Link to="/About" className="nav-link">About Me</Link>
           </li>
           <li className="nav-li">
-            <Link to="/Projects">Projects</Link>
+            <Link to="/Resume" className="nav-link">Resume</Link>
           </li>
           <li className="nav-li">
-            <Link to="/Resume">Resume</Link>
+          <Link to="/GitHubProjects" className="nav-link">GitHub Projects</Link>
           </li>
           <li className="nav-li">
-          <Link to="/GitHubProjects">GitHub Projects</Link>
-          </li>
-          <li className="nav-li">
-          <Link to="/CodePenProjects">CodePen Projects</Link>
+          <Link to="/CodePenProjects" className="nav-link">CodePen Projects</Link>
           </li>
         </ul>
       </nav>

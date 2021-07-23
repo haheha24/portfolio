@@ -1,5 +1,5 @@
 .grid-container {
   display: grid;
-  grid-template-rows: auto 100vh auto;
+  grid-template-rows: 200px auto minmax(100vh, auto);
   background: linear-gradient(to left, #1fc3f9 0%, #dbdeff 100%);
 }

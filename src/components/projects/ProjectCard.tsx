@@ -1,5 +1,5 @@
-import "./projectCard.css";
 import React, { useRef } from "react";
+import './ProjectCard.css'
 
 interface Info {
   title: string;
@@ -16,9 +16,9 @@ const ProjectCard: React.FC<Info> = ({ title, proName, desc, proLink }) => {
   return (
     <div className="project-tile">
       <h3>{title}</h3>
-      <p>
+      <p className="projectP">
         {startStr}
-        <a href={proLink} target="_blank">
+        <a href={proLink} target="_blank" className="projectLink">
           {proName}
         </a>
         {endStr}
