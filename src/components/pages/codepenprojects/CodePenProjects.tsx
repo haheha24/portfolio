@@ -10,7 +10,7 @@ const CodePenProjects = () => {
   ];
 
   return (
-    <main className="projectsCP">
+    <div className="projectsCP">
       <h1 className="project-main-title">CodePen Projects</h1>
       <div className="project-flex">
         <ProjectCard
@@ -38,7 +38,7 @@ const CodePenProjects = () => {
           proLink={"https://codepen.io/haheha24/pen/XWpMxqL"}
         />
       </div>
-    </main>
+    </div>
   );
 };
 

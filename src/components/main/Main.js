@@ -6,7 +6,7 @@ import CodePenProjects from "../pages/codepenprojects/CodePenProjects";
 
 const Main = () => {
   return (
-    <div>
+    <main style={{gridRow:'2/3'}}>
       <Switch>
         <Route path="/About">
           <About />
@@ -22,7 +22,7 @@ const Main = () => {
         </Route>
         <Route path="/"></Route>
       </Switch>
-    </div>
+    </main>
   );
 };
 

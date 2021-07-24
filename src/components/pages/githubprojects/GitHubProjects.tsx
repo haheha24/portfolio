@@ -10,7 +10,7 @@ const GitHubProjects = () => {
   ];
 
   return (
-    <main className="projectsGH">
+    <div className="projectsGH">
       <h1 className="project-main-title">GitHub Projects</h1>
       <div className="project-flex">
         <ProjectCard
@@ -20,7 +20,7 @@ const GitHubProjects = () => {
           proLink={"https://codepen.io/haheha24/pen/VwPdxeB"}
         />
       </div>
-    </main>
+    </div>
   );
 };
 

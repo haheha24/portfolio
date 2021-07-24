@@ -1,3 +1,4 @@
+import './header.css'
 import Navbar from "./nav/Navbar"
 
 const Header = () => {

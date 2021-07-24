@@ -1,4 +1,4 @@
 .header {
-  margin: 0;
+  grid-row: 1/2;
   /* placeholder for when I add other stuff to the header such as social media links or something*/
 }

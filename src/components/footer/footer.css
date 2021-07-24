@@ -1,4 +1,4 @@
 footer {
-    grid-row: 4 / 4;
-    background-color: hsl(0, 0%, 40%);    
+    grid-row: 3 / 4;
+    background-color: rgb(77,77,77);    
 }
