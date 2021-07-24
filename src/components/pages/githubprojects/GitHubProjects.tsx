@@ -1,5 +1,5 @@
 import "./GitHubProjects.css";
-import ProjectCard from "../projects/ProjectCard";
+import ProjectCard from "../../projectCards/ProjectCard";
 
 const GitHubProjects = () => {
   const projectNames = [

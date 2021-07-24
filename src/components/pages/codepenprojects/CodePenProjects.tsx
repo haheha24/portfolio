@@ -1,5 +1,5 @@
 import "./CodePenProjects.css";
-import ProjectCard from "../projects/ProjectCard";
+import ProjectCard from "../../projectCards/ProjectCard";
 
 const CodePenProjects = () => {
   const projectNames = [
