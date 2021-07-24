@@ -1,10 +1,18 @@
 import React from 'react'
+import './footer.css'
 
 const Footer = () => {
     return (
-        <div>
-            
-        </div>
+        <footer>
+            <ul>
+                <li>
+                    Social Media
+                </li>
+                <li>
+                    Contact
+                </li>
+            </ul>
+        </footer>
     )
 }
 
