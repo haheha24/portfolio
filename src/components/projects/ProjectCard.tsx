@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import './ProjectCard.css'
+import './projectCard.css'
 
 interface Info {
   title: string;
