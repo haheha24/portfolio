@@ -1,8 +1,8 @@
-import Navbar from "../nav/Navbar"
+import Navbar from "./nav/Navbar"
 
 const Header = () => {
     return (
-        <header>
+        <header className="header">
             <Navbar />
         </header>
     )
