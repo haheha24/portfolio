@@ -15,10 +15,7 @@ const Navbar = () => {
             <Link to="/Resume" className="nav-link">Resume</Link>
           </li>
           <li className="nav-li">
-          <Link to="/GitHubProjects" className="nav-link">GitHub Projects</Link>
-          </li>
-          <li className="nav-li">
-          <Link to="/CodePenProjects" className="nav-link">CodePen Projects</Link>
+            <Link to="/Projects" className="nav-link">Projects</Link>
           </li>
         </ul>
       </nav>

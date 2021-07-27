@@ -1,12 +1,11 @@
 import { Switch, Route } from "react-router-dom";
 import About from "../pages/about/About";
 import Resume from "../pages/resume/Resume";
-import GitHubProjects from "../pages/githubprojects/GitHubProjects";
-import CodePenProjects from "../pages/codepenprojects/CodePenProjects";
+import ProjectCard from "../projectCards/ProjectCard";
 
 const Main = () => {
   return (
-    <main style={{gridRow:'2/3'}}>
+    <main style={{ gridRow: "2/3" }}>
       <Switch>
         <Route path="/About">
           <About />
@@ -14,11 +13,10 @@ const Main = () => {
         <Route path="/Resume">
           <Resume />
         </Route>
-        <Route path="/GitHubProjects">
-          <GitHubProjects />
-        </Route>
-        <Route path="/CodePenProjects">
-          <CodePenProjects />
+        <Route path="/Projects">
+          <section style={{display: "flex"}}>
+            <ProjectCard />
+          </section>
         </Route>
         <Route path="/"></Route>
       </Switch>
