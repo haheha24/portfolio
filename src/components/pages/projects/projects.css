@@ -1,0 +1,11 @@
+.projects-title-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#projectFlex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
