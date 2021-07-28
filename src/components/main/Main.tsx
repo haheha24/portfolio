@@ -1,7 +1,9 @@
+import './main.css'
 import { Switch, Route } from "react-router-dom";
 import About from "../pages/about/About";
 import Resume from "../pages/resume/Resume";
 import ProjectCard from "../projectCards/ProjectCard";
+
 
 const Main = () => {
   return (
@@ -14,7 +16,7 @@ const Main = () => {
           <Resume />
         </Route>
         <Route path="/Projects">
-          <section style={{display: "flex"}}>
+          <section id='projectFlex'>
             <ProjectCard />
           </section>
         </Route>

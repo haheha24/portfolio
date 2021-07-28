@@ -1,26 +1,24 @@
 .project-tile {
-    background-color: rgb(212, 214, 232);
-    padding: 50px 20px 50px 20px;
-    margin: 10px 20px 10px 20px;
-    border-radius: 10px;
-    width: 25%;
-    
-  }
-  .project-tile:hover {
-    background-color: azure;
-  }
-  .projectP {
-    line-height: 1.5rem;
-  }
-  .projectLink {
-    text-decoration: none;
-    padding: 5px;
-    border-radius: 10px;
-  }
-  .projectLink:active {
-    color: blue;
-  }
-  .projectLink:hover {
-    background-color: hsl(0, 0%, 70%);
-    
-  }
+  background: linear-gradient(to top, rgba(77,77,77,1) -50%, rgb(46, 161, 20) 100%);
+  padding: 50px 20px 50px 20px;
+  margin: 10px 20px 10px 20px;
+  border-radius: 10px;
+  width: 25%;
+}
+.project-tile:hover {
+  background: rgb(212, 214, 232);
+}
+.projectP {
+  line-height: 1.5rem;
+}
+.projectLink {
+  text-decoration: none;
+  padding: 5px;
+  border-radius: 10px;
+}
+.projectLink:active {
+  color: blue;
+}
+.projectLink:hover {
+  background-color: hsl(0, 0%, 70%);
+}

@@ -1,6 +1,6 @@
 import "./projectCard.css";
-import React, { useContext } from "react";
-import { ProjectContext, Project } from "../../App";
+import { useContext } from "react";
+import { ProjectContext} from "../../App";
 
 const ProjectCard = () => {
   const projectData = useContext(ProjectContext);
@@ -11,13 +11,25 @@ const ProjectCard = () => {
       {projectArray.map((data) => {
         return (
           <div key={data.id} className="project-tile">
-            <a href={data.repoLink}>
-              <h3>{data.title}</h3>
-            </a>
+            <h3>{data.title}</h3>
             <p className="projectP">{data.desc}</p>
+            {data.repoLink !== "N/A" && data.repoLink !== "" ? (
+              <p>
+                Repo link: <a href={data.repoLink}>{data.repoLink}</a>
+              </p>
+            ) : (
+              ""
+            )}
+            {data.deployLink !== "N/A" && data.deployLink !== "" ? (
+              <p>
+                Deploy link: <a href={data.deployLink}>{data.deployLink}</a>
+              </p>
+            ) : (
+              ""
+            )}
           </div>
         );
-      })}{" "}
+      })}
     </>
   );
 };
