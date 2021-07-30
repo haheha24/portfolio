@@ -7,6 +7,8 @@ const projectData =
       "repoLink": "https://github.com/haheha24/CheckList",
       "deployLink": "https://haheha24.github.io/CheckList/",
       "tags": ["JavaScript", "HTML", "CSS"],
+      "completed": "false",
+      "stars": "2"
     },
     {
       "id": "2",
@@ -24,6 +26,8 @@ const projectData =
         "HTML",
         "CSS",
       ],
+      "completed": "false",
+      "stars": "2"
     },
     {
       "id": "3",
@@ -31,7 +35,9 @@ const projectData =
       "desc": "This is a single page JavaScript project done on my codepen.io",
       "repoLink": "https://codepen.io/haheha24/pen/VwPdxeB",
       "deployLink": "",
-      "tags": ["HTML", "CSS", "JavaScript"]
+      "tags": ["HTML", "CSS", "JavaScript"],
+      "completed": "true",
+      "stars": "3"
     },
     {
       "id": "4",
@@ -39,7 +45,9 @@ const projectData =
       "desc": "This is a single page Product Landing Page project done on my codepen.io",
       "repoLink": "https://codepen.io/haheha24/pen/poRVGZQ",
       "deployLink": "",
-      "tags": ["HTML", "CSS"]
+      "tags": ["HTML", "CSS"],
+      "completed": "true",
+      "stars": "3"
     },
     {
       "id": "5",
@@ -47,7 +55,9 @@ const projectData =
       "desc": "This is a single page Survey Form project done on my codepen.io",
       "repoLink": "https://codepen.io/haheha24/pen/LYxmYVL",
       "deployLink": "",
-      "tags": ["HTML", "CSS"]
+      "tags": ["HTML", "CSS"],
+      "completed": "true",
+      "stars": "3"
     },
     {
       "id": "6",
@@ -55,7 +65,9 @@ const projectData =
       "desc": "This is a single page FCC: Tribute Page project done on my codepen.io",
       "repoLink": "https://codepen.io/haheha24/pen/XWpMxqL",
       "deployLink": "",
-      "tags": ["HTML", "CSS"]
+      "tags": ["HTML", "CSS"],
+      "completed": "true",
+      "stars": "3"
     }
   ];
 

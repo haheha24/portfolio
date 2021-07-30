@@ -25,8 +25,7 @@
 .project-tile:hover {
   background: rgb(212, 214, 232);
 }
-.project-title:hover,
-.project-desc:hover,
+
 .project-link:hover,
 .project-tags:hover {
   background: hsl(234, 30%, 70%);

@@ -1,0 +1,7 @@
+.project-search-container {
+    border-radius: 10px;
+    border: 2px solid grey
+}
+#project-search-form {
+    border: none;
+}
