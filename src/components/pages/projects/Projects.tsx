@@ -1,12 +1,8 @@
 import "./projects.css";
-import ProjectCard from "../../projectCards/ProjectCard";
-import ProjectSearch from "./ProjectSearch";
-import { useState } from "react";
-import { Project } from "../../../App";
+import ProjectCard from "./projectCards/ProjectCard";
+import ProjectSearch from "./projectForm/ProjectSearch";
 
 const Projects = () => {
-  const [stateProject, setProject] = useState<Project[]>([]);
-
   return (
     <>
       <div className="projects-title-container">
@@ -14,9 +10,7 @@ const Projects = () => {
         <h3>lots of them</h3>
       </div>
       <ProjectSearch />
-      <section id="projectFlex">
-        <ProjectCard />
-      </section>
+      <ProjectCard />
     </>
   );
 };

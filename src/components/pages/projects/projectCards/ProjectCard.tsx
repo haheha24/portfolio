@@ -1,13 +1,14 @@
 import "./projectCard.css";
 import { useContext } from "react";
-import { ProjectContext } from "../../App";
+import { ProjectContext } from "../../../../App";
+import { BsStar } from "react-icons/bs";
 
 const ProjectCard = () => {
   const projectData = useContext(ProjectContext);
   const projectArray = [...projectData];
 
   return (
-    <>
+    <section id="projectFlex">
       {projectArray.map((data) => {
         return (
           <div key={data.id} className="project-tile">
@@ -30,10 +31,31 @@ const ProjectCard = () => {
             <div className="project-tags">
               <b>{data.tags.join(", ")}</b>
             </div>
+            <div className="project-stars">
+              {data.stars === 3 ? (
+                <>
+                  <BsStar style={{ color: "yellow" }} />{" "}
+                  <BsStar style={{ color: "yellow" }} />{" "}
+                  <BsStar style={{ color: "yellow" }} />
+                </>
+              ) : data.stars === 2 ? (
+                <>
+                  <BsStar style={{ color: "yellow" }} />
+                  <BsStar style={{ color: "yellow" }} />
+                </>
+              ) : data.stars === 1 ? (
+                <BsStar style={{ color: "yellow" }} />
+              ) : null}{" "}
+              {data.completed === true ? (
+                <span style={{ color: "green" }}>Completed</span>
+              ) : (
+                <span style={{ color: "red" }}>Not Completed</span>
+              )}
+            </div>
           </div>
         );
       })}
-    </>
+    </section>
   );
 };
 export default ProjectCard;
