@@ -18,7 +18,7 @@ const ProjectTags = () => {
   return (
     <div className="filter-container">
       <p>Technologies</p>
-      <div className="form-controls flex-direction-col tech">
+      <div className="filter-controls flex-direction-col tech">
         {tagData.map((data, index) => {
           return (
             <div key={index}>

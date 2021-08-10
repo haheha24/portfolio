@@ -1,12 +1,7 @@
 import "./projectform.css";
 import { BsStar } from "react-icons/bs";
-import { useContext } from "react";
-import { ProjectContext } from "../../../../App";
 
 const ProjectStars = () => {
-  //Set useContext ProjectData from App
-  const projectData = useContext(ProjectContext);
-
   return (
     <div className="filter-container">
       <p>Project Size</p>

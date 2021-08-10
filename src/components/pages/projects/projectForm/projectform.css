@@ -1,13 +1,13 @@
 .project-form-container {
-  width: 50%;
-  margin: 0 auto;
-  background-color: rgba(255, 255, 255, 0.459);
+  background-color: hsl(0, 0%, 80%);
 }
 .project-search-container {
   border-radius: 10px;
   border: 2px solid grey;
   display: flex;
   padding: 5px 10px;
+  width: 50%;
+  margin: 0 auto;
 }
 #project-search-form {
   border: none;
@@ -23,6 +23,16 @@
 .search-icon-container {
   cursor: pointer;
   padding: 5px;
+  margin-left: 5px;
+  border: none;
+  border-radius: 10px;
+  background-color: white;
+}
+.search-icon-container:hover {
+  background-color: hsl(0, 0%, 70%);
+}
+.search-icon-container:active {
+  background-color: hsl(0, 0%, 60%);
 }
 .search-icon {
   font-size: 1.5rem;
@@ -30,12 +40,24 @@
 }
 .form-controls {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+  margin: 1rem;
+}
+.align-items-center {
+  align-items: center;
 }
 .filter-container {
-    margin: 0 5px;
-    height: 50%;
-  }
+  margin: 0 1rem;
+  height: 50%;
+}
+.filter-container > p {
+  text-align: center;
+}
+.filter-controls {
+  display: flex;
+  justify-content: space-between;
+  ;
+}
 .flex-direction-col {
   flex-direction: column;
   flex-wrap: wrap;
@@ -44,5 +66,5 @@
   max-height: 5rem;
 }
 .tech div {
-  padding: 0 0.75rem 0 0.25rem
+  padding: 0 0.75rem 0 0.25rem;
 }

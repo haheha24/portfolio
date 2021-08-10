@@ -1,11 +1,10 @@
 import "./projectCard.css";
-import { useContext } from "react";
-import { ProjectContext } from "../../../../App";
 import { BsStar } from "react-icons/bs";
+//App import
+import { Project } from "../../../../App";
 
-const ProjectCard = () => {
-  const projectData = useContext(ProjectContext);
-  const projectArray = [...projectData];
+const ProjectCard = (props: { cardArray: Project[] }) => {
+  const projectArray = [...props.cardArray];
 
   return (
     <section id="projectFlex">

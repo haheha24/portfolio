@@ -1,6 +1,5 @@
 import "./projects.css";
-import ProjectCard from "./projectCards/ProjectCard";
-import ProjectSearch from "./projectForm/ProjectSearch";
+import ProjectForm from "./projectForm/ProjectForm";
 
 const Projects = () => {
   return (
@@ -9,8 +8,7 @@ const Projects = () => {
         <h1>Projects!</h1>
         <h3>lots of them</h3>
       </div>
-      <ProjectSearch />
-      <ProjectCard />
+      <ProjectForm />    
     </>
   );
 };
