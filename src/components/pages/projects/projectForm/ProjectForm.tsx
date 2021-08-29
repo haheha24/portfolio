@@ -21,57 +21,14 @@ const ProjectSearch = () => {
   const [inputState, setInput] = useState("");
   //set the checkbox state
   const [activeFilter, setActiveFilter] = useReducer(
-    (initCheck: Array<{}>, updatedCheckState: Array<{}>) => ({
+    (
+      initCheck: { [index: string]: boolean },
+      updatedCheckState: { [index: string]: boolean }
+    ) => ({
       ...initCheck,
       ...updatedCheckState,
     }),
-    [
-      {
-        Completed: false,
-      },
-      {
-        "Not completed": false,
-      },
-      {
-        "One-star": false,
-      },
-      {
-        "Two-star": false,
-      },
-      {
-        "Three-star": false,
-      },
-      {
-        "Repo links": false,
-      },
-      {
-        "Deploy links": false,
-      },
-      {
-        HTML: false,
-      },
-      {
-        CSS: false,
-      },
-      {
-        JavaScript: false,
-      },
-      {
-        React: false,
-      },
-      {
-        "Node.JS": false,
-      },
-      {
-        "Express.JS": false,
-      },
-      {
-        "Mongoose.JS": false,
-      },
-      {
-        "MongoDB Atlas": false,
-      },
-    ]
+    {}
   );
   //sets the card filterand passes the state into ProjectCard as a prop
   const [cardFilter, setCardFilter] = useState(searchFunction("", []));
@@ -91,21 +48,17 @@ const ProjectSearch = () => {
   const handleCheck = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, checked } = e.currentTarget;
 
-    setActiveFilter([{ [name]: checked }]);
+    setActiveFilter({ [name]: checked });
   };
 
   //Submit search query for project form - uses FilterFunctions
   const submitInput = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
-    /* const checkBoxList = Object.keys(activeFilter).map((filter: string, i) => ({
-      checkBox: filter,
-      checked: activeFilter[i],
-    })); */
-
-    /* console.log(checkBoxList); */
-
-    if (activeFilter.length > 0) {
-      setCardFilter(filterFunction(inputState, projectData, activeFilter));
+    const checkBoxList = Object.keys(activeFilter).filter((filter) => {
+      return activeFilter[filter] === true;
+    });
+    if (checkBoxList.length > 0) {
+      setCardFilter(filterFunction(inputState, projectData, checkBoxList));
     } else {
       setCardFilter(searchFunction(inputState, projectData));
     }
