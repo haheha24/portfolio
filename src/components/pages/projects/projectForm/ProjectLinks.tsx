@@ -1,19 +1,23 @@
 import "./projectform.css";
+interface Props {
+  handleCheck: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
 
-const ProjectLinks = () => {
+const ProjectLinks: React.FC<Props> = ({ handleCheck }) => {
   return (
-    <div className="filter-container">
+    <div id="filter-container">
       <p>Project Links</p>
       <div>
-        <input type="checkbox" id="repoLinks" name="links" value="repoLinks" />
+        <input type="checkbox" id="repoLinks" name="Repo links" value="repo link" onChange={(e) => handleCheck(e)} />
         <label htmlFor="repoLinks">Repo Links</label>
       </div>
       <div>
         <input
           type="checkbox"
           id="deployLinks"
-          name="links"
-          value="deployLinks"
+          name="Deploy link"
+          value="deploy link"
+          onChange={(e) => handleCheck(e)}
         />
         <label htmlFor="deployLinks">Deploy Links</label>
       </div>

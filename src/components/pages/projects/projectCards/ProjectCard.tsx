@@ -4,11 +4,9 @@ import { BsStar } from "react-icons/bs";
 import { Project } from "../../../../App";
 
 const ProjectCard = (props: { cardArray: Project[] }) => {
-  const projectArray = [...props.cardArray];
-
   return (
     <section id="projectFlex">
-      {projectArray.map((data) => {
+      {props.cardArray.map((data) => {
         return (
           <div key={data.id} className="project-tile">
             <h3 className="project-title">{data.title}</h3>

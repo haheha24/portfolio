@@ -38,7 +38,7 @@
   font-size: 1.5rem;
   vertical-align: middle;
 }
-.form-controls {
+#form-controls {
   display: flex;
   justify-content: center;
   margin: 1rem;
@@ -46,11 +46,11 @@
 .align-items-center {
   align-items: center;
 }
-.filter-container {
+#filter-container {
   margin: 0 1rem;
   height: 50%;
 }
-.filter-container > p {
+#filter-container > p {
   text-align: center;
 }
 .filter-controls {
