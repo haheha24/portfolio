@@ -9,7 +9,7 @@ const ProjectStars: React.FC<Props> = ({ handleCheck }) => {
     <div id="filter-container">
       <p>Project Size</p>
       <div>
-        <input type="checkbox" id="three-star" name="three-star" value="Three-star" onChange={(e) => handleCheck(e)}/>
+        <input type="checkbox" id="three-star" name="three-star" value={3} onChange={(e) => handleCheck(e)}/>
         <label htmlFor="three-star">
           <BsStar />
           <BsStar />
@@ -17,14 +17,14 @@ const ProjectStars: React.FC<Props> = ({ handleCheck }) => {
         </label>
       </div>
       <div>
-        <input type="checkbox" id="two-star" name="two-star" value="Two-star" onChange={(e) => handleCheck(e)}/>
+        <input type="checkbox" id="two-star" name="two-star" value={2} onChange={(e) => handleCheck(e)}/>
         <label htmlFor="two-star">
           <BsStar />
           <BsStar />
         </label>
       </div>
       <div>
-        <input type="checkbox" id="one-star" name="one-star" value="One-star" onChange={(e) => handleCheck(e)}/>
+        <input type="checkbox" id="one-star" name="one-star" value={1} onChange={(e) => handleCheck(e)}/>
         <label htmlFor="one-star">
           <BsStar />
         </label>

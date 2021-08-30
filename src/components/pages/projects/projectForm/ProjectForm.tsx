@@ -2,7 +2,7 @@
 import "./projectform.css";
 import { GoSearch } from "react-icons/go";
 //react
-import React, { useState, useContext, useEffect, useReducer } from "react";
+import React, { useState, useContext, useEffect } from "react";
 //components
 import ProjectStars from "./ProjectStars";
 import ProjectTags from "./ProjectTags";
@@ -14,22 +14,26 @@ import { filterFunction, searchFunction } from "./FilterFunctions";
 //App import
 import { ProjectContext } from "../../../../App";
 
+type IactiveFilter = {
+  /* prev: {[index:string]: boolean} */
+  [index: string]: boolean
+};
+
 const ProjectSearch = () => {
   //import useContext
   const projectData = useContext(ProjectContext);
   //set the handler
   const [inputState, setInput] = useState("");
-  //set the checkbox state
-  const [activeFilter, setActiveFilter] = useReducer(
-    (
-      initCheck: { [index: string]: boolean },
-      updatedCheckState: { [index: string]: boolean }
-    ) => ({
+  //set the checkbox state - useState allows me to spread new data at a specific time, 
+  //rather than using my reducer to always spread in useReducer
+  const [activeFilter, setActiveFilter] = useState<IactiveFilter>({})
+  /* const [activeFilter, setActiveFilter] = useReducer(
+    (initCheck: IactiveFilter, updatedCheckState: IactiveFilter) => ({
       ...initCheck,
       ...updatedCheckState,
     }),
     {}
-  );
+  ); */
   //sets the card filterand passes the state into ProjectCard as a prop
   const [cardFilter, setCardFilter] = useState(searchFunction("", []));
 
@@ -47,15 +51,14 @@ const ProjectSearch = () => {
   //handle the checkboxes and push to checkState
   const handleCheck = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, checked } = e.currentTarget;
-
-    setActiveFilter({ [name]: checked });
+    setActiveFilter((prev: IactiveFilter) => ({...prev, [name]: checked }));
   };
 
   //Submit search query for project form - uses FilterFunctions
   const submitInput = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
-    const checkBoxList = Object.keys(activeFilter).filter((filter) => {
-      return activeFilter[filter] === true;
+    const checkBoxList = Object.keys(activeFilter).map((box) => {
+      return { checkBox: box, checked: activeFilter[box] };
     });
     if (checkBoxList.length > 0) {
       setCardFilter(filterFunction(inputState, projectData, checkBoxList));
@@ -66,6 +69,7 @@ const ProjectSearch = () => {
 
   //resets the checkboxes
   const reset = (e: React.MouseEvent<HTMLInputElement, MouseEvent>): void => {
+    setActiveFilter({});
     document
       .querySelectorAll('input[type="checkbox"]')
       //@ts-ignore

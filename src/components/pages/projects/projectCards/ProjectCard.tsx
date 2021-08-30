@@ -31,17 +31,17 @@ const ProjectCard = (props: { cardArray: Project[] }) => {
             <div className="project-stars">
               {data.stars === 3 ? (
                 <>
-                  <BsStar style={{ color: "yellow" }} />{" "}
-                  <BsStar style={{ color: "yellow" }} />{" "}
-                  <BsStar style={{ color: "yellow" }} />
+                  <BsStar style={{ color: "black" }} />{" "}
+                  <BsStar style={{ color: "black" }} />{" "}
+                  <BsStar style={{ color: "black" }} />
                 </>
               ) : data.stars === 2 ? (
                 <>
-                  <BsStar style={{ color: "yellow" }} />
-                  <BsStar style={{ color: "yellow" }} />
+                  <BsStar style={{ color: "black" }} />
+                  <BsStar style={{ color: "black" }} />
                 </>
               ) : data.stars === 1 ? (
-                <BsStar style={{ color: "yellow" }} />
+                <BsStar style={{ color: "black" }} />
               ) : null}{" "}
               {data.completed === true ? (
                 <span style={{ color: "green" }}>Completed</span>
