@@ -16,7 +16,7 @@ import { ProjectContext } from "../../../../App";
 
 type IactiveFilter = {
   /* prev: {[index:string]: boolean} */
-  [index: string]: boolean
+  [index: string]: boolean;
 };
 
 const ProjectSearch = () => {
@@ -24,9 +24,25 @@ const ProjectSearch = () => {
   const projectData = useContext(ProjectContext);
   //set the handler
   const [inputState, setInput] = useState("");
-  //set the checkbox state - useState allows me to spread new data at a specific time, 
+  //set the checkbox state - useState allows me to spread new data at a specific time,
   //rather than using my reducer to always spread in useReducer
-  const [activeFilter, setActiveFilter] = useState<IactiveFilter>({})
+  const [activeFilter, setActiveFilter] = useState<IactiveFilter>({
+    Completed: false,
+    "Not completed": false,
+    "Three-star": false,
+    "Two-star": false,
+    "One-star": false,
+    "Repo links": false,
+    "Deploy links": false,
+    HTML: false,
+    CSS: false,
+    JavaScript: false,
+    React: false,
+    "Node.JS": false,
+    "Express.JS": false,
+    "Mongoose.JS": false,
+    "MongoDB Atlas": false,
+  });
   /* const [activeFilter, setActiveFilter] = useReducer(
     (initCheck: IactiveFilter, updatedCheckState: IactiveFilter) => ({
       ...initCheck,
@@ -51,7 +67,7 @@ const ProjectSearch = () => {
   //handle the checkboxes and push to checkState
   const handleCheck = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, checked } = e.currentTarget;
-    setActiveFilter((prev: IactiveFilter) => ({...prev, [name]: checked }));
+    setActiveFilter((prev: IactiveFilter) => ({ ...prev, [name]: checked }));
   };
 
   //Submit search query for project form - uses FilterFunctions
