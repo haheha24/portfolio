@@ -14,7 +14,7 @@ const projectData = [
     title: "Lookup",
     desc: "This is a single page MERN stack project on GitHub",
     repoLink: "https://github.com/haheha24/lookup-repo",
-    deployLink: "N/A",
+    deployLink: "https://lookup-project.herokuapp.com/",
     tags: [
       "JavaScript",
       "React",
