@@ -29,53 +29,179 @@ export const filterFunction = (
   const checkBoxTrueArray = checkBoxList.filter((checkBoxTrue) => {
     return checkBoxTrue.checked === true;
   });
+
+  console.log(checkBoxList, "checkBoxList");
+  console.log(checkBoxTrueArray, "checkBoxTrueArray");
+
   if (checkBoxTrueArray.length === 0) {
     return searchFunction(value, projects);
   } else {
-    const checkBoxFilter = (
-      checkBoxArray: IcheckBoxList[],
-      checkBoxName: string
-    ) => {
-      let checkBoxFiltered = checkBoxArray.filter((checkBoxItem) => {
-        if (
-          checkBoxItem.checkBox === checkBoxName &&
-          checkBoxItem.checked === true
-        ) {
-          return checkBoxItem.checkBox === checkBoxName;
-        } else {
-          return checkBoxItem;
-        }
-      });
-      //The filtered checkBoxList[] will always have 1 key in it. This means returning checkBoxFiltered[0] allows us to directly access
-      //the checkBox object and it's properties from the "array".
-      return checkBoxFiltered[0];
-    };
-    //Make a constant for each filtered checkbox
-    const completed = checkBoxFilter(checkBoxList, "Completed"); // === true for completed and !== for not completed
-    const notCompleted = checkBoxFilter(checkBoxList, "Not completed");
-    console.log(
-      `This is completed: ${completed} and this is not completed: ${notCompleted}`
-    );
     //make a filtered project for each type of checkbox filter.
-    const completedProjects = projects.filter((project) => {
-      return completed.checked === project.completed;
-    });
-    const notCompletedProjects = projects.filter((project) => {
-      return notCompleted.checked !== project.completed;
-    });
-    // Concatenate all filtered project arrays into a single return value for searchFunction
-    const mergeProjects = (args: Project[]) => {
-      let a = args.concat()
-      for(let i=0; i < a.length; ++i) {
-        for(let j=i+1; j < a.length; ++j) {
-          if(a[i] === a[j]) {
-            a.splice(j--, 1)
+
+    const completedProjects = projects
+      .filter((project) => {
+        return project.completed === true;
+      })
+      .map((completed) => {
+        return { project: completed, checkBox: "Completed" };
+      });
+
+    const notCompletedProjects = projects
+      .filter((project) => {
+        return project.completed !== true;
+      })
+      .map((notCompleted) => {
+        return { project: notCompleted, checkBox: "Not completed" };
+      });
+
+    const threeStarProjects = projects
+      .filter((project) => {
+        return project.stars === 3;
+      })
+      .map((threeStars) => {
+        return { project: threeStars, checkBox: "Three-star" };
+      });
+
+    const twoStarProjects = projects
+      .filter((project) => {
+        return project.stars === 2;
+      })
+      .map((twoStars) => {
+        return { project: twoStars, checkBox: "Two-star" };
+      });
+    const oneStarProjects = projects
+      .filter((project) => {
+        return project.stars === 1;
+      })
+      .map((oneStars) => {
+        return { project: oneStars, checkBox: "One-star" };
+      });
+
+    const repoProjects = projects
+      .filter((project) => {
+        return (
+          project.repoLink.length > 0 && project.repoLink !== ("N/A" || "")
+        );
+      })
+      .map((repos) => {
+        return { project: repos, checkBox: "Repo link" };
+      });
+
+    const deployProjects = projects
+      .filter((project) => {
+        return (
+          project.deployLink.length > 0 && project.deployLink !== ("N/A" || "")
+        );
+      })
+      .map((deploy) => {
+        return { project: deploy, checkBox: "Deploy link" };
+      });
+
+    const htmlProjects = projects
+      .filter((tags) => {
+        return tags.tags.includes("HTML");
+      })
+      .map((deploy) => {
+        return { project: deploy, checkBox: "HTML" };
+      });
+
+    const cssProjects = projects
+      .filter((tags) => {
+        return tags.tags.includes("CSS");
+      })
+      .map((deploy) => {
+        return { project: deploy, checkBox: "CSS" };
+      });
+
+    const javaScriptProjects = projects
+      .filter((tags) => {
+        return tags.tags.includes("JavaScript");
+      })
+      .map((deploy) => {
+        return { project: deploy, checkBox: "JavaScript" };
+      });
+
+    const reactProjects = projects
+      .filter((tags) => {
+        return tags.tags.includes("React");
+      })
+      .map((deploy) => {
+        return { project: deploy, checkBox: "React" };
+      });
+
+    const nodeProjects = projects
+      .filter((tags) => {
+        return tags.tags.includes("Node.JS");
+      })
+      .map((deploy) => {
+        return { project: deploy, checkBox: "Node.JS" };
+      });
+
+    const expressProjects = projects
+      .filter((tags) => {
+        return tags.tags.includes("Express.JS");
+      })
+      .map((deploy) => {
+        return { project: deploy, checkBox: "Express.JS" };
+      });
+
+    const mongooseProjects = projects
+      .filter((tags) => {
+        return tags.tags.includes("Mongoose.JS");
+      })
+      .map((deploy) => {
+        return { project: deploy, checkBox: "Mongoose.JS" };
+      });
+
+    const mongoDBProjects = projects
+      .filter((tags) => {
+        return tags.tags.includes("MongoDB Atlas");
+      })
+      .map((deploy) => {
+        return { project: deploy, checkBox: "MongoDB Atlas" };
+      });
+
+    const preFilter = [
+      ...completedProjects,
+      ...notCompletedProjects,
+      ...threeStarProjects,
+      ...twoStarProjects,
+      ...oneStarProjects,
+      ...repoProjects,
+      ...deployProjects,
+      ...javaScriptProjects,
+      ...htmlProjects,
+      ...cssProjects,
+      ...reactProjects,
+      ...nodeProjects,
+      ...expressProjects,
+      ...mongooseProjects,
+      ...mongoDBProjects,
+    ];
+    const filteredProjectArray: Project[] = [];
+
+    //Dynamically add in each filtered project into filteredProjectArray
+    for (let i = 0; i < checkBoxTrueArray.length; ++i) {
+      for (let j = 0; j < preFilter.length; ++j) {
+        if (checkBoxTrueArray[i].checkBox === preFilter[j].checkBox) {
+          filteredProjectArray.push(preFilter[j].project);
+        }
+      }
+    }
+
+    // Concatenate all completed project arrays into a single return value and remove duplicates for searchFunction
+    const removeDuplicateProjects = (args: Project[]) => {
+      let a = args.concat();
+      for (let i = 0; i < args.length; ++i) {
+        for (let j = i + 1; j < args.length; ++j) {
+          if (args[i] === args[j]) {
+            args.splice(j--, 1);
           }
         }
       }
-      return a
-    } ;
-    const filteredProjects = mergeProjects(completedProjects.concat(notCompletedProjects))
-    return searchFunction(value, filteredProjects);
+      return a;
+    };
+
+    return searchFunction(value, removeDuplicateProjects(filteredProjectArray));
   }
 };
