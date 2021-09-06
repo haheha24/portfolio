@@ -5,6 +5,11 @@ interface IcheckBoxList {
   checked: boolean;
 }
 
+interface IpreFilter {
+  project: Project;
+  checkBox: string;
+}
+
 export const searchFunction = (
   searchValue: string,
   projects: Project[]
@@ -101,67 +106,68 @@ export const filterFunction = (
       .filter((tags) => {
         return tags.tags.includes("HTML");
       })
-      .map((deploy) => {
-        return { project: deploy, checkBox: "HTML" };
+      .map((html) => {
+        return { project: html, checkBox: "HTML" };
       });
 
     const cssProjects = projects
       .filter((tags) => {
         return tags.tags.includes("CSS");
       })
-      .map((deploy) => {
-        return { project: deploy, checkBox: "CSS" };
+      .map((css) => {
+        return { project: css, checkBox: "CSS" };
       });
 
     const javaScriptProjects = projects
       .filter((tags) => {
         return tags.tags.includes("JavaScript");
       })
-      .map((deploy) => {
-        return { project: deploy, checkBox: "JavaScript" };
+      .map((javascript) => {
+        return { project: javascript, checkBox: "JavaScript" };
       });
+    console.log(javaScriptProjects, "javascriptProjects")
 
     const reactProjects = projects
       .filter((tags) => {
         return tags.tags.includes("React");
       })
-      .map((deploy) => {
-        return { project: deploy, checkBox: "React" };
+      .map((react) => {
+        return { project: react, checkBox: "React" };
       });
 
     const nodeProjects = projects
       .filter((tags) => {
         return tags.tags.includes("Node.JS");
       })
-      .map((deploy) => {
-        return { project: deploy, checkBox: "Node.JS" };
+      .map((node) => {
+        return { project: node, checkBox: "Node.JS" };
       });
 
     const expressProjects = projects
       .filter((tags) => {
         return tags.tags.includes("Express.JS");
       })
-      .map((deploy) => {
-        return { project: deploy, checkBox: "Express.JS" };
+      .map((express) => {
+        return { project: express, checkBox: "Express.JS" };
       });
 
     const mongooseProjects = projects
       .filter((tags) => {
         return tags.tags.includes("Mongoose.JS");
       })
-      .map((deploy) => {
-        return { project: deploy, checkBox: "Mongoose.JS" };
+      .map((mongoose) => {
+        return { project: mongoose, checkBox: "Mongoose.JS" };
       });
 
     const mongoDBProjects = projects
       .filter((tags) => {
         return tags.tags.includes("MongoDB Atlas");
       })
-      .map((deploy) => {
-        return { project: deploy, checkBox: "MongoDB Atlas" };
+      .map((mongoDB) => {
+        return { project: mongoDB, checkBox: "MongoDB Atlas" };
       });
 
-    const preFilter = [
+    const preFilter: IpreFilter[] = [
       ...completedProjects,
       ...notCompletedProjects,
       ...threeStarProjects,
@@ -180,25 +186,14 @@ export const filterFunction = (
     ];
     const filteredProjectArray: Project[] = [];
 
-    console.log(filteredProjectArray, "pre")
+    console.log(filteredProjectArray, "pre");
 
-    //Dynamically add in each filtered project into filteredProjectArray
-    for (let i = 0; i < checkBoxTrueArray.length; ++i) {
-      for (let j = 0; j < preFilter.length; ++j) {
-        if (checkBoxTrueArray[i].checkBox === preFilter[j].checkBox) {
-          filteredProjectArray.push(preFilter[j].project);
-        }
-      }
-    }
-
-    console.log(filteredProjectArray, "post")
-
-    // Concatenate all completed project arrays into a single return value and remove duplicates for searchFunction
+    // Remove duplicates for filteredProjectArray in loopFilteredProjects()
     const removeDuplicateProjects = (args: Project[]) => {
       let a = args.concat();
       for (let i = 0; i < args.length; ++i) {
         for (let j = i + 1; j < args.length; ++j) {
-          if (args[i] === args[j]) {
+          if (args[i].title === args[j].title) {
             args.splice(j--, 1);
           }
         }
@@ -206,8 +201,25 @@ export const filterFunction = (
       return a;
     };
 
-    // the return value of filtereProjectArray is not correctly returning when 2-4+ filters are checked. I believe it's to do with 
+    //Dynamically add in each filtered project into filteredProjectArray
+    const loopFilteredProjects = (
+      checkBTA: IcheckBoxList[],
+      preF: IpreFilter[]
+    ) => {
+      for (let i = 0; i < checkBTA.length; ++i) {
+        for (let j = 0; j < preF.length; ++j) {
+          if (checkBTA[i].checkBox === preF[j].checkBox) {
+            filteredProjectArray.push(preF[j].project);
+          }
+        }
+      }
+      return removeDuplicateProjects(filteredProjectArray)
+    };
+
+    console.log(filteredProjectArray, "post");
+
+    // the return value of filtereProjectArray is not correctly returning when 2-4+ filters are checked. I believe it's to do with
     // removeDuplicateProjects not being being modified correctly for my use case
-    return searchFunction(value, removeDuplicateProjects(filteredProjectArray));
+    return searchFunction(value, loopFilteredProjects(checkBoxTrueArray, preFilter));
   }
 };
