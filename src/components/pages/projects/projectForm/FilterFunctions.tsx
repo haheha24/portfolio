@@ -180,6 +180,8 @@ export const filterFunction = (
     ];
     const filteredProjectArray: Project[] = [];
 
+    console.log(filteredProjectArray, "pre")
+
     //Dynamically add in each filtered project into filteredProjectArray
     for (let i = 0; i < checkBoxTrueArray.length; ++i) {
       for (let j = 0; j < preFilter.length; ++j) {
@@ -188,6 +190,8 @@ export const filterFunction = (
         }
       }
     }
+
+    console.log(filteredProjectArray, "post")
 
     // Concatenate all completed project arrays into a single return value and remove duplicates for searchFunction
     const removeDuplicateProjects = (args: Project[]) => {
@@ -202,6 +206,8 @@ export const filterFunction = (
       return a;
     };
 
+    // the return value of filtereProjectArray is not correctly returning when 2-4+ filters are checked. I believe it's to do with 
+    // removeDuplicateProjects not being being modified correctly for my use case
     return searchFunction(value, removeDuplicateProjects(filteredProjectArray));
   }
 };
