@@ -188,6 +188,9 @@ export const filterFunction = (
 
     console.log(filteredProjectArray, "pre");
 
+    // I NEED TO NARROW DOWN >< NOT JUST ADD. FOR EACH COMBINATION, REMOVE THINGS THAT DO NOT MEET THE CRITERIA OF THE CHECK BOXES
+    // NOT JUST ADD AND REMOVE DUPLICATES. NARROWING DOWN SHOULD REMOVE THE NEED TO REMOVE DUPLICATES.
+
     // Remove duplicates for filteredProjectArray in loopFilteredProjects()
     const removeDuplicateProjects = (args: Project[]) => {
       let a = args.concat();
