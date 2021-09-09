@@ -1,14 +1,16 @@
 import { Switch, Route } from "react-router-dom";
-import About from "../pages/about/About";
+import "./main.css"
+import Contact from "../pages/contact/Contact";
 import Resume from "../pages/resume/Resume";
 import Projects from "../pages/projects/Projects";
+import Home from "../pages/home/Home";
 
 const Main = () => {
   return (
-    <main style={{ gridRow: "2/3" }}>
+    <main id="main">
       <Switch>
-        <Route path="/About">
-          <About />
+        <Route path="/Contact">
+          <Contact />
         </Route>
         <Route path="/Resume">
           <Resume />
@@ -16,7 +18,9 @@ const Main = () => {
         <Route path="/Projects">
           <Projects />
         </Route>
-        <Route path="/"></Route>
+        <Route path="/">
+          <Home />
+        </Route>
       </Switch>
     </main>
   );
