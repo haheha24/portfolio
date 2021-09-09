@@ -1,3 +1,8 @@
+/* This removes the 20% margin to the left and right side from main.css */
+#main {
+    margin: 0
+}
+
 .projects-title-container {
     display: flex;
     flex-direction: column;
