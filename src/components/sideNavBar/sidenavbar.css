@@ -1,0 +1,18 @@
+.sidenav {
+    margin: 20px 2.5% 0 2.5%;
+    position: fixed;
+    right: 0;
+    left: 70%;
+    z-index: 10;
+}
+.sidenav-ul {
+    display: flex;
+    flex-direction: column;
+}
+.sidenav-item {
+    padding: 10px 20px;
+    list-style-type: none;
+}
+.sidenav-current {
+    border-left-color: hsl(0, 0%, 50%);
+}
