@@ -13,6 +13,9 @@
     padding: 10px 20px;
     list-style-type: none;
 }
+.sidenav-item-anchor {
+    cursor: pointer;
+}
 .sidenav-current {
-    border-left-color: hsl(0, 0%, 50%);
+    color: red;
 }

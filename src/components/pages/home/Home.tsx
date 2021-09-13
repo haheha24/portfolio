@@ -1,27 +1,22 @@
-import React, { useState, useLayoutEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import "./home.css";
 import SideNavBar from "../../sideNavBar/SideNavBar";
 
 export interface IhomeSubtitle {
   itemId: string;
   itemName: string;
-  itemRef:
-    | React.RefObject<HTMLHeadingElement | null>;
 }
 
 const Home = () => {
   const [homeSubState, setHomeSubState] = useState<IhomeSubtitle[]>([]);
 
-  const aboutMe = useRef<HTMLHeadingElement>(null);
-  const loveSoftware = useRef<HTMLHeadingElement>(null);
-
-  useLayoutEffect(() => {
+  useEffect(() => {
     const homeSubtitleArray = [
-      { itemId: "aboutMe", itemName: "About me", itemRef: aboutMe },
+      { itemId: "aboutMe", itemName: "About me" },
       {
         itemId: "loveSoftware",
-        itemName: "Why I love software development!",
-        itemRef: loveSoftware,
+        itemName: "Why I love software development!"
+        
       },
     ];
 
@@ -33,16 +28,16 @@ const Home = () => {
       <SideNavBar navArray={homeSubState} />
       <div className="home-container">
         <h1 className="home-title">Welcome</h1>
-        <section className="home-section">
-          <h2 id="aboutMe" className="home-subtitle" ref={aboutMe}>
+        <section id="aboutMe" className="home-section">
+          <h2  className="home-subtitle">
             About Me
           </h2>
           <p className="home-paragraph">
             I'm Adrian Cristallo and hello! Thanks for visiting my website.
           </p>
         </section>
-        <section className="home-section">
-          <h2 id="loveSoftware" className="home-subtitle" ref={loveSoftware}>
+        <section id="loveSoftware" className="home-section">
+          <h2  className="home-subtitle">
             Why I love software development!
           </h2>
           <p className="home-paragraph">
