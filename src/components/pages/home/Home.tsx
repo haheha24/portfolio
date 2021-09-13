@@ -30,7 +30,7 @@ const Home = () => {
 
   return (
     <>
-      <SideNavBar ref={aboutMe} navArray={homeSubState} />
+      <SideNavBar navArray={homeSubState} />
       <div className="home-container">
         <h1 className="home-title">Welcome</h1>
         <section className="home-section">
