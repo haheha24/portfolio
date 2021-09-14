@@ -1,12 +1,16 @@
 import "./sidenavbar.css";
 import { IhomeSubtitle } from "../pages/home/Home";
-import {Link} from "react-scroll";
+import { Link, Element } from "react-scroll";
 
-const SideNavBar = (props: { navArray: IhomeSubtitle[] }) => {
+const SideNavBar = (props: {
+  navArray: IhomeSubtitle[];
+  sideNavTitle?: string;
+}) => {
   return (
     <nav className="sidenav">
+      <Element name="scrollbar" id="scrollbar" />
       <ul className="sidenav-ul">
-        <li className="sidenav-item">Welcome</li>
+        {props.sideNavTitle ? <li className="sidenav-item">{props.sideNavTitle}</li> : <></>}
         {props.navArray.map((navItem: IhomeSubtitle, index) => {
           return (
             <li key={index} className="sidenav-item">

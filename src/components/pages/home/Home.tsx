@@ -25,7 +25,7 @@ const Home = () => {
 
   return (
     <>
-      <SideNavBar navArray={homeSubState} />
+      <SideNavBar navArray={homeSubState} sideNavTitle="Welcome" />
       <div className="home-container">
         <h1 className="home-title">Welcome</h1>
         <section id="aboutMe" className="home-section">
