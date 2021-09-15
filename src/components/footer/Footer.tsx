@@ -3,7 +3,7 @@ import './footer.css'
 
 const Footer = () => {
     return (
-        <footer>
+        <footer id="footer">
             <ul>
                 <li>
                     Social Media

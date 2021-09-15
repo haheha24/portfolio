@@ -7,9 +7,13 @@ const SideNavBar = (props: {
   sideNavTitle?: string;
 }) => {
   return (
-    <nav className="sidenav">
+    <nav id="sidenav">
       <ul className="sidenav-ul">
-        {props.sideNavTitle ? <li className="sidenav-item">{props.sideNavTitle}</li> : <></>}
+        {props.sideNavTitle ? (
+          <li className="sidenav-item">{props.sideNavTitle}</li>
+        ) : (
+          <></>
+        )}
         {props.navArray.map((navItem: IhomeSubtitle, index) => {
           return (
             <li key={index} className="sidenav-item">
