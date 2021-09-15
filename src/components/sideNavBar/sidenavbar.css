@@ -1,23 +1,33 @@
-.sidenav {
-    margin: 20px 2.5% 0 2.5%;
-    position: fixed;
-    right: 0;
-    left: 70%;
-    top: 10vmax;
-    z-index: 10;
-    display: flex;
+#sidenav {
+  margin: 20px 0 0 0;
+  max-height: calc(100vh - 150px);
+  position: sticky;
+  top: 100px;
+  float: right;
+  padding-bottom: 10px;
 }
 .sidenav-ul {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  box-shadow: inset 5px 0 0 black;
 }
 .sidenav-item {
-    padding: 10px 20px;
-    list-style-type: none;
+  padding: 10px 20px;
+  list-style-type: none;
 }
 .sidenav-item-anchor {
-    cursor: pointer;
+  cursor: pointer;
 }
 .sidenav-current {
-    color: red;
+  color: red;
+}
+@media only screen and (max-width: 1100px) {
+  #sidenav {
+    margin: 20px 10% 0 auto;
+  }
+}
+@media only screen and (max-width: 860px) {
+  #sidenav {
+    display: none;
+  }
 }

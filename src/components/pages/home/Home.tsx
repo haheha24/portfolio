@@ -1,45 +1,33 @@
-import React, { useState, useEffect } from "react";
 import "./home.css";
 import SideNavBar from "../../sideNavBar/SideNavBar";
 
-export interface IhomeSubtitle {
+export type IhomeSubtitle = {
   itemId: string;
   itemName: string;
-}
+};
 
 const Home = () => {
-  const [homeSubState, setHomeSubState] = useState<IhomeSubtitle[]>([]);
-
-  useEffect(() => {
-    const homeSubtitleArray = [
-      { itemId: "aboutMe", itemName: "About me" },
-      {
-        itemId: "loveSoftware",
-        itemName: "Why I love software development!"
-        
-      },
-    ];
-
-    setHomeSubState(homeSubtitleArray);
-  }, []);
+  const homeSubtitleArray: IhomeSubtitle[] = [
+    { itemId: "aboutMe", itemName: "About me" },
+    {
+      itemId: "loveSoftware",
+      itemName: "Why I love software development!",
+    },
+  ];
 
   return (
     <>
-      <SideNavBar navArray={homeSubState} sideNavTitle="Welcome" />
+      <SideNavBar navArray={homeSubtitleArray} sideNavTitle="Welcome" />
       <div className="home-container">
         <h1 className="home-title">Welcome</h1>
         <section id="aboutMe" className="home-section">
-          <h2  className="home-subtitle">
-            About Me
-          </h2>
+          <h2 className="home-subtitle">About Me</h2>
           <p className="home-paragraph">
             I'm Adrian Cristallo and hello! Thanks for visiting my website.
           </p>
         </section>
         <section id="loveSoftware" className="home-section">
-          <h2  className="home-subtitle">
-            Why I love software development!
-          </h2>
+          <h2 className="home-subtitle">Why I love software development!</h2>
           <p className="home-paragraph">
             During covid lockdown, I needed a new hobby. I ended up taking on
             figure and portrait graphite drawing and .. web development!
