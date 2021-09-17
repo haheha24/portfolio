@@ -1,3 +1,4 @@
+/* form */
 .contact-title {
   text-align: center;
   font-size: 2.5rem;
@@ -6,11 +7,10 @@
   width: auto;
 }
 .contact-form-container {
-  margin: 0 20% 50px 20%;
-  min-height: 50vh;
+  padding: 0 5%;
   background-color: hsl(0, 0%, 80%);
   border-radius: 20px;
-  padding: 0 5%;
+  margin: 0 0 50px 5%;
 }
 .contact-form-flex {
   display: flex;
@@ -23,6 +23,10 @@
 }
 .contact-flex-dirRow {
   display: flex;
+}
+.contact-flex-container {
+  display: flex;
+  justify-content: space-evenly;
 }
 .contact-flex-dirCol {
   display: flex;
@@ -62,4 +66,27 @@
 .contact-btn:hover {
   background-color: hsl(0, 0%, 30%);
   color: white;
+}
+
+/* connect */
+.connect-section {
+  max-height:10em;
+  margin-bottom: 50px;
+}
+.connect-title {
+  text-align: center;
+  margin: 0 auto;
+  width: auto;
+}
+.connect-ul {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  padding: 5px 10px;
+  background-color: hsl(0, 0%, 80%);
+  border-radius: 10px;
+}
+.connect-li {
+  margin: 0.25em 0;
+  font-size: 1.2em;
 }
