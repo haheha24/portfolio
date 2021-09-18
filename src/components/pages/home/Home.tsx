@@ -8,6 +8,7 @@ export type IhomeSubtitle = {
 
 const Home = () => {
   const homeSubtitleArray: IhomeSubtitle[] = [
+    { itemId: "welcome", itemName: "Welcome"},
     { itemId: "aboutMe", itemName: "About me" },
     {
       itemId: "loveSoftware",
@@ -16,10 +17,10 @@ const Home = () => {
   ];
 
   return (
-    <>
-      <SideNavBar navArray={homeSubtitleArray} sideNavTitle="Welcome" />
+    <div className="home-grid">
+      <SideNavBar navArray={homeSubtitleArray} />
       <div className="home-container">
-        <h1 className="home-title">Welcome</h1>
+        <h1 id="welcome" className="home-title">Welcome</h1>
         <section id="aboutMe" className="home-section">
           <h2 className="home-subtitle">About Me</h2>
           <p className="home-paragraph">
@@ -97,7 +98,7 @@ const Home = () => {
           </p>
         </section>
       </div>
-    </>
+    </div>
   );
 };
 

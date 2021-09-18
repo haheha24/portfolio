@@ -4,16 +4,10 @@ import { Link } from "react-scroll";
 
 const SideNavBar = (props: {
   navArray: IhomeSubtitle[];
-  sideNavTitle?: string;
 }) => {
   return (
     <nav id="sidenav">
       <ul className="sidenav-ul">
-        {props.sideNavTitle ? (
-          <li className="sidenav-item">{props.sideNavTitle}</li>
-        ) : (
-          <></>
-        )}
         {props.navArray.map((navItem: IhomeSubtitle, index) => {
           return (
             <li key={index} className="sidenav-item">
