@@ -1,6 +1,7 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useState } from "react";
 import "./contact.css";
 import { SiGithub, SiGmail } from "react-icons/si";
+import Thankyou from "./Thankyou";
 
 //this interface is for setting state
 interface IformInput {
@@ -27,6 +28,7 @@ const Contact = () => {
     }),
     { name: "", email: "", subject: "", company: "", message: "", typeForm: "" }
   );
+  const [sent, setSent] = useState<boolean>(false);
 
   const contactHandle = (
     e: React.ChangeEvent<
@@ -39,19 +41,24 @@ const Contact = () => {
 
   const contactSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
+    setSent(true);
 
     // Do stuff -  validate and fetch > send to server api end point > nodemailer
 
-    setContactInput({
-      name: "",
-      subject: "",
-      email: "",
-      company: "",
-      message: "",
-      typeForm: "",
-    });
     document.getElementById("name")?.focus();
+    setTimeout(() => {
+      setSent(false);
+      setContactInput({
+        name: "",
+        subject: "",
+        email: "",
+        company: "",
+        message: "",
+        typeForm: "",
+      });
+    }, 10000);
   };
+
   return (
     <>
       <h1 className="contact-title">Contact Form</h1>
@@ -111,6 +118,7 @@ const Contact = () => {
                   name="typeForm"
                   className="contact-input"
                   id="typeForm"
+                  value={contactInput.typeForm}
                   onChange={(e) => contactHandle(e)}
                 >
                   <option
@@ -121,9 +129,9 @@ const Contact = () => {
                   >
                     Please select
                   </option>
-                  <option value="Business">Business</option>
-                  <option value="Employment">Employment</option>
-                  <option value="Enquiry">General Enquiry</option>
+                  <option value="General enquiry">General Enquiry</option>
+                  <option value="Business enquiry">Business Enquiry</option>
+                  <option value="Employment enquiry">Employment Enquiry</option>
                 </select>
               </div>
               <div className="contact-input-container contact-flex-dirCol">
@@ -183,6 +191,8 @@ const Contact = () => {
                   placeholder="Hello ..."
                 ></textarea>
                 <button className="contact-btn">Send</button>
+                {sent === true ? <Thankyou contactName={contactInput.name} /> : ""}
+               {/* <Thankyou contactName={contactInput.name} /> */}
               </div>
             </div>
           </form>
@@ -192,13 +202,18 @@ const Contact = () => {
           <ul className="connect-ul">
             <li className="connect-li">
               <span style={{ verticalAlign: "middle", fontSize: "2em" }}>
-                <SiGithub />{"  "}
+                <SiGithub />
+                {"  "}
               </span>
               https://github.com/haheha24
             </li>
             <li className="connect-li">
               <span style={{ verticalAlign: "middle", fontSize: "2em" }}>
-                <SiGmail stroke="white" strokeWidth="1px" fill="hsl(0, 100%, 80%)" />
+                <SiGmail
+                  stroke="white"
+                  strokeWidth="1px"
+                  fill="hsl(0, 100%, 80%)"
+                />
               </span>
               {"  "}
               adriancristallo1@gmail.com
