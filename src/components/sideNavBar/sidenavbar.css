@@ -1,11 +1,35 @@
-#sidenav {
-  margin-top: 100px;
-  max-height: 150px;
-  position: sticky;
-  top: 100px;
+.sidenav-container {
+  display: flex;
+  flex-direction: column;
   grid-column: 3/4;
   grid-row: 1;
-  padding-bottom: 10px;
+}
+.sidenav-burger {
+  position: sticky;
+  top: 90%;
+  align-self: flex-end;
+  margin-right: 8.5%;
+  margin-bottom: 10px;
+  display: none;
+  cursor: pointer;
+  background: linear-gradient(
+    to bottom,
+    rgba(77, 77, 77, 1) 0%,
+    rgb(46, 161, 20) 100%
+  );
+  border-radius: 10px;
+}
+.sidenav-burger:hover {
+  background: linear-gradient(
+    to bottom,
+    hsl(0, 0%, 50%) 0%,
+    rgb(46, 255, 20) 100%
+  );
+}
+.sidenav {
+  position: sticky;
+  padding-top: 10%;
+  top: 10%;
   justify-items: center;
 }
 .sidenav-ul {
@@ -14,19 +38,27 @@
   box-shadow: inset 5px 0 0 black;
 }
 .sidenav-item {
-  margin: 10px 0;
   list-style-type: none;
+  text-align: left;
+  display: flex;
+}
+.sidenav-item-anchor:hover {
+  color: hsl(0, 100%, 70%);
 }
 .sidenav-item-anchor {
   padding: 10px 0 10px 20px;
+  width: inherit;
   cursor: pointer;
 }
 .sidenav-current {
   color: red;
   box-shadow: inset 5.2px 0 0 red;
 }
+
+/*  Media Queries  */
+
 @media only screen and (max-width: 1100px) {
-  #sidenav {
+  .sidenav-container {
     grid-column: 2/3;
   }
   .sidenav-item-anchor {
@@ -34,7 +66,35 @@
   }
 }
 @media only screen and (max-width: 860px) {
-  #sidenav {
-    display: none;
+  .sidenav-burger {
+    display: flex;
+    justify-content: flex-end;
   }
+  .sidenav {
+    display: none;
+    padding-top: 0;
+    margin-right: 15%;
+    margin-bottom: 5em;
+    top: 65%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background-color: hsl(0, 0%, 40%);
+    /* box-shadow: outset 5px 5px 5px #000; */
+  }
+  .sidenav-ul {
+    flex-direction: column;
+    box-shadow: none;
+    padding: 1em 0 0.7em 1em;
+  }
+  .sidenav-item-anchor {
+    color: white;
+  }
+  .sidenav-current {
+    color: red;
+    box-shadow: inset 5.2px 0 0 red;
+  }
+}
+.displayBlock {
+  display: block;
 }
