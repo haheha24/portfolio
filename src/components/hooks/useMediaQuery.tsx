@@ -25,8 +25,8 @@ const useMediaQuery = () => {
   const windowCallBack = useCallback(getWindowDimension, [windowDimension]);
 
   useEffect(() => {
-    window.addEventListener("resize", _(windowCallBack, 1000));
-    return window.addEventListener("resize", _(windowCallBack, 1000));
+    window.addEventListener("resize", _(windowCallBack, 500));
+    return window.addEventListener("resize", _(windowCallBack, 500));
   }, []);
 
   return windowDimension;
