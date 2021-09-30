@@ -23,4 +23,5 @@ yarn-debug.log*
 yarn-error.log*
 
 # personal
-PortfolioProjectNotes.txt
+*copy.tsx
+*.txt

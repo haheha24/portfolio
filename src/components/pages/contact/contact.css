@@ -1,0 +1,92 @@
+/* form */
+.contact-title {
+  text-align: center;
+  font-size: 2.5rem;
+  background-color: white;
+  margin: 20px auto;
+  width: auto;
+}
+.contact-form-container {
+  padding: 0 5%;
+  background-color: hsl(0, 0%, 80%);
+  border-radius: 20px;
+  margin: 0 0 50px 5%;
+}
+.contact-form-flex {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  min-width: 200px;
+}
+.contact-input-container {
+  margin: 10px 20px;
+}
+.contact-flex-dirRow {
+  display: flex;
+}
+.contact-flex-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+.contact-flex-dirCol {
+  display: flex;
+  flex-direction: column;
+}
+.contact-inline {
+  align-self: flex-end;
+}
+.contact-label {
+  padding: 5px;
+}
+.contact-input {
+  font-size: 1.05rem;
+  line-height: 1.05rem;
+  width: 250px;
+  padding: 2.5px 10px;
+}
+.contact-textarea {
+  font-size: 1.25rem;
+  line-height: 1.25rem;
+  padding: 5px 10px;
+  width: auto;
+  height: auto;
+  max-width: 22.5em;
+  max-height: 10em;
+  resize: none;
+}
+.contact-btn {
+  cursor: pointer;
+  padding: 5px;
+  margin: 20px 0;
+  width: 100px;
+  height: 35px;
+  align-self: center;
+  border-radius: 10px;
+}
+.contact-btn:hover {
+  background-color: hsl(0, 0%, 30%);
+  color: white;
+}
+
+/* connect */
+.connect-section {
+  max-height:10em;
+  margin-bottom: 50px;
+}
+.connect-title {
+  text-align: center;
+  margin: 0 auto;
+  width: auto;
+}
+.connect-ul {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  padding: 5px 10px;
+  background-color: hsl(0, 0%, 80%);
+  border-radius: 10px;
+}
+.connect-li {
+  margin: 0.25em 0;
+  font-size: 1.2em;
+}
