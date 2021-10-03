@@ -10,14 +10,14 @@ import ProjectComplete from "./ProjectComplete";
 import ProjectLinks from "./ProjectLinks";
 import ProjectCard from "../projectCards/ProjectCard";
 //filter functions
-import { filterFunction, searchFunction } from "./FilterFunctions";
+import FilteredProjects from "./FilterFunctions";
 //App import
 import { ProjectContext } from "../../../../App";
+import { Project } from "../../../../App";
 
-type IactiveFilter = {
-  /* prev: {[index:string]: boolean} */
+interface IactiveFilter {
   [index: string]: boolean;
-};
+}
 
 const ProjectSearch = () => {
   //import useContext
@@ -28,20 +28,20 @@ const ProjectSearch = () => {
   //rather than using my reducer to always spread in useReducer
   const [activeFilter, setActiveFilter] = useState<IactiveFilter>({
     Completed: false,
-    "Not completed": false,
-    "Three-star": false,
-    "Two-star": false,
-    "One-star": false,
-    "Repo link": false,
-    "Deploy link": false,
-    HTML: false,
-    CSS: false,
-    JavaScript: false,
-    React: false,
-    "Node.JS": false,
-    "Express.JS": false,
-    "Mongoose.JS": false,
-    "MongoDB Atlas": false,
+    notCompleted: false,
+    threeStar: false,
+    twoStar: false,
+    oneStar: false,
+    repoLink: false,
+    deployLink: false,
+    html: false,
+    css: false,
+    javaScript: false,
+    react: false,
+    nodeJS: false,
+    expressJS: false,
+    mongooseJS: false,
+    mongoDBAtlas: false,
   });
   /* const [activeFilter, setActiveFilter] = useReducer(
     (initCheck: IactiveFilter, updatedCheckState: IactiveFilter) => ({
@@ -50,8 +50,8 @@ const ProjectSearch = () => {
     }),
     {}
   ); */
-  //sets the card filterand passes the state into ProjectCard as a prop
-  const [cardFilter, setCardFilter] = useState(searchFunction("", []));
+  //sets this state with filteredprojects, using projectData as initial value and passes the state into ProjectCard as a prop
+  const [cardFilter, setCardFilter] = useState<Project[]>(projectData);
 
   //on render
   useEffect(() => {
@@ -73,13 +73,18 @@ const ProjectSearch = () => {
   //Submit search query for project form - uses FilterFunctions
   const submitInput = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
-    const checkBoxList = Object.keys(activeFilter).map((box) => {
-      return { checkBox: box, checked: activeFilter[box] };
-    });
+    let checkBoxList = Object.keys(activeFilter)
+      .map((box) => {
+        return { checkBox: box, checked: activeFilter[box] };
+      })
+      .filter((checkBoxTrue) => {
+        return checkBoxTrue.checked === true;
+      });
+
     if (checkBoxList.length > 0) {
-      setCardFilter(filterFunction(inputState, projectData, checkBoxList));
+      setCardFilter(FilteredProjects(inputState, projectData, checkBoxList));
     } else {
-      setCardFilter(searchFunction(inputState, projectData));
+      setCardFilter(FilteredProjects(inputState, projectData));
     }
   };
 
