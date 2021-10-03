@@ -12,7 +12,7 @@ const ProjectComplete: React.FC<Props> = ({ handleCheck }) => {
         <input
           type="checkbox"
           id="completed"
-          name="Completed"
+          name="completed"
           value="completed"
           onChange={(e) => handleCheck(e)}
         />
@@ -22,7 +22,7 @@ const ProjectComplete: React.FC<Props> = ({ handleCheck }) => {
         <input
           type="checkbox"
           id="notCompleted"
-          name="Not completed"
+          name="notCompleted"
           value="not completed"
           onChange={(e) => handleCheck(e)}
         />

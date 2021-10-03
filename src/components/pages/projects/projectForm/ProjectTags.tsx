@@ -9,6 +9,10 @@ const ProjectTags: React.FC<Props> = ({ handleCheck }) => {
   //Set useContext ProjectData from App
   const projectData = useContext(ProjectContext);
 
+  const lowerCaseFirstLetter = (string: string) => {
+    return string.charAt(0).toLowerCase() + string.slice(1);
+  };
+
   // create a filter that will remove all the nested tags repeated values
   const tagData = projectData
     .flatMap((data) => {
@@ -16,6 +20,14 @@ const ProjectTags: React.FC<Props> = ({ handleCheck }) => {
     })
     .filter((tags, index, oldArr) => {
       return oldArr.indexOf(tags) === index;
+    })
+    .map((tag) => {
+      let nameTag = lowerCaseFirstLetter(tag).replace(/\W/g, "");
+      if (nameTag === "HTML" || "CSS") {
+        return { value: tag, name: nameTag.toLowerCase() };
+      } else {
+        return { value: tag, name: nameTag };
+      }
     });
 
   return (
@@ -25,8 +37,14 @@ const ProjectTags: React.FC<Props> = ({ handleCheck }) => {
         {tagData.map((data, index) => {
           return (
             <div key={index}>
-              <input type="checkbox" id={data} name={data} value={data} onChange={(e) => handleCheck(e)}/>
-              <label htmlFor={data}>{data}</label>
+              <input
+                type="checkbox"
+                id={data.name}
+                name={data.name}
+                value={data.value}
+                onChange={(e) => handleCheck(e)}
+              />
+              <label htmlFor={data.name}>{data.value}</label>
             </div>
           );
         })}
