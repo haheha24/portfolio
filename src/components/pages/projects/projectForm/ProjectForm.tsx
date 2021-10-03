@@ -27,7 +27,7 @@ const ProjectSearch = () => {
   //set the checkbox state - useState allows me to spread new data at a specific time,
   //rather than using my reducer to always spread in useReducer
   const [activeFilter, setActiveFilter] = useState<IactiveFilter>({
-    Completed: false,
+    completed: false,
     notCompleted: false,
     threeStar: false,
     twoStar: false,
