@@ -19,7 +19,7 @@ const SideNavBar = (props: { navArray: IhomeSubtitle[] }) => {
         return () => newNavRef.current?.classList.toggle("displayBlock");
       });
       return () =>
-        newBurgerRef.current?.addEventListener("click", () => {
+        newBurgerRef.current?.removeEventListener("click", () => {
           newNavRef.current?.classList.toggle("displayBlock");
           return () => newNavRef.current?.classList.toggle("displayBlock");
         });
