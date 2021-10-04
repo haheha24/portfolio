@@ -18,7 +18,7 @@ const Navbar = () => {
         return () => newDivRef.current?.classList.toggle("displayBlock");
       });
       return () =>
-        newBurgerRef.current?.addEventListener("click", () => {
+        newBurgerRef.current?.removeEventListener("click", () => {
           newDivRef.current?.classList.toggle("displayBlock");
           return () => newDivRef.current?.classList.toggle("displayBlock");
         });
