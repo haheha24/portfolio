@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 
 const _ = require("lodash/throttle");
 
-interface IwindowDimension {
+export interface IwindowDimension {
   height: number;
   width: number;
 }

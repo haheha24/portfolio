@@ -1,18 +1,18 @@
 import "./navbar.css";
-import useMediaQuery from "../../hooks/useMediaQuery";
-import { useEffect, useRef } from "react";
+import { MediaQueryContext } from "../../../App";
+import { useEffect, useRef, useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 
 const Navbar = () => {
-  const navMediaQuery = useMediaQuery().width;
+  const navMediaQuery = useContext(MediaQueryContext)
   const navDivRef = useRef<HTMLDivElement>(null);
   const navBurgerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let newDivRef = navDivRef;
     let newBurgerRef = navBurgerRef;
-    if (navMediaQuery <= 860 && newDivRef !== null) {
+    if (navMediaQuery.width <= 860 && newDivRef !== null) {
       newBurgerRef.current?.addEventListener("click", () => {
         newDivRef.current?.classList.toggle("displayBlock");
         return () => newDivRef.current?.classList.toggle("displayBlock");

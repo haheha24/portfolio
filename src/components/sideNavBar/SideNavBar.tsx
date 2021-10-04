@@ -1,28 +1,29 @@
 import "./sidenavbar.css";
-import useMediaQuery from "../hooks/useMediaQuery";
-import React, { useEffect, useRef } from "react";
+import { MediaQueryContext } from "../../App";
+import { useEffect, useRef, useContext } from "react";
 import { IhomeSubtitle } from "../pages/home/Home";
 import { Link } from "react-scroll";
 import { GiHamburgerMenu } from "react-icons/gi";
 
 const SideNavBar = (props: { navArray: IhomeSubtitle[] }) => {
-  const sideMediaQuery = useMediaQuery().width;
+  const sideMediaQuery = useContext(MediaQueryContext);
   const sideNavRef = useRef<HTMLElement>(null);
   const sideBurgerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let newNavRef = sideNavRef;
     let newBurgerRef = sideBurgerRef;
-    if (sideMediaQuery <= 860 && newNavRef !== null) {
+    if (sideMediaQuery.width <= 860 && newNavRef !== null) {
       newBurgerRef.current?.addEventListener("click", () => {
         newNavRef.current?.classList.toggle("displayBlock");
         return () => newNavRef.current?.classList.toggle("displayBlock");
       });
-      return () =>
-        newBurgerRef.current?.removeEventListener("click", () => {
+      return () => {
+        newBurgerRef.current?.addEventListener("click", () => {
           newNavRef.current?.classList.toggle("displayBlock");
           return () => newNavRef.current?.classList.toggle("displayBlock");
         });
+      };
     }
   }, [sideMediaQuery]);
 
@@ -32,7 +33,7 @@ const SideNavBar = (props: { navArray: IhomeSubtitle[] }) => {
         <GiHamburgerMenu style={{ width: "2.5em", height: "2.5em" }} />
       </div>
       <nav className="sidenav" ref={sideNavRef}>
-        <ul className="sidenav-ul" >
+        <ul className="sidenav-ul">
           {props.navArray.map((navItem: IhomeSubtitle, index) => {
             return (
               <li key={index} className="sidenav-item">
