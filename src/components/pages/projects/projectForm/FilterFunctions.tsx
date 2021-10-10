@@ -24,43 +24,57 @@ const FilteredProjects = (
       );
     });
   };
-
-  const checkCondition = (project: Project, checkBoxList: IcheckBoxList) => {
-    const conditionals: Iconditionals[] = [
-      { name: "completed", condition: true },
-      { name: "notCompleted", condition: false },
-      { name: "threeStar", condition: 3 },
-      { name: "twoStar", condition: 2 },
-      { name: "oneStar", condition: 1 },
-      { name: "repoLink", condition: true },
-      { name: "deployLink", condition: true },
-      { name: "html", condition: "HTML" },
-      { name: "css", condition: "CSS" },
-      { name: "javaScript", condition: "JavaScript" },
-      { name: "react", condition: "React" },
-      { name: "nodeJS", condition: "Node.JS" },
-      { name: "expressJS", condition: "Express.JS" },
-      { name: "mongooseJS", condition: "Mongoose.JS" },
-      { name: "mongoDBAtlas", condition: "MongoDB Atlas" },
-    ];
-    let matchingCheck: Project = project;
-    /// GET THE FILTER WORKING. FIND A WAY TO MATCH CONDITIONALS TO CHECKBOXLIST
-    // NEW CONDITIONALS WILL NARROW DOWN WHAT I NEED TO COMPARE FOR EACH PROJECT.
-    // NO NEED TO CHECK ALL 15, JUST THE ONES THAT ARE RELEVANT TO THE CHECKBOXES.
-    for (let i = 0; i < conditionals.length; i++) {
-      if (conditionals[i].name === checkBoxList.checkBox) {
-        let newConditionals = conditionals.filter(
-          (condition, index, conditionalArr) => {
-            console.log(condition, checkBoxList.checkBox, "newCondi Log");
-            return conditionalArr[index].name === checkBoxList.checkBox;
-          }
-        );
-        console.log(newConditionals, "new conditionals");
-        matchingCheck = project;
-      } else {
-        matchingCheck = project;
+  const conditionals: Iconditionals[] = [
+    { name: "completed", condition: true },
+    { name: "notCompleted", condition: false },
+    { name: "threeStar", condition: 3 },
+    { name: "twoStar", condition: 2 },
+    { name: "oneStar", condition: 1 },
+    { name: "repoLink", condition: "repoLink" },
+    { name: "deployLink", condition: "deployLink" },
+    { name: "html", condition: "HTML" },
+    { name: "css", condition: "CSS" },
+    { name: "javaScript", condition: "JavaScript" },
+    { name: "react", condition: "React" },
+    { name: "nodeJS", condition: "Node.JS" },
+    { name: "expressJS", condition: "Express.JS" },
+    { name: "mongooseJS", condition: "Mongoose.JS" },
+    { name: "mongoDBAtlas", condition: "MongoDB Atlas" },
+  ];
+  const checkCondition = (
+    project: Project,
+    checkBoxList: IcheckBoxList[]
+  ): Project[] => {
+    //need to iterate on tags to match conditionals against tag names. Was thinking of using the keys
+    /* let projectTags = project.tags; */
+    //Now check if each conditionals.condition matches the relevent project properties
+    let matchingConditionals: Iconditionals[] = [];
+    for (let i = 0; i < checkBoxList.length; i++) {
+      for (let j = 0; j < conditionals.length; j++) {
+        if (checkBoxList[i].checkBox === conditionals[j].name)
+          matchingConditionals.push(conditionals[j]);
       }
     }
+    let matchingCheck: Project[] = [];
+    for (let i = 0; i < matchingConditionals.length; i++) {
+      switch (matchingConditionals[i].condition) {
+        case project.completed:
+          matchingCheck.push(project);
+          break;
+        case project.stars:
+          matchingCheck.push(project);
+          break;
+        case Object.getOwnPropertyNames(project)[3]:
+          matchingCheck.push(project);
+          break;
+        case Object.getOwnPropertyNames(project)[4]:
+          matchingCheck.push(project);
+          break;
+        default:
+          console.log("none matched");
+      }
+    }
+
     return matchingCheck;
   };
 
@@ -75,24 +89,24 @@ const FilteredProjects = (
         let tempProjects = projects.filter((project) => {
           return !tempArr.indexOf(project);
         });
+        console.log(tempProjects, "fltered tempArr into tempProjects");
         console.log(`tempArr.length = ${tempArr.length} on loop ${i}`);
-        console.log(`this is tempProjects: ${tempProjects}`);
         for (let j = 0; j < tempProjects.length; j++) {
           let conditionIsMatched = checkCondition(
             tempProjects[j],
-            checkBoxArray[i]
+            checkBoxArray
           );
-          tempArr.push(conditionIsMatched);
+          if (conditionIsMatched !== undefined) {
+            tempArr.push(...conditionIsMatched);
+          }
           console.log(tempArr, "tempArr.length > 0");
         }
       } else {
         for (let j = 0; j < projects.length; j++) {
-          let conditionIsMatched = checkCondition(
-            projects[j],
-            checkBoxArray[i]
-          );
-          tempArr.push(conditionIsMatched);
-          console.log(tempArr, "tempArr");
+          let conditionIsMatched = checkCondition(projects[j], checkBoxArray);
+          if (conditionIsMatched !== undefined) {
+            tempArr.push(...conditionIsMatched);
+          }
         }
       }
     }
