@@ -56,7 +56,6 @@
 .filter-controls {
   display: flex;
   justify-content: space-between;
-  ;
 }
 .flex-direction-col {
   flex-direction: column;

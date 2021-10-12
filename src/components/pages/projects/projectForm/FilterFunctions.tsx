@@ -11,8 +11,8 @@ interface Iconditionals {
 const FilteredProjects = (
   searchBoxValue: string,
   projects: Project[],
-  checkBoxList?: IcheckBoxList[] | undefined
-) => {
+  checkBoxList?: IcheckBoxList[]
+): Project[] => {
   const trimmedValue = searchBoxValue.trim().toLowerCase();
 
   const searchFunction = (projects: Project[]): Project[] => {
@@ -34,47 +34,46 @@ const FilteredProjects = (
     { name: "deployLink", condition: "deployLink" },
     { name: "html", condition: "HTML" },
     { name: "css", condition: "CSS" },
-    { name: "javaScript", condition: "JavaScript" },
+    { name: "javascript", condition: "JavaScript" },
     { name: "react", condition: "React" },
-    { name: "nodeJS", condition: "Node.JS" },
-    { name: "expressJS", condition: "Express.JS" },
-    { name: "mongooseJS", condition: "Mongoose.JS" },
-    { name: "mongoDBAtlas", condition: "MongoDB Atlas" },
+    { name: "nodejs", condition: "Node.JS" },
+    { name: "expressjs", condition: "Express.JS" },
+    { name: "mongoosejs", condition: "Mongoose.JS" },
+    { name: "mongodbatlas", condition: "MongoDB Atlas" },
   ];
   const checkCondition = (
     project: Project,
     checkBoxList: IcheckBoxList[]
   ): Project[] => {
-    //need to iterate on tags to match conditionals against tag names. Was thinking of using the keys
-    /* let projectTags = project.tags; */
-    //Now check if each conditionals.condition matches the relevent project properties
     let matchingConditionals: Iconditionals[] = [];
+    let matchingCheck: Project[] = [];
     for (let i = 0; i < checkBoxList.length; i++) {
       for (let j = 0; j < conditionals.length; j++) {
         if (checkBoxList[i].checkBox === conditionals[j].name)
           matchingConditionals.push(conditionals[j]);
       }
     }
-    let matchingCheck: Project[] = [];
     for (let i = 0; i < matchingConditionals.length; i++) {
       switch (matchingConditionals[i].condition) {
+        //fallthrough
         case project.completed:
-          matchingCheck.push(project);
-          break;
         case project.stars:
-          matchingCheck.push(project);
-          break;
         case Object.getOwnPropertyNames(project)[3]:
-          matchingCheck.push(project);
-          break;
         case Object.getOwnPropertyNames(project)[4]:
+        case project.tags[0]:
+        case project.tags[1]:
+        case project.tags[2]:
+        case project.tags[3]:
+        case project.tags[4]:
+        case project.tags[5]:
+        case project.tags[6]:
+        case project.tags[7]:
           matchingCheck.push(project);
           break;
         default:
-          console.log("none matched");
+          console.log(`${matchingConditionals[i].name} didn't match`);
       }
     }
-
     return matchingCheck;
   };
 
@@ -110,15 +109,14 @@ const FilteredProjects = (
         }
       }
     }
-
     return searchFunction(tempArr);
   };
   let filtProjects: Project[] = [];
   if (checkBoxList !== undefined) {
-    console.log("is not undefined");
+    console.log("checkBoxFilter()");
     return (filtProjects = checkBoxFilter(projects, checkBoxList));
   } else {
-    console.log("is undefined");
+    console.log("searchFunction()");
     return (filtProjects = searchFunction(projects));
   }
 };

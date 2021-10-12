@@ -22,6 +22,7 @@ const ProjectTags: React.FC<Props> = ({ handleCheck }) => {
       return oldArr.indexOf(tags) === index;
     })
     .map((tag) => {
+      //this is for filter function so that the tags match for the conditionals and the form text.
       let nameTag = lowerCaseFirstLetter(tag).replace(/\W/g, "");
       if (nameTag === "HTML" || "CSS") {
         return { value: tag, name: nameTag.toLowerCase() };
