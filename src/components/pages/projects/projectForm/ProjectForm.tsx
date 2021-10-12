@@ -4,13 +4,13 @@ import { GoSearch } from "react-icons/go";
 //react
 import React, { useState, useContext, useEffect } from "react";
 //components
-import ProjectStars from "./ProjectStars";
-import ProjectTags from "./ProjectTags";
-import ProjectComplete from "./ProjectComplete";
-import ProjectLinks from "./ProjectLinks";
+import ProjectStars from "./projectFormComponents/ProjectStars";
+import ProjectTags from "./projectFormComponents/ProjectTags";
+import ProjectComplete from "./projectFormComponents/ProjectComplete";
+import ProjectLinks from "./projectFormComponents/ProjectLinks";
 import ProjectCard from "../projectCards/ProjectCard";
 //filter functions
-import FilteredProjects from "./FilterFunctions";
+import FilteredProjects from "./projectFormComponents/FilterFunctions";
 //App import
 import { ProjectContext, Project } from "../../../../App";
 

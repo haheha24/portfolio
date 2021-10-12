@@ -1,6 +1,6 @@
-import "./projectform.css";
+import "./../projectform.css";
 import { useContext } from "react";
-import { ProjectContext } from "../../../../App";
+import { ProjectContext } from "../../../../../App";
 interface Props {
   handleCheck: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
