@@ -90,11 +90,12 @@ const ProjectSearch = () => {
   //resets the checkboxes
   const reset = (e: React.MouseEvent<HTMLInputElement, MouseEvent>): void => {
     setActiveFilter({});
-    document
-      .querySelectorAll('input[type="checkbox"]')
-      //@ts-ignore
-      .forEach((el) => (el.checked = false));
-    console.log(activeFilter);
+    let allCheckBoxes: NodeListOf<HTMLInputElement> = document.querySelectorAll(
+      'input[type="checkbox"]'
+    );
+    Array.from(allCheckBoxes).forEach((el) => (el.checked = false));
+    setCardFilter(projectData)
+    console.log("The form has been cleared")
   };
 
   return (
