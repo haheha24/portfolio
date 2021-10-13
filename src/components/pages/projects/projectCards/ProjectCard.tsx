@@ -18,7 +18,7 @@ const ProjectCard = (props: { cardArray: Project[] }) => {
             ) : (
               ""
             )}
-            {data.deployLink !== "N/A" && data.deployLink !== "" ? (
+            {data.deployLink !== "N/A" && data.deployLink !== "" && data.deployLink !== undefined ? (
               <a href={data.deployLink}>
                 <p className="project-link">Deploy link: {data.deployLink}</p>
               </a>

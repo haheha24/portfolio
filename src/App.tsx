@@ -13,8 +13,8 @@ export type Project = {
   id: string | number;
   title: string;
   desc: string;
-  repoLink: string;
-  deployLink: string;
+  repoLink?: string;
+  deployLink?: string;
   tags: string[];
   completed: boolean;
   stars: number;

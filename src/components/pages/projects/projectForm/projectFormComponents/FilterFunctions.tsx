@@ -30,8 +30,8 @@ const FilteredProjects = (
     { name: "threeStar", condition: 3 },
     { name: "twoStar", condition: 2 },
     { name: "oneStar", condition: 1 },
-    { name: "repoLink", condition: "repoLink" },
-    { name: "deployLink", condition: "deployLink" },
+    { name: "repoLink", condition: "repoLink" && !undefined },
+    { name: "deployLink", condition: "deployLink" && !undefined && !"repoLink" },
     { name: "html", condition: "HTML" },
     { name: "css", condition: "CSS" },
     { name: "javascript", condition: "JavaScript" },
@@ -47,12 +47,15 @@ const FilteredProjects = (
   ): Project[] => {
     let matchingConditionals: Iconditionals[] = [];
     let matchingCheck: Project[] = [];
+    //For each checkBox, check if it's equal to any conditionals and if true, push the conditional into matching
+    //A smaller matchingConditionals allows for the following loop of switch to only do loop equal to the amount of matched conditions
     for (let i = 0; i < checkBoxList.length; i++) {
       for (let j = 0; j < conditionals.length; j++) {
         if (checkBoxList[i].checkBox === conditionals[j].name)
           matchingConditionals.push(conditionals[j]);
       }
     }
+    //match each condition, looping through them all inside the switch statement.
     for (let i = 0; i < matchingConditionals.length; i++) {
       switch (matchingConditionals[i].condition) {
         //fallthrough
@@ -69,6 +72,7 @@ const FilteredProjects = (
         case project.tags[6]:
         case project.tags[7]:
           matchingCheck.push(project);
+          console.log(project);
           break;
         default:
           console.log(`${matchingConditionals[i].name} didn't match`);
@@ -95,6 +99,7 @@ const FilteredProjects = (
             tempProjects[j],
             checkBoxArray
           );
+          console.log(tempArr, "pre push");
           if (conditionIsMatched !== undefined) {
             tempArr.push(...conditionIsMatched);
           }
