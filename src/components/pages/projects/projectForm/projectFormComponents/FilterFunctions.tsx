@@ -13,6 +13,7 @@ const FilteredProjects = (
   projects: Project[],
   checkBoxList?: IcheckBoxList[]
 ): Project[] => {
+  // removes whitespace. Want to add a regex to remove special characters.
   const trimmedValue = searchBoxValue.trim().toLowerCase();
 
   const searchFunction = (projects: Project[]): Project[] => {
@@ -87,11 +88,22 @@ const FilteredProjects = (
     projects: Project[],
     checkBoxArray: IcheckBoxList[]
   ) => {
-    //attempt 2 looping through each checked box
+    /*
+    The basic idea is:
+      Loop through each checkBox. 
+      Each checkBox inside it's loop will then run checkCondition() for each project.
+      checkCondition() returns an array of projects that meet the checkBox condition.
+      once all of the loops are finished, filter any duplicates from out of tempArr and return the array.
+
+    Next task:
+      Narrow down the results further. If not completed and javascript are ticked, only projects that are not completed
+      and have javascript tags should return. For that example, the filter will result projects not completed with javascript,
+      but also completed projects with javascript. 
+    */
     const tempArr: Project[] = [];
     for (let i = 0; i < checkBoxArray.length; i++) {
       if (tempArr.length > 0) {
-        console.log(tempArr)
+        console.log(tempArr);
         let tempProjects = projects.filter((project) => {
           return !tempArr.indexOf(project);
         });
@@ -101,7 +113,7 @@ const FilteredProjects = (
             tempProjects[j],
             checkBoxArray
           );
-          tempArr.push(...multipleConditiosMatched)
+          tempArr.push(...multipleConditiosMatched);
         }
       } else {
         for (let j = 0; j < projects.length; j++) {
@@ -113,8 +125,8 @@ const FilteredProjects = (
       }
     }
     let finalCheckBoxFilter = tempArr.filter((project, index, projectArr) => {
-      return projectArr.indexOf(project) === index
-    })
+      return projectArr.indexOf(project) === index;
+    });
     return searchFunction(finalCheckBoxFilter);
   };
   if (checkBoxList !== undefined) {
