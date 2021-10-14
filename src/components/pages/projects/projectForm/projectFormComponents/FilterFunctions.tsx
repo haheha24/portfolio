@@ -31,7 +31,10 @@ const FilteredProjects = (
     { name: "twoStar", condition: 2 },
     { name: "oneStar", condition: 1 },
     { name: "repoLink", condition: "repoLink" && !undefined },
-    { name: "deployLink", condition: "deployLink" && !undefined && !"repoLink" },
+    {
+      name: "deployLink",
+      condition: "deployLink" && !undefined && !"repoLink",
+    },
     { name: "html", condition: "HTML" },
     { name: "css", condition: "CSS" },
     { name: "javascript", condition: "JavaScript" },
@@ -72,7 +75,6 @@ const FilteredProjects = (
         case project.tags[6]:
         case project.tags[7]:
           matchingCheck.push(project);
-          console.log(project);
           break;
         default:
           console.log(`${matchingConditionals[i].name} didn't match`);
@@ -89,21 +91,17 @@ const FilteredProjects = (
     const tempArr: Project[] = [];
     for (let i = 0; i < checkBoxArray.length; i++) {
       if (tempArr.length > 0) {
+        console.log(tempArr)
         let tempProjects = projects.filter((project) => {
           return !tempArr.indexOf(project);
         });
-        console.log(tempProjects, "fltered tempArr into tempProjects");
-        console.log(`tempArr.length = ${tempArr.length} on loop ${i}`);
+        console.log(`tempArr.length = ${tempArr.length} on loop ${i + 1}`);
         for (let j = 0; j < tempProjects.length; j++) {
-          let conditionIsMatched = checkCondition(
+          let multipleConditiosMatched = checkCondition(
             tempProjects[j],
             checkBoxArray
           );
-          console.log(tempArr, "pre push");
-          if (conditionIsMatched !== undefined) {
-            tempArr.push(...conditionIsMatched);
-          }
-          console.log(tempArr, "tempArr.length > 0");
+          tempArr.push(...multipleConditiosMatched)
         }
       } else {
         for (let j = 0; j < projects.length; j++) {
@@ -114,15 +112,15 @@ const FilteredProjects = (
         }
       }
     }
-    return searchFunction(tempArr);
+    let finalCheckBoxFilter = tempArr.filter((project, index, projectArr) => {
+      return projectArr.indexOf(project) === index
+    })
+    return searchFunction(finalCheckBoxFilter);
   };
-  let filtProjects: Project[] = [];
   if (checkBoxList !== undefined) {
-    console.log("checkBoxFilter()");
-    return (filtProjects = checkBoxFilter(projects, checkBoxList));
+    return checkBoxFilter(projects, checkBoxList);
   } else {
-    console.log("searchFunction()");
-    return (filtProjects = searchFunction(projects));
+    return searchFunction(projects);
   }
 };
 
