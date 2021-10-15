@@ -42,7 +42,10 @@
   color: black;
 }
 .nav-linkActive {
-  background-color: white;
+  /* this combination of background-color and box-shadow gives a thick shade of box-shadow 
+  and contrasting effect in the middle with background-color.  */
+  background-color: hsl(165, 100%, 50%);
+  box-shadow: inset 0 0 2em 0.7em hsl(109, 78%, 35%);
 }
 .nav-link:hover {
   background-color: white;
