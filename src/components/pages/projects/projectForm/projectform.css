@@ -1,17 +1,19 @@
 .project-form-container {
   background-color: hsl(0, 0%, 80%);
+  border-radius: 20px;
 }
 .project-search-container {
-  border-radius: 10px;
-  border: 2px solid grey;
+  background-color: white;
   display: flex;
-  padding: 5px 10px;
   width: 50%;
   margin: 0 auto;
+  border: 2px solid hsl(0, 0%, 80%);
+}
+.project-search-container:hover, .project-search-container:focus-visible {
+  border: 2px solid hsl(0, 0%, 40%);
 }
 #project-search-form {
   border: none;
-  border-radius: 10px;
   flex-grow: 1;
   line-height: 1.5rem;
   font-size: 1.25rem;
@@ -23,39 +25,31 @@
 .search-icon-container {
   cursor: pointer;
   padding: 5px;
-  margin-left: 5px;
   border: none;
-  border-radius: 10px;
   background-color: white;
 }
-.search-icon-container:hover {
-  background-color: hsl(0, 0%, 70%);
-}
 .search-icon-container:active {
-  background-color: hsl(0, 0%, 60%);
+  background-color: hsl(0, 0%, 80%);
 }
 .search-icon {
   font-size: 1.5rem;
   vertical-align: middle;
 }
 #form-controls {
-  display: flex;
-  justify-content: center;
-  margin: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  place-items: normal start;
+  margin: 1rem 15%;
 }
-.align-items-center {
-  align-items: center;
+.text-align-center {
+  text-align: center;
 }
 #filter-container {
   margin: 0 1rem;
-  height: 50%;
-}
-#filter-container > p {
-  text-align: center;
 }
 .filter-controls {
   display: flex;
-  justify-content: space-between;
 }
 .flex-direction-col {
   flex-direction: column;
@@ -66,4 +60,21 @@
 }
 .tech div {
   padding: 0 0.75rem 0 0.25rem;
+}
+
+/* media query */
+
+@media only screen and (max-width: 860px) {
+  .project-search-container {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 500px) {
+  #form-controls {
+    place-items: normal start;
+    margin: 1rem;
+  }
+  #filter-container {
+    padding: 5px 0;
+  }
 }

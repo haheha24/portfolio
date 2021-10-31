@@ -5,10 +5,10 @@ const Projects = () => {
   return (
     <>
       <div className="projects-title-container">
-        <h1>Projects!</h1>
-        <h3>lots of them</h3>
+        <h1 className="projects-title">Projects</h1>
+        <ProjectForm />
       </div>
-      <ProjectForm />    
+          
     </>
   );
 };

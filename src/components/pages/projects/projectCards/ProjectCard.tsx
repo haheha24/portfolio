@@ -11,17 +11,26 @@ const ProjectCard = (props: { cardArray: Project[] }) => {
           <div key={data.id} className="project-tile">
             <h3 className="project-title">{data.title}</h3>
             <p className="project-desc">{data.desc}</p>
+
             {data.repoLink !== "N/A" && data.repoLink !== "" ? (
-              <a href={data.repoLink}>
-                <p className="project-link">Repo link: {data.repoLink}</p>
-              </a>
+              <>
+                Repo link:
+                <a href={data.repoLink}>
+                  <p className="project-link">{data.repoLink}</p>
+                </a>
+              </>
             ) : (
               ""
             )}
-            {data.deployLink !== "N/A" && data.deployLink !== "" && data.deployLink !== undefined ? (
-              <a href={data.deployLink}>
-                <p className="project-link">Deploy link: {data.deployLink}</p>
-              </a>
+            {data.deployLink !== "N/A" &&
+            data.deployLink !== "" &&
+            data.deployLink !== undefined ? (
+              <>
+                Deploy link:
+                <a href={data.deployLink}>
+                  <p className="project-link">{data.deployLink}</p>
+                </a>
+              </>
             ) : (
               ""
             )}

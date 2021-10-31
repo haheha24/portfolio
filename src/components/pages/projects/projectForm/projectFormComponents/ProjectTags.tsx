@@ -34,7 +34,7 @@ const ProjectTags: React.FC<Props> = ({ handleCheck }) => {
   return (
     <div id="filter-container">
       <p>Technologies</p>
-      <div className="filter-controls flex-direction-col tech">
+      <div className="filter-controls flex-direction-col">
         {tagData.map((data, index) => {
           return (
             <div key={index}>

@@ -108,15 +108,14 @@ const ProjectSearch = () => {
             name="filter"
             value={inputState}
             onChange={(e) => handleInput(e)}
-            placeholder="hit enter or click the search icon to load ALL the projects"
+            placeholder="search projects"
           />
           <button className="search-icon-container">
             <GoSearch className="search-icon" />
           </button>
         </div>
         <div
-          id="form-controls"
-          className="flex-direction-col align-items-center"
+          className="flex-direction-col text-align-center"
         >
           <input
             type="button"
