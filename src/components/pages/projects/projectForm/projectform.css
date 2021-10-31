@@ -36,11 +36,9 @@
   vertical-align: middle;
 }
 #form-controls {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto;
-  place-items: normal start;
-  margin: 1rem 15%;
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
 }
 .text-align-center {
   text-align: center;
@@ -65,12 +63,18 @@
 /* media query */
 
 @media only screen and (max-width: 860px) {
+  .project-form-container {
+    border-radius: 0;
+  }
   .project-search-container {
     width: 100%;
   }
 }
 @media only screen and (max-width: 500px) {
   #form-controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
     place-items: normal start;
     margin: 1rem;
   }

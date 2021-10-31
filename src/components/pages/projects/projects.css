@@ -11,3 +11,12 @@
   margin: 20px auto;
   width: 200px;
 }
+
+/* media query */
+
+@media only screen and (max-width: 500px) {
+  .projects-title-container {
+    border-radius: 0;
+    margin: 0 2.5%;
+  }
+}
