@@ -60,7 +60,7 @@ const Contact = () => {
   };
 
   return (
-    <>
+    <div className="contact-outer-container">
       <h1 className="contact-title">Contact Form</h1>
       <div className="contact-flex-container">
         <div className="contact-container contact-form-container">
@@ -181,8 +181,8 @@ const Contact = () => {
                   name="message"
                   id="contact-form"
                   className="contact-textarea"
-                  cols={50}
-                  rows={30}
+                  /* cols={50}
+                  rows={30} */
                   maxLength={250}
                   onChange={(e) => contactHandle(e)}
                   value={contactInput.message}
@@ -221,7 +221,7 @@ const Contact = () => {
           </ul>
         </section>
       </div>
-    </>
+    </div>
   );
 };
 
