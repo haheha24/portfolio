@@ -25,3 +25,4 @@ yarn-error.log*
 # personal
 *copy.tsx
 *.txt
+src/components/footer

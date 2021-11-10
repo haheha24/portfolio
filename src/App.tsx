@@ -1,7 +1,6 @@
 import "./App.css";
 import Main from "./components/main/Main";
 import Header from "./components/header/Header";
-import Footer from "./components/footer/Footer";
 import React, { useEffect, useState } from "react";
 import useMediaQuery, {
   IwindowDimension,
@@ -41,7 +40,6 @@ function App() {
           <IconContext.Provider value={{ className: "react-icons" }}>
             <Header />
             <Main />
-            <Footer />
           </IconContext.Provider>
         </ProjectContext.Provider>
       </MediaQueryContext.Provider>
