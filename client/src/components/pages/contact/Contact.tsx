@@ -1,6 +1,7 @@
 import React, { useReducer, useState } from "react";
 import "./contact.css";
 import { SiGithub, SiGmail } from "react-icons/si";
+import axios from "axios";
 import Thankyou from "./Thankyou";
 
 //this interface is for setting state
@@ -39,24 +40,27 @@ const Contact = () => {
     setContactInput({ [name]: value });
   };
 
-  const contactSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
+  const contactSubmit = async (
+    e: React.FormEvent<HTMLFormElement>
+  ) => {
     e.preventDefault();
-    setSent(true);
 
     // Do stuff -  validate and fetch > send to server api end point > nodemailer
+    const postRequest = axios
+      .post("http://localhost:5000/router/contactEmail/contact")
+      .then((response) => {
+        console.log(response.statusText)
+        return response.statusText;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 
     document.getElementById("name")?.focus();
-    setTimeout(() => {
-      setSent(false);
-      setContactInput({
-        name: "",
-        subject: "",
-        email: "",
-        company: "",
-        message: "",
-        typeForm: "",
-      });
-    }, 10000);
+
+    if (await postRequest) {
+      return <Thankyou contactName={contactInput.name} />;
+    }
   };
 
   return (
@@ -191,8 +195,12 @@ const Contact = () => {
                   placeholder="Hello ..."
                 ></textarea>
                 <button className="contact-btn">Send</button>
-                {sent === true ? <Thankyou contactName={contactInput.name} /> : ""}
-               {/* <Thankyou contactName={contactInput.name} /> */}
+                {sent === true ? (
+                  <Thankyou contactName={contactInput.name} />
+                ) : (
+                  ""
+                )}
+                {/* <Thankyou contactName={contactInput.name} /> */}
               </div>
             </div>
           </form>
