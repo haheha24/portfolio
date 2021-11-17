@@ -27,7 +27,7 @@ const Contact = () => {
       ...initialHandle,
       ...newHandle,
     }),
-    { name: "", email: "", subject: "", company: "", message: "", typeForm: "" }
+    { name: "", company: "", typeForm: "", email: "", subject: "", message: "",  }
   );
   const [sent, setSent] = useState<boolean>(false);
 
@@ -47,7 +47,7 @@ const Contact = () => {
 
     // Do stuff -  validate and fetch > send to server api end point > nodemailer
     const postRequest = axios
-      .post("http://localhost:5000/router/contactEmail/contact")
+      .post("http://localhost:5000/router/contactEmail", contactInput)
       .then((response) => {
         console.log(response.statusText)
         return response.statusText;
