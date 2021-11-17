@@ -18,6 +18,7 @@
     "@tsconfig/recommended": "^1.0.1",
     "@types/express": "^4.17.13",
     "@types/nodemailer": "^6.4.4",
+    "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "nodemon": "^2.0.15",
     "tslint": "^6.1.3",
