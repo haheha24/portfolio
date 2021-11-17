@@ -1,14 +1,25 @@
 require('dotenv').config()
 import express from 'express'
+const cors = require('cors')
 import nodemailer from 'nodemailer'
 import SMTPTransport from "nodemailer";
 import { google } from 'googleapis'
 
+interface IcontactEmail {
+    name: string
+    company: string
+    typeForm: string
+    email: string
+    subject: string
+    message: string
+}
+
 //initialise Oauth2 through googleapi
 const OAuth2 = google.auth.OAuth2;
 
-//create the transporter that will create the nodemailer transport object
-const createTransporter = async () => {
+const sendEmail = async (emailOptions: {}) => {
+    //create the transporter that will create the nodemailer transport object
+
     //create a new oauth2 client using our client id and client secret from the api
     const oauth2Client = new OAuth2(
         process.env.CLIENT_ID,
@@ -16,12 +27,14 @@ const createTransporter = async () => {
         "https://developers.google.com/oauthplayground"
     )
 
-    //grabs the refresh token
+    //sets the refresh token
     oauth2Client.setCredentials({
         refresh_token: process.env.REFRESH_TOKEN
     })
 
     //create a new promise that will get the accesstoken. can't use async await sugar
+    /* const accessToken = await oauth2Client.getAccessToken(); <---- does 'work' but
+    seems to require the message to be sent twice as the token is not ready on the first try. */
     const accessToken = await new Promise((resolve, reject) => {
         oauth2Client.getAccessToken((err, token) => {
             if (err) {
@@ -33,43 +46,48 @@ const createTransporter = async () => {
 
     //create the actual transporter object 
     const transporter = nodemailer.createTransport({
-        service: "gmail",
+        service: 'Gmail',
         auth: {
             type: "OAuth2",
             user: process.env.EMAIL,
-            accessToken,
+            accessToken: accessToken,
             clientId: process.env.CLIENT_ID,
             clientSecret: process.env.CLIENT_SECRET,
             refreshToken: process.env.REFRESH_TOKEN
-        },
+        }
     } as SMTPTransport.TransportOptions);
 
-    return transporter
-}
-
-
-const sendEmail = async (emailOptions: {}) => {
-    let emailTransporter = await createTransporter()
     try {
-        await emailTransporter.sendMail(emailOptions)
+        const result = await transporter.sendMail(emailOptions)
+        return result
     } catch (error) {
         console.log(error)
     }
-
 }
 
 const contactEmailRouter = express.Router()
 contactEmailRouter.use(express.json())
 contactEmailRouter.use(express.urlencoded({ extended: true }));
+contactEmailRouter.use(cors())
 
+//post end point
 contactEmailRouter.post("/", (req, res) => {
-    const contactEmail = req.body
-    sendEmail(contactEmail)
+    const contactEmail: IcontactEmail = req.body
+    //sets the html of the message
+    const getHtmlText = (email: IcontactEmail) => {
+        const html = `<div>From ${email.name}</div> <div>Email: ${email.email}</div> <div>${email.company}</div> <div>Type of Enquiry: ${email.typeForm}</div> <p>${email.message}</p>`
+        return html
+    }
+    const mailOptions = {
+        to: process.env.EMAIL,
+        from: contactEmail.email,
+        subject: `${contactEmail.subject}, from ${contactEmail.email}`,
+        html: getHtmlText(contactEmail)
+    }
+    //forward to personal
+    sendEmail(mailOptions).then(result => console.log('Email sent: ,', JSON.stringify(result))).catch(err => console.log(err.message))
+    //send back reponse to log status text on client side
     res.json(contactEmail)
-})
-
-contactEmailRouter.get("/", (req, res) => {
-    res.send('contact email route')
 })
 
 export default contactEmailRouter
