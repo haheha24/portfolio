@@ -57,6 +57,8 @@ const sendEmail = async (emailOptions: {}) => {
         }
     } as SMTPTransport.TransportOptions);
 
+    //Awaits the transporter to access my Gmail, then sends through the email with emailOptions
+    //emailOptions variable is passed through by the contactEmailRouter.post
     try {
         const result = await transporter.sendMail(emailOptions)
         return result
@@ -73,19 +75,47 @@ contactEmailRouter.use(cors())
 //post end point
 contactEmailRouter.post("/", (req, res) => {
     const contactEmail: IcontactEmail = req.body
-    //sets the html of the message
-    const getHtmlText = (email: IcontactEmail) => {
-        const html = `<div>From ${email.name}</div> <div>Email: ${email.email}</div> <div>${email.company}</div> <div>Type of Enquiry: ${email.typeForm}</div> <p>${email.message}</p>`
+    //sets the html of the messages
+    const mailHtml = (email: IcontactEmail) => {
+        const html =
+            `<div>From ${email.name}</div>
+            <div>Email: ${email.email}</div>
+            <div>${email.company}</div>
+            <div>Type of Enquiry: ${email.typeForm}</div>
+            <p>${email.message}</p>`
         return html
     }
+    const confirmationMailHtml = (confEmail: IcontactEmail) => {
+        const html =
+            `<p>Hi ${confEmail.name},</p><p>This is a confirmation email and 
+            thanks for the ${confEmail.typeForm.toLowerCase()}.</p>
+            <p>I will be in contact within 48 hours.</p><p>Cheers,<br>Adrian Cristallo.</p>
+            <br><br><br>
+            <p>Message sent:<br>${confEmail.message}<p>`;
+        return html
+    }
+    //Mail options to be passed through inside sendEmail()
     const mailOptions = {
         to: process.env.EMAIL,
         from: contactEmail.email,
         subject: `${contactEmail.subject}, from ${contactEmail.email}`,
-        html: getHtmlText(contactEmail)
+        html: mailHtml(contactEmail)
+    }
+    const confirmationMailOptions = {
+        to: contactEmail.email,
+        from: process.env.EMAIL,
+        subject: `Confirmation email`,
+        html: confirmationMailHtml(contactEmail)
     }
     //forward to personal
-    sendEmail(mailOptions).then(result => console.log('Email sent: ,', JSON.stringify(result))).catch(err => console.log(err.message))
+    sendEmail(mailOptions)
+        .then(result => console.log('Email sent: ,', JSON.stringify(result)))
+        .catch(err => console.log(err.message))
+    //confirmation Email
+    sendEmail(confirmationMailOptions)
+        .then(result => console.log('Email sent: ,', JSON.stringify(result)))
+        .catch(err => console.log(err.message))
+
     //send back reponse to log status text on client side
     res.json(contactEmail)
 })
