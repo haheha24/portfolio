@@ -13,11 +13,17 @@ interface IcontactEmail {
     subject: string
     message: string
 }
+interface ImailOptions {
+    to: string | undefined
+    from: string | undefined
+    subject: string
+    html: string
+}
 
 //initialise Oauth2 through googleapi
 const OAuth2 = google.auth.OAuth2;
 
-const sendEmail = async (emailOptions: {}) => {
+const sendEmail = async (emailOptions: SMTPTransport.SendMailOptions) => {
     //create the transporter that will create the nodemailer transport object
 
     //create a new oauth2 client using our client id and client secret from the api
@@ -35,8 +41,8 @@ const sendEmail = async (emailOptions: {}) => {
     //create a new promise that will get the accesstoken. can't use async await sugar
     /* const accessToken = await oauth2Client.getAccessToken(); <---- does 'work' but
     seems to require the message to be sent twice as the token is not ready on the first try. */
-    const accessToken = await new Promise((resolve, reject) => {
-        oauth2Client.getAccessToken((err, token) => {
+    const accessToken = await new Promise((resolve, reject): void => {
+        oauth2Client.getAccessToken((err, token: string | undefined | null) => {
             if (err) {
                 reject("Failed to create access token");
             }
@@ -45,7 +51,7 @@ const sendEmail = async (emailOptions: {}) => {
     });
 
     //create the actual transporter object 
-    const transporter = nodemailer.createTransport({
+    const transporter = nodemailer.createTransport<{transportOption: string}>({
         service: 'Gmail',
         auth: {
             type: "OAuth2",
@@ -95,13 +101,13 @@ contactEmailRouter.post("/", (req, res) => {
         return html
     }
     //Mail options to be passed through inside sendEmail()
-    const mailOptions = {
+    const mailOptions: ImailOptions = {
         to: process.env.EMAIL,
         from: contactEmail.email,
         subject: `${contactEmail.subject}, from ${contactEmail.email}`,
         html: mailHtml(contactEmail)
     }
-    const confirmationMailOptions = {
+    const confirmationMailOptions: ImailOptions = {
         to: contactEmail.email,
         from: process.env.EMAIL,
         subject: `Confirmation email`,
