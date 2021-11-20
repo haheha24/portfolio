@@ -126,9 +126,8 @@ const Contact = () => {
                   onChange={(e) => contactHandle(e)}
                 >
                   <option
-                    value=""
+                    value="General Enquiry"
                     disabled
-                    selected
                     style={{ color: "hsl(0, 0%, 50%)" }}
                   >
                     Please select
