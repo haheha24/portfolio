@@ -65,7 +65,7 @@
   border-radius: 10px;
 }
 .contact-btn:hover {
-  background-color: hsl(0, 0%, 30%);
+  background-color: green;
   color: white;
 }
 

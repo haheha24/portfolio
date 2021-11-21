@@ -1,7 +1,7 @@
 import React, { useReducer, useState } from "react";
 import "./contact.css";
 import { SiGithub, SiGmail } from "react-icons/si";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import Thankyou from "./Thankyou";
 
 //this interface is for setting state
@@ -27,8 +27,16 @@ const Contact = () => {
       ...initialHandle,
       ...newHandle,
     }),
-    { name: "", company: "", typeForm: "", email: "", subject: "", message: "",  }
+    {
+      name: "",
+      company: "",
+      typeForm: "General Enquiry",
+      email: "",
+      subject: "",
+      message: "",
+    }
   );
+
   const [sent, setSent] = useState<boolean>(false);
 
   const contactHandle = (
@@ -40,26 +48,33 @@ const Contact = () => {
     setContactInput({ [name]: value });
   };
 
-  const contactSubmit = async (
-    e: React.FormEvent<HTMLFormElement>
-  ) => {
+  const contactSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    //set sent state as false
+    setSent(false);
 
-    // Do stuff -  validate and fetch > send to server api end point > nodemailer
+    // Send post request to server, if reponse.status is 200, the form has been redirected to my email
+    // Confirmation email has been sent on server. Activate thankyou component.
     const postRequest = axios
       .post("http://localhost:5000/router/contactEmail", contactInput)
-      .then((response) => {
-        console.log(response.statusText)
-        return response.statusText;
+      .then((response: AxiosResponse) => {
+        //reset input fields and state
+        setContactInput({
+          name: "",
+          company: "",
+          typeForm: "General Enquiry",
+          email: "",
+          subject: "",
+          message: "",
+        });
+        return response.status;
       })
       .catch((err) => {
         console.log(err);
       });
-
-    document.getElementById("name")?.focus();
-
-    if (await postRequest) {
-      return <Thankyou contactName={contactInput.name} />;
+    if ((await postRequest) === 200) {
+      setSent(true);
+      document.getElementById("thankyou")?.focus();
     }
   };
 
@@ -67,7 +82,7 @@ const Contact = () => {
     <div className="contact-outer-container">
       <h1 className="contact-title">Contact Form</h1>
       <div className="contact-flex-container">
-        <div className="contact-container contact-form-container">
+        <section className="contact-container contact-form-container">
           <form
             action=""
             id="contact-form"
@@ -125,13 +140,6 @@ const Contact = () => {
                   value={contactInput.typeForm}
                   onChange={(e) => contactHandle(e)}
                 >
-                  <option
-                    value="General Enquiry"
-                    disabled
-                    style={{ color: "hsl(0, 0%, 50%)" }}
-                  >
-                    Please select
-                  </option>
                   <option value="General enquiry">General Enquiry</option>
                   <option value="Business enquiry">Business Enquiry</option>
                   <option value="Employment enquiry">Employment Enquiry</option>
@@ -184,8 +192,6 @@ const Contact = () => {
                   name="message"
                   id="contact-form"
                   className="contact-textarea"
-                  /* cols={50}
-                  rows={30} */
                   maxLength={250}
                   onChange={(e) => contactHandle(e)}
                   value={contactInput.message}
@@ -194,39 +200,36 @@ const Contact = () => {
                   placeholder="Hello ..."
                 ></textarea>
                 <button className="contact-btn">Send</button>
-                {sent === true ? (
-                  <Thankyou contactName={contactInput.name} />
-                ) : (
-                  ""
-                )}
-                {/* <Thankyou contactName={contactInput.name} /> */}
               </div>
             </div>
           </form>
-        </div>
-        <section className="connect-section">
-          <h2 className="connect-title">Connect</h2>
-          <ul className="connect-ul">
-            <li className="connect-li">
-              <span style={{ verticalAlign: "middle", fontSize: "2em" }}>
-                <SiGithub />
-                {"  "}
-              </span>
-              https://github.com/haheha24
-            </li>
-            <li className="connect-li">
-              <span style={{ verticalAlign: "middle", fontSize: "2em" }}>
-                <SiGmail
-                  stroke="white"
-                  strokeWidth="1px"
-                  fill="hsl(0, 100%, 80%)"
-                />
-              </span>
-              {"  "}
-              adriancristallo1@gmail.com
-            </li>
-          </ul>
         </section>
+        <div className="contact-flex-dirCol">
+          <section className="connect-section">
+            <h2 className="connect-title">Connect</h2>
+            <ul className="connect-ul">
+              <li className="connect-li">
+                <span style={{ verticalAlign: "middle", fontSize: "2em" }}>
+                  <SiGithub />
+                  {"  "}
+                </span>
+                https://github.com/haheha24
+              </li>
+              <li className="connect-li">
+                <span style={{ verticalAlign: "middle", fontSize: "2em" }}>
+                  <SiGmail
+                    stroke="white"
+                    strokeWidth="1px"
+                    fill="hsl(0, 100%, 80%)"
+                  />
+                </span>
+                {"  "}
+                adriancristallo1@gmail.com
+              </li>
+            </ul>
+          </section>
+          {sent === true ? <Thankyou /> : ""}
+        </div>
       </div>
     </div>
   );
