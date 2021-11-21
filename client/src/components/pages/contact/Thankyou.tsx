@@ -1,5 +1,4 @@
 import "./thankyou.css";
-import { RiChatDeleteFill } from "react-icons/ri";
 const Thankyou = () => {
   return (
     <section className="thankyou">
