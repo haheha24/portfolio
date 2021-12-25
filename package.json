@@ -4,8 +4,14 @@
   "description": "portfolio root folder",
   "main": "index.js",
   "scripts": {
-    "prod": "concurrently \"cd client && npm run start\" \"cd server && npm run start\"",
-    "dev": "concurrently \"cd server && npm run dev\" \"cd client && npm run start\" "
+    "watch:server": "cd server && npm run watch",
+    "build:client": "cd client && npm run build",
+    "build:server": "cd server && npm run build",
+    "build": "concurrently \"npm run build:client\" \"npm run build:server\"",
+    "start:server": "cd server && npm run start",
+    "dev:client": "cd client && npm run start",
+    "dev:server": "cd server && npm run dev",
+    "production": "npm run build && npm run start:server"
   },
   "repository": {
     "type": "git",
@@ -18,7 +24,9 @@
   },
   "homepage": "https://github.com/haheha24/portfolio#readme",
   "devDependencies": {
-    "concurrently": "^6.3.0",
     "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "concurrently": "^6.5.1"
   }
 }
