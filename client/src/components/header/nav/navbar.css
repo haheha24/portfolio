@@ -1,5 +1,4 @@
 #navbar {
-  display: flex;
   position: fixed;
   left: 0;
   right: 0;
@@ -12,25 +11,21 @@
   background-size: 100%;
 }
 .nav-ul {
-  position: static;
-  margin: 0;
-  padding: 0;
-}
-.nav-flex-left {
   display: flex;
-  align-items: flex-start;
+  width: 100%;
 }
-.nav-flex-right {
-  display: flex;
-  align-items: flex-end;
-  margin-left: auto;
-}
-.nav-center {
-  margin: auto;
+.navList-menu {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 .nav-li {
+  display: inline-block;
   padding: 25px 0;
   list-style-type: none;
+}
+.nav-linkMain {
+  font-size: 1.25em;
 }
 .nav-link {
   padding: 10px 20px;
@@ -39,8 +34,6 @@
   color: white;
 }
 .nav-linkActive {
-  /* this combination of background-color and box-shadow gives a thick shade of box-shadow 
-  and contrasting effect in the middle with background-color.  */
   color: red;
 }
 .nav-link:hover {
@@ -59,17 +52,14 @@
   #navbar {
     height: auto;
   }
-  .navbar-background:hover {
+/*   .navbar-background {
     background: linear-gradient(
       to bottom,
       hsl(0, 0%, 50%) 0%,
       rgb(46, 255, 20) 100%
     );
-  }
+  } */
   .nav-ul {
-    width: 100%;
-  }
-  .nav-flex-left {
     display: none;
     flex-direction: column;
     justify-items: center;
@@ -83,6 +73,11 @@
   .nav-li {
     padding: 0;
     text-align: center;
+  }
+  .navList-menu {
+    position: static;
+    left: 0;
+    transform: translateX(0);
   }
   .nav-link,
   .nav-linkActive,
