@@ -7,8 +7,9 @@
   z-index: 10;
 }
 .navbar-background {
-  background-image: url("../../../images/dark_forest_background.jpg");
-  background-size: 100%;
+  /* background-image: url("../../../images/transluscent_waves.jpg");
+  background-size: 100%; */
+  background-color: black;
 }
 .nav-ul {
   display: flex;
@@ -17,7 +18,8 @@
 .navList-menu {
   position: absolute;
   left: 50%;
-  transform: translateX(-50%);
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 .nav-li {
   display: inline-block;
@@ -25,7 +27,7 @@
   list-style-type: none;
 }
 .nav-linkMain {
-  font-size: 1.25em;
+  font-size: 2em;
 }
 .nav-link {
   padding: 10px 20px;

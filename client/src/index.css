@@ -21,3 +21,6 @@ body {
 #root {
   background-color: black;
 }
+a {
+  cursor: pointer;
+}

@@ -17,30 +17,30 @@ const About = () => {
   ];
 
   return (
-    <div className="home-grid">
+    <div className="about-grid">
       <SideNavBar navArray={homeSubtitleArray} />
-      <div className="home-container">
-        <h1 id="welcome" className="home-title">Welcome</h1>
-        <section id="aboutMe" className="home-section">
-          <h2 className="home-subtitle">About Me</h2>
-          <p className="home-paragraph">
+      <div className="about-container">
+        <h1 id="welcome" className="about-title">Welcome</h1>
+        <section id="aboutMe" className="about-section">
+          <h2 className="about-subtitle">About Me</h2>
+          <p className="about-paragraph">
             I'm Adrian Cristallo and hello! Thanks for visiting my website.
           </p>
         </section>
-        <section id="loveSoftware" className="home-section">
-          <h2 className="home-subtitle">Why I love software development!</h2>
-          <p className="home-paragraph">
+        <section id="loveSoftware" className="about-section">
+          <h2 className="about-subtitle">Why I love software development!</h2>
+          <p className="about-paragraph">
             During covid lockdown, I needed a new hobby. I ended up taking on
             figure and portrait graphite drawing and .. web development!
           </p>
-          <p className="home-paragraph">
+          <p className="about-paragraph">
             It was so exciting to begin learning about HTML and CSS. I had
             limited prior knowledge back from high school but never followed
             through with it. It wasn't too daunting at first. I spent many hours
             each day practicing and practicing until I understood what the
             basics of web development were.
           </p>
-          <p className="home-paragraph">
+          <p className="about-paragraph">
             Learning HTML was quite easy and comfortable. That feeling ended
             quickly when trying to learn and apply CSS outside of a basic
             background color. I was taking it slow, trying to not overwhelm
@@ -51,7 +51,7 @@ const About = () => {
             understanding. It was quite interesting to say the least. From this,
             I came to understand that my next goal would be learning JavaScript.
           </p>
-          <p className="home-paragraph">
+          <p className="about-paragraph">
             During my initial reading of JavaScript, it became apparent that it
             had evolved quite a bit compared to it's early 2000 days.
             Libraries?! Frameworks!? Backend servers? It just went on. In all of
@@ -64,7 +64,7 @@ const About = () => {
             made a plan on how I was going to achieve my goal. I had to first
             learn JavaScript.
           </p>
-          <p className="home-paragraph">
+          <p className="about-paragraph">
             JavaScript was (and still is) my actual challenge. I had overcome
             HTML and CSS with relative ease over time. JavaScript challenged me
             because it wasn't as clear as the previous two languages. It
@@ -77,7 +77,7 @@ const About = () => {
             challenge but that's the fantastic thing, learning it has become a
             passion. It never really feels like a chore.
           </p>
-          <p className="home-paragraph">
+          <p className="about-paragraph">
             Fast forward to the present, I put in the effort and learnt the
             fundamentals, learnt how to read JavaScript documentation, as well
             as how to use a variety of resources to help me learn and problem
@@ -88,7 +88,7 @@ const About = () => {
             a MERN stack application. Every step was a challenge but the
             gratifaction of solving each problem was like ecstacy.
           </p>
-          <p className="home-paragraph">
+          <p className="about-paragraph">
             In summary, I started out learning HTML and CSS which was a comfy
             experience. Learning JavaScript was a wake up call, realising the
             peak that I felt like I had reached with HTML and CSS was only an

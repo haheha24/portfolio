@@ -1,51 +1,21 @@
 .home-grid {
   display: grid;
-  grid-template-columns: 20% 60% 20%;
-  grid-template-rows: auto;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 100vh auto auto;
 }
-.home-container {
-  grid-column: 2 / 3;
-  grid-row: 1;
-}
-.home-section {
-  margin: 0 7.5%;
-  background-color: hsl(0, 0%, 80%);
-  border-radius: 20px;
-  padding: 0 5%;
-}
-.home-title {
-  text-align: center;
-  font-size: 2.5rem;
-  background-color: white;
-  margin: 20px auto;
-  width: 200px;
-}
-.home-subtitle {
-  padding: 10px 0;
-  scroll-margin-top: 1em;
-}
-.home-paragraph {
-  margin: 10px 0;
-  line-height: 2em;
+
+.feature {
+  height: 100vh;
+  grid-row: 1 / 2;
+  grid-column: 1 / 4;
+  background-image: url("../../../images/transluscent_waves.jpg");
+  background-size: 100% 100%
 }
 
 @media only screen and (max-width: 1100px) {
-  .home-grid {
-    grid-template-columns: 70% 30%;
-  }
-  .home-container {
-    grid-column: 1/2;
-  }
-  .home-section {
-    margin: 0 5%;
-  }
+
 }
 
 @media only screen and (max-width: 860px) {
-  .home-container {
-    grid-column: 1/3;
-  }
-  .home-section {
-    margin: 0 2.5%;
-  }
+
 }
