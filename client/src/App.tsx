@@ -1,4 +1,3 @@
-import "./App.css";
 import Main from "./components/main/Main";
 import Header from "./components/header/Header";
 import React, { useEffect, useState } from "react";
@@ -34,7 +33,7 @@ function App() {
   }, []);
 
   return (
-    <div className="grid-container">
+    
       <MediaQueryContext.Provider value={mediaQuery}>
         <ProjectContext.Provider value={projectState}>
           <IconContext.Provider value={{ className: "react-icons" }}>
@@ -43,7 +42,7 @@ function App() {
           </IconContext.Provider>
         </ProjectContext.Provider>
       </MediaQueryContext.Provider>
-    </div>
+    
   );
 }
 

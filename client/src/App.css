@@ -1,6 +1,0 @@
-.grid-container {
-  display: grid;
-  /* controls the sticky header. 50px stops the header from overlapping with any content from each page
-  the other 2 minmax are the body and footer */
-  grid-template-rows: 50px minmax(200px, auto);
-}

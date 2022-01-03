@@ -1,4 +1,4 @@
-import "./../projectform.css";
+import "../projectform.css";
 import { BsStar } from "react-icons/bs";
 interface Props {
   handleCheck: (e: React.ChangeEvent<HTMLInputElement>) => void;

@@ -12,7 +12,7 @@ import ProjectCard from "../projectCards/ProjectCard";
 //filter functions
 import FilteredProjects from "./projectFormComponents/FilterFunctions";
 //App import
-import { ProjectContext, Project } from "../../../../App";
+import { ProjectContext, Project } from "../../../../../App";
 
 interface IactiveFilter {
   [index: string]: boolean;

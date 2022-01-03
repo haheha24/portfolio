@@ -1,4 +1,42 @@
-.header {
-  grid-row: 1/2;
-  /* placeholder for when I add other stuff to the header such as social media links or something*/
+#header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+  height: 100vh;
+  background-image: url("../../images/transluscent_waves.jpg");
+  background-size: 100% 100%;
+}
+
+.home-feature-section {
+  position: relative;
+  width: fit-content;
+  top: 15%;
+  left: clamp(0%, 50vw, 80%);
+  transform: translate(-50%);
+  padding: 1.1rem;
+  border-radius: 10px;
+  background-color: hsla(0, 0%, 10%, 0.7);
+  animation-duration: 1.25s;
+  animation-name: home-feature;
+  animation-timing-function: ease-out;
+  margin: 10px 0;
+}
+@keyframes home-feature {
+  from {
+    left: 80%;
+  }
+
+  to {
+    left: clamp(0%, 50vw, 80%);;
+  }
+}
+.home-feature-section > h1 {
+  font-size: clamp(1rem, 2.5vw, 2.25rem);
+}
+.home-feature-section > h3 {
+  font-size: clamp(0.9rem, 2.5vw, 1.75rem);
+}
+.home-font-color {
+  color: white;
 }

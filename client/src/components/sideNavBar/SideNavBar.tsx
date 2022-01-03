@@ -1,7 +1,7 @@
 import "./sidenavbar.css";
 import { MediaQueryContext } from "../../App";
 import { useEffect, useRef, useContext } from "react";
-import { IhomeSubtitle } from "../pages/about/About";
+import { IhomeSubtitle } from "../main/pages/about/About";
 import { Link } from "react-scroll";
 import { GiHamburgerMenu } from "react-icons/gi";
 

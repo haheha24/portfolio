@@ -1,5 +1,5 @@
 import "./about.css";
-import SideNavBar from "../../sideNavBar/SideNavBar";
+import SideNavBar from "../../../sideNavBar/SideNavBar";
 
 export type IhomeSubtitle = {
   itemId: string;

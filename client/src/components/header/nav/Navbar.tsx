@@ -26,7 +26,7 @@ const Navbar = () => {
   }, [navMediaQuery]);
 
   return (
-    <nav id="navbar" className="navbar-background">
+    <nav id="navbar">
       <div id="nav-div" ref={navBurgerRef}>
         <GiHamburgerMenu
           className="navbar-burger"
@@ -35,16 +35,16 @@ const Navbar = () => {
       </div>
       <ul className="nav-ul" ref={navUlRef}>
         <NavList
-          liClass="nav-li"
+          liClass="nav-li item-1"
           name="CreativeAge"
           endPoint="/"
           navLinkId="home"
           navLinkClass="nav-link nav-linkMain"
           navLinkActive="nav-linkActive"
         />
-        <div className="navList-menu">
+        {/* <div className="navList-menu"> */}
           <NavList
-            liClass="nav-li"
+            liClass="nav-li item-2"
             name="About"
             endPoint="/about"
             navLinkId="about"
@@ -52,7 +52,7 @@ const Navbar = () => {
             navLinkActive="nav-linkActive"
           />
           <NavList
-            liClass="nav-li"
+            liClass="nav-li item-3"
             name="Projects"
             endPoint="/projects"
             navLinkId="projects"
@@ -60,14 +60,14 @@ const Navbar = () => {
             navLinkActive="nav-linkActive"
           />
           <NavList
-            liClass="nav-li"
+            liClass="nav-li item-4"
             name="Contact"
             endPoint="/contact"
             navLinkId="contact"
             navLinkClass="nav-link"
             navLinkActive="nav-linkActive"
           />
-        </div>
+        {/* </div> */}
       </ul>
     </nav>
   );

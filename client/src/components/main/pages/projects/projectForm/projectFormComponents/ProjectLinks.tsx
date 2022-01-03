@@ -1,4 +1,4 @@
-import "./../projectform.css";
+import "../projectform.css";
 interface Props {
   handleCheck: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }

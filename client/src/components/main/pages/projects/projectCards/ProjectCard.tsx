@@ -1,7 +1,7 @@
 import "./projectCard.css";
 import { BsStar } from "react-icons/bs";
 //App import
-import { Project } from "../../../../App";
+import { Project } from "../../../../../App";
 
 const ProjectCard = (props: { cardArray: Project[] }) => {
   return (
