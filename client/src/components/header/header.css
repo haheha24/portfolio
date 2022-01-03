@@ -1,4 +1,7 @@
 .header {
   grid-row: 1/2;
+  height: 100vh;
+  background-image: url("../../images/dark_forest_background.jpg");
+  background-size: 100%;
   /* placeholder for when I add other stuff to the header such as social media links or something*/
 }

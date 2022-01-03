@@ -43,12 +43,22 @@ const Navbar = () => {
               activeClassName="nav-linkActive"
               exact={true}
             >
-              Home
+              CreativeAge
             </NavLink>
           </li>
           <li className="nav-li">
             <NavLink
-              to="/Projects"
+              to="/about"
+              id="about"
+              className="nav-link"
+              activeClassName="nav-linkActive"
+            >
+              About
+            </NavLink>
+          </li>
+          <li className="nav-li">
+            <NavLink
+              to="/projects"
               id="projects"
               className="nav-link"
               activeClassName="nav-linkActive"
@@ -58,12 +68,12 @@ const Navbar = () => {
           </li>
           <li className="nav-li">
             <NavLink
-              to="/Contact"
+              to="/contact"
               id="contact"
               className="nav-link"
               activeClassName="nav-linkActive"
             >
-              Contact Me
+              Contact
             </NavLink>
           </li>
         </div>

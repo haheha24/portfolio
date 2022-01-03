@@ -49,6 +49,7 @@
   padding: 10px 0 10px 20px;
   width: inherit;
   cursor: pointer;
+  color: white;
 }
 .sidenav-current {
   color: red;
