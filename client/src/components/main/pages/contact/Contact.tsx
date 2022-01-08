@@ -105,7 +105,6 @@ const Contact = () => {
                   placeholder="Name"
                   value={contactInput.name}
                   onChange={(e) => contactHandle(e)}
-                  autoFocus={true}
                   required
                 />
               </div>
