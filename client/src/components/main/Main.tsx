@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import "./main.css"
 import { Switch, Route } from "react-router-dom";
 import Contact from "./pages/contact/Contact";
 import Projects from "./pages/projects/Projects";
@@ -7,7 +7,7 @@ import Home from "./pages/home/Home";
 
 const Main = () => {
   return (
-    <>
+    <div id="container">
       <Switch>
         <Route path="/contact">
           <Contact />
@@ -22,7 +22,7 @@ const Main = () => {
           <Home />
         </Route>
       </Switch>
-    </>
+    </div>
   );
 };
 
