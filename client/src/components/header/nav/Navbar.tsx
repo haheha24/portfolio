@@ -1,59 +1,48 @@
 //libraries
 import { useEffect, useRef, useContext, useState } from "react";
+import { useLocation } from "react-router-dom";
 //contexts
 import { MediaQueryContext } from "../../../App";
-import { IsHomePage } from "../../../App";
 //components, utils and css
 import "./navbar.css";
 import NavListMap from "./NavListMap";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { debounce } from "../../../utilities/helpers";
 
 const Navbar = () => {
   const navMediaQuery = useContext(MediaQueryContext);
-  const isHome = useContext(IsHomePage);
+  /* const isHome = useContext(IsHomePage); */
 
-  //track if observer has triggered
-  const [isElementVisible, setIsElementVisible] = useState(true);
+  //react-router uselocation hook
+  const location = useLocation();
 
   //refs for navivation animation and burger menu responsiveness
   const navBurgerRef = useRef<HTMLDivElement>(null);
   const navUlRef = useRef<HTMLUListElement>(null);
 
-  //tracks the intersection changes of navBarRef the nav element
+  //track if element is visible on screen
+  const [isElementVisible, setIsElementVisible] = useState(true);
+  //track scroll position of Y
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
+  //track if isHome
+  const [isHome, setIsHome] = useState(true);
 
   useEffect(() => {
-    const currentNavUlRef = navUlRef;
-    const options = { root: null, rootMargin: "0px", threshold: 1 };
-    //interactionObserver callback
-    const navBarObserverCallBack = (entries: IntersectionObserverEntry[]) => {
-      const [entry] = entries;
+    //track scroll function with debounce
+    const handleScroll = debounce(() => {
+      const currentScrollPos = window.scrollY;
 
-      //if isIntersecting is not true, ul will be fixed to top
-      if (!entry.isIntersecting) {
-        console.log("fixed nav");
-        entry.target.className = "nav-ul";
-        return setIsElementVisible(false);
-      }
-      //if isIntersecting is true, ul will be grid
-      if (entry.time) {
-        console.log("grid nav");
-        entry.target.className = "nav-ul-grid";
-        return setIsElementVisible(true);
-      }
-    };
-    const navObserver = new IntersectionObserver(
-      navBarObserverCallBack,
-      options
-    );
-    if (isHome && currentNavUlRef.current) {
-      navObserver.observe(currentNavUlRef.current);
-      return () => {
-        if (currentNavUlRef.current) {
-          navObserver.unobserve(currentNavUlRef.current);
-        }
-      };
-    }
-  }, [navUlRef, isHome, isElementVisible]);
+      setIsElementVisible(
+        (prevScrollPos > currentScrollPos &&
+          prevScrollPos - currentScrollPos > 70) ||
+          currentScrollPos < 10
+      );
+      setPrevScrollPos(currentScrollPos);
+    }, 200);
+    setIsHome(location.pathname === "/");
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [prevScrollPos, isElementVisible, location.pathname]);
 
   //Tracks the window dimensions of the page to display the ul element
   useEffect(() => {
@@ -80,8 +69,11 @@ const Navbar = () => {
           style={{ width: "5em", height: "3em", color: "white" }}
         />
       </div>
-      <ul className="nav-ul-grid" ref={navUlRef}>
-        <NavListMap isElementVisible={isElementVisible} />
+      <ul
+        className={isHome && isElementVisible ? "nav-ul-grid" : "nav-ul"}
+        ref={navUlRef}
+      >
+        <NavListMap isHomePage={isHome} isElementVisible={isElementVisible} />
       </ul>
     </nav>
   );

@@ -1,9 +1,9 @@
 import NavList from "./NavList";
-const NavListMap = (props: {isElementVisible: boolean}) => {
-  const {isElementVisible} = props;
+const NavListMap = (props: {isHomePage: boolean, isElementVisible: boolean}) => {
+  const {isHomePage, isElementVisible} = props;
   const navListArray = [
     {
-      styles: { grid: "nav-li item-1", fixed: "nav-li" },
+      styles: { grid: "nav-li item-1", fixed: "nav-li nav-li-fixed" },
       name: "CreativeAge",
       endPoint: "/",
       navLinkId: "home",
@@ -11,7 +11,7 @@ const NavListMap = (props: {isElementVisible: boolean}) => {
       navLinkActive: "nav-linkActive",
     },
     {
-      styles: { grid: "nav-li item-2", fixed: "nav-li" },
+      styles: { grid: "nav-li item-2", fixed: "nav-li nav-li-fixed" },
       name: "About",
       endPoint: "/about",
       navLinkId: "about",
@@ -19,7 +19,7 @@ const NavListMap = (props: {isElementVisible: boolean}) => {
       navLinkActive: "nav-linkActive",
     },
     {
-      styles: { grid: "nav-li item-3", fixed: "nav-li" },
+      styles: { grid: "nav-li item-3", fixed: "nav-li nav-li-fixed" },
       name: "Projects",
       endPoint: "/projects",
       navLinkId: "project",
@@ -27,7 +27,7 @@ const NavListMap = (props: {isElementVisible: boolean}) => {
       navLinkActive: "nav-linkActive",
     },
     {
-      styles: { grid: "nav-li item-4", fixed: "nav-li" },
+      styles: { grid: "nav-li item-4", fixed: "nav-li nav-li-fixed" },
       name: "Contact",
       endPoint: "/contact",
       navLinkId: "contact",
@@ -42,7 +42,7 @@ const NavListMap = (props: {isElementVisible: boolean}) => {
           navItem;
         return <NavList
           key={index}
-          liClass={isElementVisible ? styles.grid : styles.fixed}
+          liClass={isHomePage && isElementVisible ? styles.grid : styles.fixed}
           name={name}
           endPoint={endPoint}
           navLinkId={navLinkId}
