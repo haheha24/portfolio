@@ -1,11 +1,12 @@
-import Main from "./components/main/Main";
-import Header from "./components/header/Header";
 import { useEffect, useState, createContext } from "react";
+import { IconContext } from "react-icons/lib";
+import Header from "./components/header/Header";
+import Main from "./components/main/Main";
 import useMediaQuery, {
   IwindowDimension,
 } from "./components/hooks/useMediaQuery";
+import ScrollToTop from "./utilities/helpers";
 import ProjectData from "./projects";
-import { IconContext } from "react-icons/lib";
 
 export type Project = {
   id: string | number;
@@ -23,25 +24,14 @@ export const MediaQueryContext = createContext<IwindowDimension>({
   height: 0,
   width: 0,
 });
-export const IsHomePage = createContext<boolean>(true);
 
 function App() {
   const [projectState, setProjectState] = useState<Project[]>([]);
-  const [isHome, setIsHome] = useState<boolean>(true);
   const mediaQuery = useMediaQuery();
 
-  const windowLocation = () => {
-    if (window.location.origin !== window.location.href) {
-      return setIsHome(false);
-    }
-    return setIsHome(true);
-  };
-
   useEffect(() => {
-    windowLocation();
     setProjectState([...ProjectData]);
     return () => {
-      windowLocation();
       setProjectState([...ProjectData]);
     };
   }, []);
@@ -49,12 +39,11 @@ function App() {
   return (
     <MediaQueryContext.Provider value={mediaQuery}>
       <ProjectContext.Provider value={projectState}>
-        <IsHomePage.Provider value={isHome}>
-          <IconContext.Provider value={{ className: "react-icons" }}>
-            <Header />
-            <Main />
-          </IconContext.Provider>
-        </IsHomePage.Provider>
+        <IconContext.Provider value={{ className: "react-icons" }}>
+          <ScrollToTop />
+          <Header />
+          <Main />
+        </IconContext.Provider>
       </ProjectContext.Provider>
     </MediaQueryContext.Provider>
   );
