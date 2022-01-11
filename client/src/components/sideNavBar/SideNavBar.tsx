@@ -1,19 +1,18 @@
 import "./sidenavbar.css";
-import { MediaQueryContext } from "../../App";
-import { useEffect, useRef, useContext } from "react";
+import { useEffect, useRef } from "react";
 import { IhomeSubtitle } from "../main/pages/about/About";
 import { Link } from "react-scroll";
 import { GiHamburgerMenu } from "react-icons/gi";
 
 const SideNavBar = (props: { navArray: IhomeSubtitle[] }) => {
-  const sideMediaQuery = useContext(MediaQueryContext);
+  const windowWidth = window.innerWidth;
   const sideNavRef = useRef<HTMLElement>(null);
   const sideBurgerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let newNavRef = sideNavRef;
     let newBurgerRef = sideBurgerRef;
-    if (sideMediaQuery.width <= 860 && newNavRef !== null) {
+    if (windowWidth <= 860) {
       newBurgerRef.current?.addEventListener("click", () => {
         newNavRef.current?.classList.toggle("displayBlock");
         return () => newNavRef.current?.classList.toggle("displayBlock");
@@ -25,7 +24,7 @@ const SideNavBar = (props: { navArray: IhomeSubtitle[] }) => {
         });
       };
     }
-  }, [sideMediaQuery]);
+  });
 
   return (
     <aside className="sidenav-container">

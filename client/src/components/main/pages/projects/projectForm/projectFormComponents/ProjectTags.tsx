@@ -1,13 +1,13 @@
 import "../projectform.css";
-import { useContext } from "react";
-import { ProjectContext } from "../../../../../../App";
+import {Project} from "../../ProjectsArray";
+
 interface Props {
   handleCheck: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  projectData: Project[]
 }
 
-const ProjectTags: React.FC<Props> = ({ handleCheck }) => {
+const ProjectTags: React.FC<Props> = ({ handleCheck, projectData  }) => {
   //Set useContext ProjectData from App
-  const projectData = useContext(ProjectContext);
 
   const lowerCaseFirstLetter = (string: string) => {
     return string.charAt(0).toLowerCase() + string.slice(1);

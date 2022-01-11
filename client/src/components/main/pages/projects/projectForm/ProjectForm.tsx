@@ -2,7 +2,7 @@
 import "./projectform.css";
 import { GoSearch } from "react-icons/go";
 //react
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState } from "react";
 //components
 import ProjectStars from "./projectFormComponents/ProjectStars";
 import ProjectTags from "./projectFormComponents/ProjectTags";
@@ -12,15 +12,13 @@ import ProjectCard from "../projectCards/ProjectCard";
 //filter functions
 import FilteredProjects from "./projectFormComponents/FilterFunctions";
 //App import
-import { ProjectContext, Project } from "../../../../../App";
+import {projectData, Project} from "../ProjectsArray";
 
 interface IactiveFilter {
   [index: string]: boolean;
 }
 
 const ProjectSearch = () => {
-  //import useContext
-  const projectData = useContext(ProjectContext);
   //set the handler
   const [inputState, setInput] = useState("");
   //set the checkbox state - useState allows me to spread new data at a specific time,
@@ -51,11 +49,6 @@ const ProjectSearch = () => {
   ); */
   //sets this state with filteredprojects, using projectData as initial value and passes the state into ProjectCard as a prop
   const [cardFilter, setCardFilter] = useState<Project[]>(projectData);
-
-  //on render
-  useEffect(() => {
-    setCardFilter(projectData);
-  }, [projectData]);
 
   //Use React.ChangeEvent<HTMLInputElement> for a change event type
   //Input Handler for search bar
@@ -129,7 +122,7 @@ const ProjectSearch = () => {
           <ProjectComplete handleCheck={handleCheck} />
           <ProjectStars handleCheck={handleCheck} />
           <ProjectLinks handleCheck={handleCheck} />
-          <ProjectTags handleCheck={handleCheck} />
+          <ProjectTags handleCheck={handleCheck} projectData={projectData} />
         </div>
       </form>
       <ProjectCard cardArray={cardFilter} />

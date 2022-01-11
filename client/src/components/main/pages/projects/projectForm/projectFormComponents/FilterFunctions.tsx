@@ -1,4 +1,4 @@
-import { Project } from "../../../../../../App";
+import { Project } from "../../ProjectsArray";
 
 interface IcheckBoxList {
   checkBox: string;

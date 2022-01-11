@@ -1,9 +1,13 @@
 import "./projectCard.css";
 import { BsStar } from "react-icons/bs";
 //App import
-import { Project } from "../../../../../App";
+import {Project} from "../ProjectsArray";
 
-const ProjectCard = (props: { cardArray: Project[] }) => {
+interface Props{
+  cardArray: Project[]
+}
+
+const ProjectCard: React.FC<Props> = (props: { cardArray: Project[] }) => {
   return (
     <section id="projectFlex">
       {props.cardArray.map((data) => {

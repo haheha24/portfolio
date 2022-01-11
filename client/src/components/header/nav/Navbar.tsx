@@ -1,21 +1,17 @@
 //libraries
-import { useEffect, useRef, useContext, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
-import _ from "lodash/debounce"
-//contexts
-import { MediaQueryContext } from "../../../App";
+import _ from "lodash/debounce";
 //css, utils and components
 import "./navbar.css";
+import useMediaQuery from "../../../utilities/hooks/useMediaQuery";
 import NavListMap from "./NavListMap";
 import { GiHamburgerMenu } from "react-icons/gi";
 
-
 const Navbar = () => {
-  const navMediaQuery = useContext(MediaQueryContext);
-  /* const isHome = useContext(IsHomePage); */
-
   //react-router uselocation hook
   const location = useLocation();
+  const windowDimensions = useMediaQuery();
 
   //refs for navivation animation and burger menu responsiveness
   const navBurgerRef = useRef<HTMLDivElement>(null);
@@ -23,28 +19,29 @@ const Navbar = () => {
 
   //track if element is visible on screen
   const [isElementVisible, setIsElementVisible] = useState(true);
-  //track scroll position of Y
-  /* const [prevScrollPos, setPrevScrollPos] = useState(0); */
+
   //track if isHome
   const [isHome, setIsHome] = useState(true);
 
   useEffect(() => {
     setIsHome(location.pathname === "/");
-    const handleScroll = () => {
+    const handleScroll = (): void => {
       window.scrollY < navUlRef.current!.getBoundingClientRect().bottom
         ? setIsElementVisible(true)
         : setIsElementVisible(false);
     };
-    window.addEventListener("scroll", _(handleScroll, 100));
-    return () =>
-      window.removeEventListener("scroll", _(handleScroll, 100));
-  }, [location.pathname]);
+    console.log(windowDimensions.width);
+    if (windowDimensions.width > 860) {
+      window.addEventListener("scroll", _(handleScroll, 100));
+      return () => window.removeEventListener("scroll", _(handleScroll, 100));
+    }
+  }, [location.pathname, windowDimensions]);
 
   //Tracks the window dimensions of the page to display the ul element
   useEffect(() => {
     let newUlRef = navUlRef;
     let newBurgerRef = navBurgerRef;
-    if (navMediaQuery.width <= 860) {
+    if (windowDimensions.width <= 860) {
       newBurgerRef.current?.addEventListener("click", () => {
         newUlRef.current?.classList.toggle("displayBlock");
         return () => newUlRef.current?.classList.toggle("displayBlock");
@@ -55,7 +52,7 @@ const Navbar = () => {
           return () => newUlRef.current?.classList.toggle("displayBlock");
         });
     }
-  }, [navMediaQuery]);
+  }, [windowDimensions]);
 
   return (
     <nav id="navbar">
