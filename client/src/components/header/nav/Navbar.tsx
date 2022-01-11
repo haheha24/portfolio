@@ -1,13 +1,14 @@
 //libraries
 import { useEffect, useRef, useContext, useState } from "react";
 import { useLocation } from "react-router-dom";
+import _ from "lodash/debounce"
 //contexts
 import { MediaQueryContext } from "../../../App";
-//components, utils and css
+//css, utils and components
 import "./navbar.css";
 import NavListMap from "./NavListMap";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { debounce } from "../../../utilities/helpers";
+
 
 const Navbar = () => {
   const navMediaQuery = useContext(MediaQueryContext);
@@ -23,26 +24,21 @@ const Navbar = () => {
   //track if element is visible on screen
   const [isElementVisible, setIsElementVisible] = useState(true);
   //track scroll position of Y
-  const [prevScrollPos, setPrevScrollPos] = useState(0);
+  /* const [prevScrollPos, setPrevScrollPos] = useState(0); */
   //track if isHome
   const [isHome, setIsHome] = useState(true);
 
   useEffect(() => {
-    //track scroll function with debounce
-    const handleScroll = debounce(() => {
-      const currentScrollPos = window.scrollY;
-
-      setIsElementVisible(
-        (prevScrollPos > currentScrollPos &&
-          prevScrollPos - currentScrollPos > 70) ||
-          currentScrollPos < 10
-      );
-      setPrevScrollPos(currentScrollPos);
-    }, 200);
     setIsHome(location.pathname === "/");
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [prevScrollPos, isElementVisible, location.pathname]);
+    const handleScroll = () => {
+      window.scrollY < navUlRef.current!.getBoundingClientRect().bottom
+        ? setIsElementVisible(true)
+        : setIsElementVisible(false);
+    };
+    window.addEventListener("scroll", _(handleScroll, 100));
+    return () =>
+      window.removeEventListener("scroll", _(handleScroll, 100));
+  }, [location.pathname]);
 
   //Tracks the window dimensions of the page to display the ul element
   useEffect(() => {
@@ -70,7 +66,7 @@ const Navbar = () => {
         />
       </div>
       <ul
-        className={isHome && isElementVisible ? "nav-ul-grid" : "nav-ul"}
+        className={isHome && isElementVisible ? "nav-ul" : "nav-ul-fixed"}
         ref={navUlRef}
       >
         <NavListMap isHomePage={isHome} isElementVisible={isElementVisible} />
