@@ -20,22 +20,32 @@ const Navbar = () => {
   //track if element is visible on screen
   const [isElementVisible, setIsElementVisible] = useState(true);
 
-  //track if isHome
+  //track if on the home page
   const [isHome, setIsHome] = useState(true);
+  //track if the window width is greater than 860 which is the first CSS breakpoint
+  const [isGreaterThan860, setIsGreaterThan860] = useState(true);
 
   useEffect(() => {
+    //sets the isHome
     setIsHome(location.pathname === "/");
-    const handleScroll = (): void => {
+    //callback to set the state of isElementVisible. If the bottom of navUlRef is greater than the scrollY, set true else false
+    const handleScroll = _(() => {
       window.scrollY < navUlRef.current!.getBoundingClientRect().bottom
         ? setIsElementVisible(true)
         : setIsElementVisible(false);
-    };
-    console.log(windowDimensions.width);
+    }, 100);
+    //this checks if the window width is greater than 860 - the first css breakpoint
+    //sets the state of isGreaterThan860, which will help with conditionally rendering the ul and li classes in the render
+    //also adds the scroll event to the window if the width is greater than 860, else removes it if not.
     if (windowDimensions.width > 860) {
-      window.addEventListener("scroll", _(handleScroll, 100));
-      return () => window.removeEventListener("scroll", _(handleScroll, 100));
+      setIsGreaterThan860(true);
+      window.addEventListener("scroll", handleScroll);
+      return () => window.removeEventListener("scroll", handleScroll);
+    } else if (windowDimensions.width < 860) {
+      setIsGreaterThan860(false);
+      return window.removeEventListener("scroll", handleScroll);
     }
-  }, [location.pathname, windowDimensions]);
+  }, [location.pathname, windowDimensions, isGreaterThan860]);
 
   //Tracks the window dimensions of the page to display the ul element
   useEffect(() => {
@@ -54,6 +64,27 @@ const Navbar = () => {
     }
   }, [windowDimensions]);
 
+  /**
+   * conditionally renders the class of the Ul element. This relies on the state of isHome, isElementVisible and isGreaterThan860
+   * @returns "nav-ul" | "nav-ul-fixed"
+   */
+  const handleUlClass = () => {
+    //sets the conditions that fits the useage of the website and its responsiveness.
+
+    //homeMenuIs860 is met when all 3 states are true 
+    const homeMenuIs860 = isHome && isGreaterThan860 && isElementVisible;
+    //homeMenuNot860 is met when all but isGreaterThan860 is true. 
+    const homeMenuNot860 =
+      isHome && isGreaterThan860 === false && isElementVisible;
+    if (homeMenuIs860) {
+      return "nav-ul";
+    } else if (homeMenuNot860) {
+      return "nav-ul-fixed";
+    } else {
+      return "nav-ul-fixed";
+    }
+  };
+
   return (
     <nav id="navbar">
       <div id="nav-div" ref={navBurgerRef}>
@@ -62,11 +93,12 @@ const Navbar = () => {
           style={{ width: "5em", height: "3em", color: "white" }}
         />
       </div>
-      <ul
-        className={isHome && isElementVisible ? "nav-ul" : "nav-ul-fixed"}
-        ref={navUlRef}
-      >
-        <NavListMap isHomePage={isHome} isElementVisible={isElementVisible} />
+      <ul className={handleUlClass()} ref={navUlRef}>
+        <NavListMap
+          isHomePage={isHome}
+          isElementVisible={isElementVisible}
+          isGreaterThan860={isGreaterThan860}
+        />
       </ul>
     </nav>
   );

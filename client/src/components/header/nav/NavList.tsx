@@ -1,15 +1,15 @@
 import { NavLink } from "react-router-dom";
 
-interface INavLinkParams {
+export interface INavLinkParams {
   liClass: string,
-  name: string,
+  listName: string,
   endPoint: string,
   navLinkId: string,
   navLinkClass: string,
   navLinkActive: string,
 }
 
-const NavList = ({liClass, name, endPoint, navLinkId, navLinkClass, navLinkActive}: INavLinkParams) => {
+const NavList = ({liClass, listName, endPoint, navLinkId, navLinkClass, navLinkActive}: INavLinkParams) => {
   return (
     <li className={liClass}>
             <NavLink
@@ -19,7 +19,7 @@ const NavList = ({liClass, name, endPoint, navLinkId, navLinkClass, navLinkActiv
               activeClassName={navLinkActive}
               exact={true}
             >
-              {name}
+              {listName}
             </NavLink>
           </li>
   )

@@ -9,7 +9,9 @@
   overflow: hidden;
   background-image: url("../../../images/transluscent_waves.jpg");
   background-size: 100% 100%;
+  transition: background-size 1s;
 }
+
 .nav-ul-fixed {
   display: flex;
   justify-content: center;
@@ -109,12 +111,19 @@
 @media only screen and (max-width: 860px) {
   #navbar {
     height: auto;
-  }
-  .nav-ul {
-    display: none;
-    flex-direction: column;
-    justify-items: center;
     width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: black;
+  }
+  .nav-ul, .nav-ul-fixed {
+    display: none;
+    width: 100%;
+    position: relative;
+    height: auto;
+    background-image: none;
+    background-size: auto;
   }
   .nav-li,
   .nav-link {
