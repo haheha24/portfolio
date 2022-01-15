@@ -34,7 +34,7 @@ const NavListMap = (props: {
       styles: { grid: "nav-li item-3", fixed: "nav-li nav-li-fixed" },
       listName: "Projects",
       endPoint: "/projects",
-      navLinkId: "project",
+      navLinkId: "projects",
       navLinkClass: "nav-link",
       navLinkActive: "nav-linkActive",
     },

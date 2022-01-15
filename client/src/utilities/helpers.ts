@@ -1,12 +1,31 @@
-import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
-
-export default function ScrollToTop() {
-  const { pathname } = useLocation();
-
-  useEffect(() => {
+/**
+ * Finds the element of the matching id and scrolls to the element.
+ * If parameter is equal to "homeLink", scrolls to top.
+ * If parameter id is null or undefined, logs an error
+ * @param elementId
+ * @returns an object with the properties element and position
+ */
+export const scrollToElement = (
+  elementId: string
+): { element: HTMLElement | undefined; position: number | undefined } => {
+  if (elementId === "homeLink") {
     window.scrollTo(0, 0);
-  }, [pathname]);
-
-  return null;
-}
+    return {
+      element: undefined,
+      position: undefined,
+    };
+  }
+  if (document.getElementById(elementId) === null) {
+    console.error(`Error: ${elementId} does not exist`);
+    return {
+      element: undefined,
+      position: undefined,
+    };
+  }
+  const top = document.getElementById(elementId)?.getBoundingClientRect()!.top! - 100;
+  window.scrollTo(0, top + window.scrollY);
+  return {
+    element: document.getElementById(elementId)!,
+    position: top + window.scrollY,
+  };
+};

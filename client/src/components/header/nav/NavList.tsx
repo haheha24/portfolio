@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import { scrollToElement } from "../../../utilities/helpers";
 
 export interface INavLinkParams {
   liClass: string;
@@ -26,6 +27,9 @@ const NavList = ({
           navLinkClass + " " + (!isActive ? "unselected" : navLinkActive)
         }
         exact={true}
+        onClick={() => {
+          scrollToElement(`${navLinkId}Link`);
+        }}
       >
         {listName}
       </NavLink>

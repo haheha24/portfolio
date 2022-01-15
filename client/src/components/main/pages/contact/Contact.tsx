@@ -79,7 +79,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="contact-outer-container">
+    <div id="contactLink" className="contact-outer-container">
       <h1 className="contact-title">Contact Form</h1>
       <div className="contact-flex-container">
         <section className="contact-container contact-form-container">

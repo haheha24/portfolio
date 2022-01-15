@@ -1,3 +1,9 @@
+#navbar {
+  height: 100vh;
+  background-image: url("../../../images/transluscent_waves.jpg");
+  background-size: 100% 100%;
+  overflow: hidden;
+}
 .nav-ul {
   display: grid;
   grid-template-rows: repeat(2, 25vh);
@@ -5,11 +11,11 @@
   gap: 10px 20px;
   align-content: center;
   justify-content: center;
-  height: 100vh;
-  overflow: hidden;
-  background-image: url("../../../images/transluscent_waves.jpg");
-  background-size: 100% 100%;
-  transition: background-size 1s;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
 }
 
 .nav-ul-fixed {
@@ -117,7 +123,8 @@
     left: 0;
     background-color: black;
   }
-  .nav-ul, .nav-ul-fixed {
+  .nav-ul,
+  .nav-ul-fixed {
     display: none;
     width: 100%;
     position: relative;

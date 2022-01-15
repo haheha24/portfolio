@@ -17,9 +17,9 @@ const About = () => {
   ];
 
   return (
-    <div className="about-grid">
+    <div  className="about-grid">
       <SideNavBar navArray={homeSubtitleArray} />
-      <div className="about-container">
+      <div id="aboutLink" className="about-container">
         <h1 id="welcome" className="about-title">Welcome</h1>
         <section id="aboutMe" className="about-section">
           <h2 className="about-subtitle">About Me</h2>
