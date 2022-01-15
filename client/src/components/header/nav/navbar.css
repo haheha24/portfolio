@@ -26,6 +26,7 @@
   left: 0;
   width: 100%;
   height: auto;
+  z-index: 10;
   background-color: black;
   background-image: none;
   background-size: 0;
