@@ -123,6 +123,8 @@
     top: 0;
     left: 0;
     background-color: black;
+    background-image: none;
+    background-size: 0 0;
   }
   .nav-ul,
   .nav-ul-fixed {

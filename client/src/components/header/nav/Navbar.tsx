@@ -21,13 +21,11 @@ const Navbar = () => {
   const [isElementVisible, setIsElementVisible] = useState(true);
 
   //track if on the home page
-  const [isHome, setIsHome] = useState(true);
   //track if the window width is greater than 860 which is the first CSS breakpoint
   const [isGreaterThan860, setIsGreaterThan860] = useState(true);
 
   useEffect(() => {
     //sets the isHome
-    setIsHome(location.pathname === "/");
     //callback to set the state of isElementVisible. If the bottom of navUlRef is greater than the scrollY, set true else false
     const handleScroll = _(() => {
       window.scrollY < navUlRef.current!.getBoundingClientRect().bottom
@@ -69,16 +67,13 @@ const Navbar = () => {
    * @returns "nav-ul" | "nav-ul-fixed"
    */
   const handleUlClass = () => {
-    //sets the conditions that fits the useage of the website and its responsiveness.
-
-    //homeMenuIs860 is met when all 3 states are true 
-    const homeMenuIs860 = isHome && isGreaterThan860 && isElementVisible;
-    //homeMenuNot860 is met when all but isGreaterThan860 is true. 
-    const homeMenuNot860 =
-      isHome && isGreaterThan860 === false && isElementVisible;
-    if (homeMenuIs860) {
+    //isVisible860 is met when all 3 states are true
+    const isVisible860 = isGreaterThan860 && isElementVisible;
+    //isVisibleNot860 is met when all but isGreaterThan860 is true.
+    const isVisibleNot860 = isGreaterThan860 === false && isElementVisible;
+    if (isVisible860) {
       return "nav-ul";
-    } else if (homeMenuNot860) {
+    } else if (isVisibleNot860) {
       return "nav-ul-fixed";
     } else {
       return "nav-ul-fixed";
@@ -93,9 +88,9 @@ const Navbar = () => {
           style={{ width: "5em", height: "3em", color: "white" }}
         />
       </div>
+      {/* <BurgerMenu props={props} ref={navBurgerRef} /> */}
       <ul className={handleUlClass()} ref={navUlRef}>
         <NavListMap
-          isHomePage={isHome}
           isElementVisible={isElementVisible}
           isGreaterThan860={isGreaterThan860}
         />
