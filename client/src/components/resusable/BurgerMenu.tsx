@@ -13,12 +13,12 @@ type IButtonProps = {
 const BurgerMenu = forwardRef<HTMLButtonElement, IButtonProps>(
   (props: IButtonProps, ref?): JSX.Element => {
     const {
-      id = "",
-      classBtn = "",
-      classIcon = "",
+      id = undefined,
+      classBtn = undefined,
+      classIcon = undefined,
       type = "button" as const,
-      stylesBtn = {},
-      stylesIcon = {}
+      stylesBtn = undefined,
+      stylesIcon = undefined
     } = props;
     return (
       <button type={type} id={id} ref={ref} className={classBtn} style={stylesBtn}>

@@ -6,7 +6,6 @@ import _ from "lodash/debounce";
 import "./navbar.css";
 import useMediaQuery from "../../../utilities/hooks/useMediaQuery";
 import NavListMap from "./NavListMap";
-import { GiHamburgerMenu } from "react-icons/gi";
 import BurgerMenu from "../../resusable/BurgerMenu";
 
 const Navbar = () => {
@@ -83,8 +82,7 @@ const Navbar = () => {
 
   const burgerProps = {
     id: "nav-menuBtn",
-    className: "navbar-burger",
-    classBtn: "",
+    classBtn: "navbar-burger",
     stylesBtn: { width: "100%"},
     stylesIcon: { width: "auto", height: "3em", textAlign: "center" }
   };
