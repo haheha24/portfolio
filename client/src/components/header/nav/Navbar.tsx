@@ -7,6 +7,7 @@ import "./navbar.css";
 import useMediaQuery from "../../../utilities/hooks/useMediaQuery";
 import NavListMap from "./NavListMap";
 import { GiHamburgerMenu } from "react-icons/gi";
+import BurgerMenu from "../../resusable/BurgerMenu";
 
 const Navbar = () => {
   //react-router uselocation hook
@@ -14,7 +15,7 @@ const Navbar = () => {
   const windowDimensions = useMediaQuery();
 
   //refs for navivation animation and burger menu responsiveness
-  const navBurgerRef = useRef<HTMLDivElement>(null);
+  const navBurgerRef = useRef<HTMLButtonElement>(null);
   const navUlRef = useRef<HTMLUListElement>(null);
 
   //track if element is visible on screen
@@ -80,15 +81,17 @@ const Navbar = () => {
     }
   };
 
+  const burgerProps = {
+    id: "nav-menuBtn",
+    className: "navbar-burger",
+    classBtn: "",
+    stylesBtn: { width: "100%"},
+    stylesIcon: { width: "auto", height: "3em", textAlign: "center" }
+  };
+
   return (
     <nav id="navbar">
-      <div id="nav-div" ref={navBurgerRef}>
-        <GiHamburgerMenu
-          className="navbar-burger"
-          style={{ width: "5em", height: "3em", color: "white" }}
-        />
-      </div>
-      {/* <BurgerMenu props={props} ref={navBurgerRef} /> */}
+      <BurgerMenu {...burgerProps} ref={navBurgerRef} />
       <ul className={handleUlClass()} ref={navUlRef}>
         <NavListMap
           isElementVisible={isElementVisible}
