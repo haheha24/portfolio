@@ -1,13 +1,13 @@
 import "./projects.css";
-import ProjectForm from "./projectForm/ProjectForm";
+/* import ProjectForm from "./projectForm/ProjectForm"; */
 
 const Projects = () => {
   return (
     <>
-      <div id="projectsLink" className="projects-title-container">
-        <h1 className="projects-title">Projects</h1>
-        <ProjectForm />
-      </div>
+      <section id="projectsLink" className="section-container">
+        <h1 className="section-title">Projects</h1>
+        {/* <ProjectForm /> */}
+      </section>
           
     </>
   );

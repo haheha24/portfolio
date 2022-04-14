@@ -4,15 +4,6 @@
   flex-direction: column;
   align-items: center;
 }
-.contact-title {
-  text-align: center;
-  font-size: 2.5rem;
-  margin: 40px 0;
-}
-.contact-form-container {
-  padding: 0 5%;
-  margin: 0 5% 50px;
-}
 .contact-form-flex {
   display: flex;
   flex-direction: column;
@@ -36,6 +27,7 @@
   align-self: flex-end;
 }
 .contact-label {
+  color: white;
   padding: 5px;
 }
 .contact-input {
@@ -60,30 +52,38 @@
   height: 35px;
   align-self: center;
   border-radius: 10px;
+  font-size: var(--font16);
 }
 .contact-btn:hover {
-  background-color: green;
+  background-color: var(--red);
   color: white;
 }
 
 /* connect */
 .connect-section {
-  margin-bottom: 50px;
+  margin-top: 10px;
 }
 .connect-title {
   text-align: center;
+  color: var(--red);
 }
 .connect-ul {
   display: flex;
   flex-direction: column;
   list-style-type: none;
   padding: 5px 10px;
-  background-color: hsl(0, 0%, 80%);
   border-radius: 10px;
 }
 .connect-li {
   margin: 0.25em 0;
   font-size: 1.2em;
+}
+.connect-link {
+  text-decoration: none;
+  color: var(--white);
+}
+.connect-link:hover {
+  color: var(--red);
 }
 
 /* media query */
@@ -91,11 +91,6 @@
 @media only screen and (max-width: 1210px) {
   .contact-flex-container {
     flex-direction: column;
-  }
-  .contact-form-container {
-    margin: 0;
-    margin-bottom: 5%;
-    padding: 0;
   }
 }
 @media only screen and (max-width: 500px) {
