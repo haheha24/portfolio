@@ -79,10 +79,10 @@ const Contact = () => {
   };
 
   return (
-    <div id="contactLink" className="contact-outer-container">
+    <section id="contactLink" className="contact-outer-container">
       <h1 className="contact-title">Contact Form</h1>
       <div className="contact-flex-container">
-        <section className="contact-container contact-form-container">
+        <div className="contact-form-container">
           <form
             action=""
             id="contact-form"
@@ -93,7 +93,7 @@ const Contact = () => {
               <div className="contact-input-container contact-flex-dirCol">
                 <label className="contact-label" htmlFor="name">
                   Name{" "}
-                  <span style={{ color: "hsl(0, 0%, 50%)" }}>
+                  <span style={{ color: "hsl(0, 0%, 100%)" }}>
                     <i>(required)</i>
                   </span>
                 </label>
@@ -111,7 +111,7 @@ const Contact = () => {
               <div className="contact-input-container contact-flex-dirCol">
                 <label className="contact-label" htmlFor="company">
                   Company{" "}
-                  <span style={{ color: "hsl(0, 0%, 50%)" }}>
+                  <span style={{ color: "hsl(0, 0%, 100%)" }}>
                     <i>(optional)</i>
                   </span>
                 </label>
@@ -128,7 +128,7 @@ const Contact = () => {
               <div className="contact-input-container contact-flex-dirCol">
                 <label className="contact-label" htmlFor="typeForm">
                   Type of enquiry{" "}
-                  <span style={{ color: "hsl(0, 0%, 50%)" }}>
+                  <span style={{ color: "hsl(0, 0%, 100%)" }}>
                     <i>(required)</i>
                   </span>
                 </label>
@@ -147,7 +147,7 @@ const Contact = () => {
               <div className="contact-input-container contact-flex-dirCol">
                 <label className="contact-label" htmlFor="email">
                   Email{" "}
-                  <span style={{ color: "hsl(0, 0%, 50%)" }}>
+                  <span style={{ color: "hsl(0, 0%, 100%)" }}>
                     <i>(required)</i>
                   </span>
                 </label>
@@ -164,7 +164,7 @@ const Contact = () => {
               <div className="contact-input-container contact-flex-dirCol">
                 <label className="contact-label" htmlFor="subject">
                   Subject{" "}
-                  <span style={{ color: "hsl(0, 0%, 50%)" }}>
+                  <span style={{ color: "hsl(0, 0%, 100%)" }}>
                     <i>(required)</i>
                   </span>
                 </label>
@@ -182,7 +182,7 @@ const Contact = () => {
             <div className="contact-input-container contact-flex-dirCol">
               <label className="contact-label" htmlFor="contact-form">
                 Please enter your message here{" "}
-                <span style={{ color: "hsl(0, 0%, 50%)" }}>
+                <span style={{ color: "hsl(0, 0%, 100%)" }}>
                   <i>(required)</i>
                 </span>
               </label>
@@ -202,7 +202,7 @@ const Contact = () => {
               </div>
             </div>
           </form>
-        </section>
+        </div>
         <div className="contact-flex-dirCol">
           <section className="connect-section">
             <h2 className="connect-title">Connect</h2>
@@ -230,7 +230,7 @@ const Contact = () => {
           {sent === true ? <Thankyou /> : ""}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
