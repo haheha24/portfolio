@@ -48,13 +48,11 @@ a {
   flex-direction: column;
   align-items: center;
 }
-.section-container:nth-child(even) {
-  background-color: var(--section-bg-alt);
-}
 .section-title {
   text-align: center;
   font-size: 2.5rem;
-  color: white;
+  color: var(--white);
+  background-color: var(--section-bg-alt);
   width: 100%;
   padding: 10px 0;
   box-shadow: 0 10px 10px var(--black-faded);
