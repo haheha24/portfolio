@@ -136,6 +136,14 @@
     background-image: none;
     background-size: auto;
   }
+  .nav-ul {
+    left: 0;
+    transform: translate(0, 0);
+    animation: slideDownTop 0.5s ease-out;
+  }
+  .item-1, .item-2, .item-3, .item-4 {
+    animation: none;
+  }
   .nav-li,
   .nav-link {
     display: block;

@@ -95,6 +95,7 @@
 }
 @media only screen and (max-width: 860px) {
   .contact-form-flex, .contact-flex-dirCol {
+    text-align: center;
     align-items: center;
   }
 }
