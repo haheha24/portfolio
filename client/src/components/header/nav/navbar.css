@@ -26,7 +26,7 @@
   left: 0;
   width: 100%;
   height: auto;
-  z-index: 10;
+  z-index: 10; /* for window width > 800 */
   background-color: var(--black-main);
   background-image: none;
   background-size: 0;
@@ -125,6 +125,7 @@
     background-color: #202225;
     background-image: none;
     background-size: 0 0;
+    z-index: 10;
   }
   .nav-ul,
   .nav-ul-fixed {

@@ -1,6 +1,5 @@
 import React, { useReducer, useState } from "react";
 import "./contact.css";
-import { SiGithub, SiGmail } from "react-icons/si";
 import axios, { AxiosResponse } from "axios";
 import Thankyou from "./Thankyou";
 

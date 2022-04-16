@@ -73,6 +73,7 @@
   list-style-type: none;
   padding: 5px 10px;
   border-radius: 10px;
+  text-align: center;
 }
 .connect-li {
   margin: 0.25em 0;
@@ -87,10 +88,14 @@
 }
 
 /* media query */
-
 @media only screen and (max-width: 1210px) {
   .contact-flex-container {
     flex-direction: column;
+  }
+}
+@media only screen and (max-width: 860px) {
+  .contact-form-flex, .contact-flex-dirCol {
+    align-items: center;
   }
 }
 @media only screen and (max-width: 500px) {
