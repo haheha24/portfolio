@@ -4,9 +4,7 @@ const About = () => {
   const introduction =
     "Hey! I'm Adrian Cristallo, a Front-End Developer with a passion for making websites and coding. Looking for opportunities of work in web development while I study a Bachelor of Information Technology :). I've also completed a Bachelor of Arts, majoring in sociology and history. So I guess you could say I really like learning! On the side I enjoy a little bit of gardening and landscaping.";
   return (
-    <section id="aboutLink" className="section-container">
-      <h2 className="section-title">About Me</h2>
-      <article className="article-content">
+      <article className="text-container">
         <p className="about-paragraph">{introduction}</p>
         <h3 className="about-subtitle">
           My technical skills I use for web development are:
@@ -53,7 +51,6 @@ const About = () => {
           well!
         </p>
       </article>
-    </section>
   );
 };
 
