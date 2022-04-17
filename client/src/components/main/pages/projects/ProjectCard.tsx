@@ -1,8 +1,10 @@
 import "./projectCard.css";
 import { useRef } from "react";
+import { GoMarkGithub } from "react-icons/go";
 
 interface Card {
   url: string;
+  github?: string;
   image: string;
   altTxt?: string;
   title?: string;
@@ -11,6 +13,7 @@ interface Card {
 
 const ProjectCard = ({
   url,
+  github = undefined,
   image,
   altTxt = "",
   title = "",
@@ -48,6 +51,14 @@ const ProjectCard = ({
           rel="noreferrer"
         >
           Visit website
+        </a>
+        <a
+          href={github}
+          className="project-card-link project-card-icon"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <GoMarkGithub style={{width: "1.5em", height: "1.33em"}} />
         </a>
       </figcaption>
     </figure>

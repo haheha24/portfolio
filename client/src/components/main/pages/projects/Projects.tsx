@@ -8,6 +8,7 @@ const Projects = () => {
         <div className="projects-container">
           <ProjectCard
             url="https://lookup-project.herokuapp.com/"
+            github="https://github.com/haheha24/lookup-repo"
             image={lookUp}
             altTxt="Look Up Project"
             title="Look Up Project"

@@ -57,7 +57,12 @@
 .project-card-link:hover {
   background-color: var(--purple-main);
 }
-
+.project-card-icon {
+  border-radius: 50px;
+  border: 2.5px solid var(--purple-main);
+  width: auto;
+  margin: 5px auto;
+}
 /* Media Queries */
 /* Max 860px */
 @media only screen and (max-width: 860px) {
