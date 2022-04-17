@@ -17,6 +17,7 @@
   align-items: center;
   transition: all .25s ease-in;
   animation-duration: 1.5s;
+  opacity: 0;
 }
 .section-title {
   text-align: center;
@@ -26,8 +27,4 @@
   width: 100%;
   padding: 10px 0;
   box-shadow: 0 10px 10px var(--black-faded);
-}
-.text-container {
-  margin: 0 20%;
-  padding: 0 5%;
 }
