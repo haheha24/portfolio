@@ -46,3 +46,9 @@ body {
 a {
   cursor: pointer;
 }
+
+/* Generic Classes */
+.text-container {
+  margin: 0 20%;
+  padding: 0 5%;
+}
