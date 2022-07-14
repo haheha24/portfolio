@@ -6,7 +6,7 @@ import _ from "lodash/debounce";
 import "./navbar.css";
 import useMediaQuery from "../../../utilities/hooks/useMediaQuery";
 import NavListMap from "./NavListMap";
-import BurgerMenu from "../../resusable/BurgerMenu";
+import BurgerMenu from "../../reusable/BurgerMenu";
 
 const Navbar = () => {
   //react-router uselocation hook

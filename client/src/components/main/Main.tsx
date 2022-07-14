@@ -6,7 +6,7 @@ import "./main.css"
 import Contact from "./pages/contact/Contact";
 import Projects from "./pages/projects/Projects";
 import About from "./pages/about/About";
-import Section from "../resusable/Section";
+import Section from "../reusable/Section";
 
 //State reducer tracks
 interface IAnimatedState {
