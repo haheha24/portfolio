@@ -83,8 +83,8 @@ const Navbar = () => {
   const burgerProps = {
     id: "nav-menuBtn",
     classBtn: "navbar-burger",
-    stylesBtn: { width: "100%"},
-    stylesIcon: { width: "auto", height: "3em", textAlign: "center" }
+    stylesBtn: { width: "100%" },
+    stylesIcon: { width: "auto", height: "3em", textAlign: "center" },
   };
 
   return (
