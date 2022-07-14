@@ -1,6 +1,6 @@
 #navbar {
   height: 100vh;
-  background-image: url("../../../images/transluscent_waves.jpg");
+  background-image: url(http://localhost:3000/images/transluscent_waves.jpg);
   background-size: 100% 100%;
   overflow: hidden;
 }
