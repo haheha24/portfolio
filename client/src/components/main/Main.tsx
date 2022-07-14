@@ -3,9 +3,9 @@ import { Route } from "react-router-dom";
 import _ from "lodash/debounce";
 import useMediaQuery from "../../utilities/hooks/useMediaQuery";
 import "./main.css"
-import Contact from "./pages/contact/Contact";
-import Projects from "./pages/projects/Projects";
-import About from "./pages/about/About";
+import Contact from "./contact/Contact";
+import Projects from "./projects/Projects";
+import About from "./about/About";
 import Section from "../reusable/Section";
 
 //State reducer tracks
