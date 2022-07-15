@@ -24,8 +24,8 @@ export const scrollToElement = (
     };
   }
 
-  //Get top pixel of id element and - 100 (equal to height of navbar or more)
-  const top = document.getElementById(elementId)?.getBoundingClientRect()!.top! - 100;
+  //Get top pixel of id element. - 75 to adjust for section headings.
+  const top = document.getElementById(elementId)?.getBoundingClientRect()!.top! - 75;
   window.scrollTo(0, top + window.scrollY);
   return {
     element: document.getElementById(elementId)!,
