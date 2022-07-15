@@ -114,7 +114,7 @@ const Main = () => {
             });
       }
       if (contactRef.current!.id === "contactLink") {
-        window.scrollY > contactRef.current!.getBoundingClientRect().top + 1700
+        window.scrollY > contactRef.current!.getBoundingClientRect().top
           ? dispatch({
               type: sectionTypes.ABOUT_VISIBLE,
               ref: contactRef.current!,
