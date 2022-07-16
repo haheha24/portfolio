@@ -159,7 +159,7 @@ const Main = () => {
         </Section>
         <Section
           setId="contactLink"
-          setTitle="Contact Form"
+          setTitle="Contact"
           sectionClass="section-container"
           headingClass="section-title"
           ref={contactRef}
