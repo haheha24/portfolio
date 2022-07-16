@@ -1,5 +1,7 @@
-import React, { useReducer, useState } from "react";
 import "./contact.css";
+import React, { useReducer, useState } from "react";
+import { AiFillGithub } from "react-icons/ai";
+import { SiGmail } from "react-icons/si";
 import axios, { AxiosResponse } from "axios";
 import Thankyou from "./Thankyou";
 
@@ -78,144 +80,154 @@ const Contact = () => {
   };
 
   return (
-    <div className="contact-flex-container">
-      <form
-        action=""
-        id="contact-form"
-        className="contact-form-flex"
-        onSubmit={contactSubmit}
-      >
-        <div className="contact-flex-dirCol">
-          <div className="contact-input-container contact-flex-dirCol">
-            <label className="contact-label" htmlFor="name">
-              Name{" "}
-              <span style={{ color: "hsl(0, 0%, 65%)" }}>
-                <i>(required)</i>
-              </span>
-            </label>
-            <input
-              type="text"
-              id="name"
-              className="contact-input"
-              name="name"
-              placeholder="Name"
-              value={contactInput.name}
-              onChange={(e) => contactHandle(e)}
-              required
-            />
-          </div>
-          <div className="contact-input-container contact-flex-dirCol">
-            <label className="contact-label" htmlFor="company">
-              Company{" "}
-              <span style={{ color: "hsl(0, 0%, 65%)" }}>
-                <i>(optional)</i>
-              </span>
-            </label>
-            <input
-              type="text"
-              id="company"
-              className="contact-input"
-              name="company"
-              placeholder="Company"
-              value={contactInput.company}
-              onChange={(e) => contactHandle(e)}
-            />
-          </div>
-          <div className="contact-input-container contact-flex-dirCol">
-            <label className="contact-label" htmlFor="typeForm">
-              Type of enquiry{" "}
-              <span style={{ color: "hsl(0, 0%, 65%)" }}>
-                <i>(required)</i>
-              </span>
-            </label>
-            <select
-              name="typeForm"
-              className="contact-input"
-              id="typeForm"
-              value={contactInput.typeForm}
-              onChange={(e) => contactHandle(e)}
-            >
-              <option value="General enquiry">General Enquiry</option>
-              <option value="Business enquiry">Business Enquiry</option>
-              <option value="Employment enquiry">Employment Enquiry</option>
-            </select>
-          </div>
-          <div className="contact-input-container contact-flex-dirCol">
-            <label className="contact-label" htmlFor="email">
-              Email{" "}
-              <span style={{ color: "hsl(0, 0%, 65%)" }}>
-                <i>(required)</i>
-              </span>
-            </label>
-            <input
-              type="email"
-              id="email"
-              className="contact-input"
-              name="email"
-              value={contactInput.email}
-              onChange={(e) => contactHandle(e)}
-              required
-            />
-          </div>
-          <div className="contact-input-container contact-flex-dirCol">
-            <label className="contact-label" htmlFor="subject">
-              Subject{" "}
-              <span style={{ color: "hsl(0, 0%, 65%)" }}>
-                <i>(required)</i>
-              </span>
-            </label>
-            <input
-              type="text"
-              id="subject"
-              className="contact-input"
-              name="subject"
-              value={contactInput.subject}
-              onChange={(e) => contactHandle(e)}
-              required
-            />
-          </div>
-        </div>
-        <div className="contact-input-container contact-flex-dirCol">
-          <label className="contact-label" htmlFor="contact-form">
-            Please enter your message here{" "}
-            <span style={{ color: "hsl(0, 0%, 65%)" }}>
-              <i>(required)</i>
-            </span>
-          </label>
+    <>
+      <div className="contact-flex-container">
+        <form
+          action=""
+          id="contact-form"
+          className="contact-form-flex"
+          onSubmit={contactSubmit}
+        >
           <div className="contact-flex-dirCol">
-            <textarea
-              name="message"
-              id="contact-form"
-              className="contact-textarea"
-              maxLength={250}
-              onChange={(e) => contactHandle(e)}
-              value={contactInput.message}
-              required
-              spellCheck={true}
-              placeholder="Hello ..."
-            ></textarea>
-            <button className="contact-btn">Send</button>
+            <div className="contact-input-container contact-flex-dirCol">
+              <label className="contact-label" htmlFor="name">
+                Name{" "}
+                <span style={{ color: "hsl(0, 0%, 65%)" }}>
+                  <i>(required)</i>
+                </span>
+              </label>
+              <input
+                type="text"
+                id="name"
+                className="contact-input"
+                name="name"
+                placeholder="Name"
+                value={contactInput.name}
+                onChange={(e) => contactHandle(e)}
+                required
+              />
+            </div>
+            <div className="contact-input-container contact-flex-dirCol">
+              <label className="contact-label" htmlFor="company">
+                Company{" "}
+                <span style={{ color: "hsl(0, 0%, 65%)" }}>
+                  <i>(optional)</i>
+                </span>
+              </label>
+              <input
+                type="text"
+                id="company"
+                className="contact-input"
+                name="company"
+                placeholder="Company"
+                value={contactInput.company}
+                onChange={(e) => contactHandle(e)}
+              />
+            </div>
+            <div className="contact-input-container contact-flex-dirCol">
+              <label className="contact-label" htmlFor="typeForm">
+                Type of enquiry{" "}
+                <span style={{ color: "hsl(0, 0%, 65%)" }}>
+                  <i>(required)</i>
+                </span>
+              </label>
+              <select
+                name="typeForm"
+                className="contact-input"
+                id="typeForm"
+                value={contactInput.typeForm}
+                onChange={(e) => contactHandle(e)}
+              >
+                <option value="General enquiry">General Enquiry</option>
+                <option value="Business enquiry">Business Enquiry</option>
+                <option value="Employment enquiry">Employment Enquiry</option>
+              </select>
+            </div>
+            <div className="contact-input-container contact-flex-dirCol">
+              <label className="contact-label" htmlFor="email">
+                Email{" "}
+                <span style={{ color: "hsl(0, 0%, 65%)" }}>
+                  <i>(required)</i>
+                </span>
+              </label>
+              <input
+                type="email"
+                id="email"
+                className="contact-input"
+                name="email"
+                value={contactInput.email}
+                onChange={(e) => contactHandle(e)}
+                required
+              />
+            </div>
+            <div className="contact-input-container contact-flex-dirCol">
+              <label className="contact-label" htmlFor="subject">
+                Subject{" "}
+                <span style={{ color: "hsl(0, 0%, 65%)" }}>
+                  <i>(required)</i>
+                </span>
+              </label>
+              <input
+                type="text"
+                id="subject"
+                className="contact-input"
+                name="subject"
+                value={contactInput.subject}
+                onChange={(e) => contactHandle(e)}
+                required
+              />
+            </div>
           </div>
-        </div>
-      </form>
-      <section className="connect-section">
-        <h2 className="connect-title">Connect</h2>
-        <ul className="connect-ul">
-          <li className="connect-li">
-            <a
-              href="https://github.com/haheha24"
-              className="connect-link"
-              target="_blank"
-              rel="noreferrer"
-            >
-              https://github.com/haheha24
-            </a>
-          </li>
-          <li className="connect-li">adriancristallo1@gmail.com</li>
-        </ul>
-      </section>
-      {sent === true ? <Thankyou /> : ""}
-    </div>
+          <div className="contact-input-container contact-flex-dirCol">
+            <label className="contact-label" htmlFor="contact-form">
+              Please enter your message here{" "}
+              <span style={{ color: "hsl(0, 0%, 65%)" }}>
+                <i>(required)</i>
+              </span>
+            </label>
+            <div className="contact-flex-dirCol">
+              <textarea
+                name="message"
+                id="contact-form"
+                className="contact-textarea"
+                maxLength={250}
+                onChange={(e) => contactHandle(e)}
+                value={contactInput.message}
+                required
+                spellCheck={true}
+                placeholder="Hello ..."
+              ></textarea>
+              <button className="contact-btn">Send</button>
+            </div>
+          </div>
+        </form>
+        <section className="connect-section">
+          <ul className="connect-ul">
+            <li className="connect-li">
+              <a
+                href="https://github.com/haheha24"
+                className="connect-link"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <AiFillGithub style={{ verticalAlign: "top" }} />
+              </a>
+            </li>
+            <li className="connect-li">
+              <a
+                href="mailto:adriancristallo1@gmail.com"
+                className="connect-link"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <SiGmail style={{ verticalAlign: "top" }} />
+              </a>
+            </li>
+          </ul>
+        </section>
+      </div>
+      {sent && <Thankyou />}
+    </>
   );
 };
 

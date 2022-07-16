@@ -42,21 +42,22 @@
   padding: 5px 10px;
   width: 20em;
   height: 5em;
-  resize: none;
 }
 .contact-btn {
   cursor: pointer;
+  color: white;
   padding: 5px;
   margin: 20px 0;
   width: 100px;
   height: 35px;
   align-self: center;
+  background-color: var(--purple-secondary);
   border-radius: 10px;
+  border: 2.5px solid var(--purple-main);
   font-size: var(--font16);
 }
 .contact-btn:hover {
-  background-color: var(--red);
-  color: white;
+  background-color: var(--purple-main);
 }
 
 /* connect */
@@ -73,18 +74,27 @@
   list-style-type: none;
   padding: 5px 10px;
   border-radius: 10px;
-  text-align: center;
+  align-content: space-around;
 }
 .connect-li {
-  margin: 0.25em 0;
-  font-size: 1.2em;
+  text-decoration: none;
+  margin: 15px 0;
+  width: auto;
+  height: auto;
 }
 .connect-link {
   text-decoration: none;
+  font-size: 2em;
   color: var(--white);
+  background-color: var(--purple-secondary);
+  padding: 10px;
+  margin: 20px 0;
+  border-radius: 50px;
+  border: 2.5px solid var(--purple-main);
+  transition: all 0.25s ease;
 }
 .connect-link:hover {
-  color: var(--red);
+  background-color: var(--purple-main);
 }
 
 /* media query */
@@ -92,9 +102,17 @@
   .contact-flex-container {
     flex-direction: column;
   }
+  .connect-ul {
+    flex-direction: row;
+    justify-content: center;
+  }
+  .connect-li {
+    margin: 0;
+  }
 }
 @media only screen and (max-width: 860px) {
-  .contact-form-flex, .contact-flex-dirCol {
+  .contact-form-flex,
+  .contact-flex-dirCol {
     text-align: center;
     align-items: center;
   }

@@ -1,7 +1,14 @@
 .thankyou {
   display: flex;
+  font-size: 1.15em;
   padding: 10px 4px;
   border-radius: 10px;
-  background-color: green;
-  font-size: 1.15em;
+  box-shadow: 10px 10px var(--black-faded);
+  background-color: var(--purple-main);
+}
+
+@media only screen and (max-width: 500px) {
+  .thankyou {
+    margin-top: 20px;
+  }
 }
