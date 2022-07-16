@@ -1,56 +1,224 @@
 import "./about.css";
+import Skills from "./Skills";
+import { useReducer } from "react";
+
+export enum SkillsMatch {
+  front = "front",
+  back = "back",
+  general = "general",
+  interp = "interp",
+}
+interface ISelectedState {
+  front: { isActive: boolean; active?: string; inactive?: string };
+  back: { isActive: boolean; active?: string; inactive?: string };
+  general: { isActive: boolean; active?: string; inactive?: string };
+  interp: { isActive: boolean; active?: string; inactive?: string };
+  skill: SkillsMatch;
+}
+interface ISelectedType {
+  type: SkillsMatch;
+}
 
 const About = () => {
-  const introduction =
-    "Hey! I'm Adrian Cristallo, a Front-End Developer with a passion for making websites and coding. Looking for opportunities of work in web development while I study a Bachelor of Information Technology :). I've also completed a Bachelor of Arts, majoring in sociology and history. So I guess you could say I really like learning! On the side I enjoy a little bit of gardening and landscaping.";
+  //Tracks which descriptions to render
+  const initialSelected: ISelectedState = {
+    front: {
+      isActive: true,
+      active: "about-skills-btn about-skills-btn-Active",
+      inactive: "about-skills-btn",
+    },
+    back: {
+      isActive: false,
+      active: "about-skills-btn about-skills-btn-Active",
+      inactive: "about-skills-btn",
+    },
+    general: {
+      isActive: false,
+      active: "about-skills-btn about-skills-btn-Active",
+      inactive: "about-skills-btn",
+    },
+    interp: {
+      isActive: false,
+      active: "about-skills-btn about-skills-btn-Active",
+      inactive: "about-skills-btn",
+    },
+    skill: SkillsMatch.front,
+  };
+
+  const handleSelected = (
+    state: ISelectedState,
+    action: ISelectedType
+  ): ISelectedState => {
+    switch (action.type) {
+      case "front":
+        return {
+          front: {
+            isActive: state.front.isActive = true,
+            active: state.front.active,
+            inactive: state.front.inactive,
+          },
+          back: {
+            isActive: state.back.isActive = false,
+            active: state.front.active,
+            inactive: state.front.inactive,
+          },
+          general: {
+            isActive: state.general.isActive = false,
+            active: state.front.active,
+            inactive: state.front.inactive,
+          },
+          interp: {
+            isActive: state.interp.isActive = false,
+            active: state.front.active,
+            inactive: state.front.inactive,
+          },
+          skill: action.type,
+        };
+      case "back":
+        return {
+          front: {
+            isActive: state.front.isActive = false,
+            active: state.front.active,
+            inactive: state.front.inactive,
+          },
+          back: {
+            isActive: state.back.isActive = true,
+            active: state.front.active,
+            inactive: state.front.inactive,
+          },
+          general: {
+            isActive: state.general.isActive = false,
+            active: state.front.active,
+            inactive: state.front.inactive,
+          },
+          interp: {
+            isActive: state.interp.isActive = false,
+            active: state.front.active,
+            inactive: state.front.inactive,
+          },
+          skill: action.type,
+        };
+      case "general":
+        return {
+          front: {
+            isActive: state.front.isActive = false,
+            active: state.front.active,
+            inactive: state.front.inactive,
+          },
+          back: {
+            isActive: state.back.isActive = false,
+            active: state.front.active,
+            inactive: state.front.inactive,
+          },
+          general: {
+            isActive: state.general.isActive = true,
+            active: state.front.active,
+            inactive: state.front.inactive,
+          },
+          interp: {
+            isActive: state.interp.isActive = false,
+            active: state.front.active,
+            inactive: state.front.inactive,
+          },
+          skill: action.type,
+        };
+      case "interp":
+        return {
+          front: {
+            isActive: state.front.isActive = false,
+            active: state.front.active,
+            inactive: state.front.inactive,
+          },
+          back: {
+            isActive: state.back.isActive = false,
+            active: state.front.active,
+            inactive: state.front.inactive,
+          },
+          general: {
+            isActive: state.general.isActive = false,
+            active: state.front.active,
+            inactive: state.front.inactive,
+          },
+          interp: {
+            isActive: state.interp.isActive = true,
+            active: state.front.active,
+            inactive: state.front.inactive,
+          },
+          skill: action.type,
+        };
+      default:
+        return state;
+    }
+  };
+
+  const [selected, setSelected] = useReducer(handleSelected, initialSelected);
+
+  const handleSkillBtn = (skill: SkillsMatch) => {
+    setSelected({ type: skill });
+  };
+
   return (
-      <article className="text-container">
-        <p className="about-paragraph">{introduction}</p>
-        <h3 className="about-subtitle">
-          My technical skills I use for web development are:
-        </h3>
-        <ul className="about-paragraph">
-          <li>HTML</li>
-          <li>CSS</li>
-          <li>JavaScript</li>
-          <li>TypeScript</li>
-          <li>React</li>
-          <li>Jest</li>
-        </ul>
-        <h3 className="about-subtitle">
-          Back-end technologies I have used in projects:
-        </h3>
-        <ul className="about-paragraph">
-          <li>Node.JS</li>
-          <li>Express.JS</li>
-          <li>Mongoose</li>
-        </ul>
-        <h3 className="about-subtitle">
-          Other technologies I have experience in using are:
-        </h3>
-        <ul className="about-paragraph">
-          <li>MongoDB Atlas Cloud</li>
-          <li>
-            NPM Packages and the various libraries and frameworks that are
-            available
-          </li>
-          <li>
-            GIT Version Control and Linux Commands using GitBash intergrated
-            terminal
-          </li>
-        </ul>
-        <h3 className="about-subtitle">Interpersonal Skills and Values</h3>
-        <p className="about-paragraph">
-          My interpersonal skills are one of my most proudest achievements in
-          life so far. I believe strongly that communication can resolve any
-          issue, along with respect and understanding. These three skills and
-          values have lead me to my successes in life and continue to define my
-          decisions and actions. I courageously trust myself to achieve my goals
-          in building a professional career in web development, and so should
-          you believe in me when I say I can help you achieve your goals as
-          well!
-        </p>
-      </article>
+    <article className="text-container about-article">
+      <p className="about-paragraph">
+        Hello! My name is Adrian Cristallo. I am a web developer with a passion
+        for making websites and coding. Looking for opportunities of work in web
+        development while I study a Bachelor of Information Technology. I have
+        also completed a Bachelor of Arts, majoring in sociology and history. I
+        am always ready to learn new things and technologies as my goal is to
+        make this path into a long-lasting career. On the side I enjoy a little
+        bit of gardening and landscaping. Creativity is my outlet and enjoyment
+        in life.
+      </p>
+      <div className="about-skills-container">
+        <div className="about-btn-container">
+          <button
+            type="button"
+            className={
+              selected.front.isActive
+                ? selected.front.active
+                : selected.front.inactive
+            }
+            onClick={() => handleSkillBtn(SkillsMatch.front)}
+          >
+            Frontend Skills
+          </button>
+          <button
+            type="button"
+            className={
+              selected.back.isActive
+                ? selected.back.active
+                : selected.back.inactive
+            }
+            onClick={() => handleSkillBtn(SkillsMatch.back)}
+          >
+            Backend Skills
+          </button>
+          <button
+            type="button"
+            className={
+              selected.general.isActive
+                ? selected.general.active
+                : selected.general.inactive
+            }
+            onClick={() => handleSkillBtn(SkillsMatch.general)}
+          >
+            General Dev Skills
+          </button>
+          <button
+            type="button"
+            className={
+              selected.interp.isActive
+                ? selected.interp.active
+                : selected.interp.inactive
+            }
+            onClick={() => handleSkillBtn(SkillsMatch.interp)}
+          >
+            Interpersonal Skills
+          </button>
+        </div>
+        <Skills skill={selected.skill} />
+      </div>
+    </article>
   );
 };
 

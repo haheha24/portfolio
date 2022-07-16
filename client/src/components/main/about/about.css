@@ -3,13 +3,68 @@
   scroll-margin-top: 1em;
 }
 .about-paragraph {
-  margin: 10px 0;
+  margin: 0;
+  list-style-position: inside;
   line-height: 2em;
+  text-align: justify;
+}
+.paragraph-padding-center {
+  padding: 0 15%;
+}
+.about-paragraph li {
+  padding-left: 1.5em;
+}
+
+/* skills container */
+.about-skills-container {
+  display: flex;
+  flex-direction: column;
+  padding-top: 1.25em;
+  min-height: 380px;
+}
+.about-btn-container {
+  display: flex;
+  justify-content: center;
+}
+.about-skills-btn {
+  cursor: pointer;
+  background-color: var(--purple-secondary);
+  color: var(--white);
+  font-size: var(--font18);
+  padding: 6px;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  border: 2.5px solid var(--purple-main);
+}
+.about-skills-btn-Active {
+  background-color: var(--purple-main);
+}
+.about-skills-btn:hover {
+  background-color: var(--purple-main);
+}
+.skills-container {
+  padding: 20px;
 }
 
 /* media queries */
 @media only screen and (max-width: 860px) {
   #aboutLink {
     margin-top: 45px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .about-btn-container {
+    flex-direction: column;
+  }
+  .about-skills-btn {
+    width: 100%;
+    border-radius: 0;
+  }
+  .about-paragraph,
+  .about-subtitle {
+    text-align: left;
+    width: 75%;
+    margin: 0 auto;
   }
 }
