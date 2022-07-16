@@ -32,7 +32,16 @@ const ProjectCard = ({
 
   return (
     <figure className="project-card">
-      <img src={image} alt={altTxt} className="project-card-img" ref={imgRef} />
+      <img
+        src={
+          image.length > 0
+            ? image
+            : `/images/work_in_progress.jpg`
+        }
+        alt={altTxt}
+        className="project-card-img"
+        ref={imgRef}
+      />
       <figcaption
         className="project-card-caption"
         onMouseOver={() => {
@@ -44,22 +53,30 @@ const ProjectCard = ({
       >
         <h1 className="project-card-title">{title}</h1>
         <p className="project-card-desc">{description}</p>
-        <a
-          href={url}
-          className="project-card-link"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Visit website
-        </a>
-        <a
-          href={github}
-          className="project-card-link project-card-icon"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <GoMarkGithub style={{width: "1.5em", height: "1.33em"}} />
-        </a>
+        {url.length > 0 ? (
+          <a
+            href={url}
+            className="project-card-link"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Visit website
+          </a>
+        ) : (
+          ""
+        )}
+        {github ? (
+          <a
+            href={github}
+            className="project-card-link project-card-icon"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <GoMarkGithub style={{ width: "1.5em", height: "1.33em" }} />
+          </a>
+        ) : (
+          ""
+        )}
       </figcaption>
     </figure>
   );
