@@ -91,10 +91,46 @@ a {
     transform: translateY(0px);
   }
 }
+@keyframes slideDownTransform {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* React Icons */
+.social-icon {
+  text-decoration: none;
+  color: var(--white);
+  background-color: var(--purple-secondary);
+  padding: 10px;
+  margin: 0 10px;
+  border-radius: 50px;
+  border: 2.5px solid var(--purple-main);
+  transition: all 0.25s ease;
+}
+.social-icon:hover {
+  background-color: var(--purple-main);
+}
+
+.social-container {
+  display: flex;
+}
 
 /* Media Queries */
+@media only screen and (max-width: 860px) {
+  .social-icon {
+    margin: 0 10px;
+  }
+}
 @media only screen and (max-width: 500px) {
   .text-container {
     margin: 0;
+  }
+  .bg-speech-bubble {
+    border-radius: 0;
+    box-shadow: 0 10px 10px var(--black-main)
   }
 }
