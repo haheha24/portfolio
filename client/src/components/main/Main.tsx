@@ -1,8 +1,7 @@
+import "./main.css";
 import { useEffect, useRef, useReducer } from "react";
-import { Route } from "react-router-dom";
 import _ from "lodash/debounce";
 import useMediaQuery from "../../utilities/hooks/useMediaQuery";
-import "./main.css"
 import Contact from "./contact/Contact";
 import Projects from "./projects/Projects";
 import About from "./about/About";
@@ -54,7 +53,7 @@ const Main = () => {
           action.ref.style.animationName = "section";
           action.ref.style.opacity = "1";
           state.about.animated = true;
-        } else if (windowWidth.width < 860) {
+        } else if (windowWidth.width <= 860) {
           state.about.isVisible = true;
           action.ref.style.opacity = "1";
           state.about.animated = true;
@@ -126,7 +125,7 @@ const Main = () => {
         return;
       }
     }, 100);
-    if (window.scrollY === 0 && windowWidth.width < 860) {
+    if (window.scrollY === 0 && windowWidth.width <= 860) {
       dispatch({
         type: sectionTypes.ABOUT_VISIBLE,
         ref: aboutRef.current!,
@@ -138,35 +137,33 @@ const Main = () => {
 
   return (
     <main id="container">
-      <Route path="/">
-        <Section
-          setId="aboutLink"
-          setTitle="About Me"
-          sectionClass="section-container"
-          headingClass="section-title"
-          ref={aboutRef}
-        >
-          <About />
-        </Section>
-        <Section
-          setId="projectsLink"
-          setTitle="Projects"
-          sectionClass="section-container"
-          headingClass="section-title"
-          ref={projectsRef}
-        >
-          <Projects />
-        </Section>
-        <Section
-          setId="contactLink"
-          setTitle="Contact"
-          sectionClass="section-container"
-          headingClass="section-title"
-          ref={contactRef}
-        >
-          <Contact />
-        </Section>
-      </Route>
+      <Section
+        setId="aboutLink"
+        setTitle="About Me"
+        sectionClass="section-container"
+        headingClass="section-title"
+        ref={aboutRef}
+      >
+        <About />
+      </Section>
+      <Section
+        setId="projectsLink"
+        setTitle="Projects"
+        sectionClass="section-container"
+        headingClass="section-title"
+        ref={projectsRef}
+      >
+        <Projects />
+      </Section>
+      <Section
+        setId="contactLink"
+        setTitle="Contact"
+        sectionClass="section-container"
+        headingClass="section-title"
+        ref={contactRef}
+      >
+        <Contact />
+      </Section>
     </main>
   );
 };
