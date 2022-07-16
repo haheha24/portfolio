@@ -7,6 +7,7 @@ const app = Express();
 // Serve React static files
 //Set the base url to serve static content in this directory
 app.use(Express.static(path.join(__dirname, "../../../client/build")));
+app.use(Express.static(path.join(__dirname, "../../../client/public")));
 
 //a get request to serve the index.html file of the project
 app.get("*", (req, res) => {
