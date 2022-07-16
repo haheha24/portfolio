@@ -39,7 +39,7 @@ const Navbar = () => {
       setIsGreaterThan860(true);
       window.addEventListener("scroll", handleScroll);
       return () => window.removeEventListener("scroll", handleScroll);
-    } else if (windowDimensions.width < 860) {
+    } else if (windowDimensions.width <= 860) {
       setIsGreaterThan860(false);
       return window.removeEventListener("scroll", handleScroll);
     }
