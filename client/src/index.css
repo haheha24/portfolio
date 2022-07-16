@@ -11,6 +11,7 @@
   --black-main: hsl(216, 7%, 14%);
   --black-secondary: hsl(216, 7%, 25%);
   --black-faded: hsla(216, 7%, 14%, 0.5);
+  --black-faded2: hsla(219, 8%, 33%, 0.5);
   /* colors */
   --white: #fff;
   --black: #000;
@@ -41,7 +42,7 @@ html {
 body {
   background-color: var(--black-secondary);
   color: var(--white);
-  font-size: var(--font18)
+  font-size: var(--font18);
 }
 a {
   cursor: pointer;
@@ -50,5 +51,50 @@ a {
 /* Generic Classes */
 .text-container {
   margin: 0 20%;
-  padding: 0 5%;
+}
+.bg-main-black {
+  background-color: var(--black-main);
+}
+.bg-speech-bubble {
+  border-top-left-radius: 2.5px;
+  border-top-right-radius: 2.5px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  box-shadow: 10px 10px var(--black-faded);
+  background-color: var(--purple-main);
+}
+
+/* Generic animations */
+@keyframes slideDownTop {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes section {
+  0% {
+    opacity: 0;
+    transform: translateY(250px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+@keyframes slideDown {
+  0% {
+    transform: translateY(-500px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Media Queries */
+@media only screen and (max-width: 500px) {
+  .text-container {
+    margin: 0;
+  }
 }
