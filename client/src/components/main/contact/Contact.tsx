@@ -1,8 +1,7 @@
 import "./contact.css";
-import React, { useReducer, useState } from "react";
-import { AiFillGithub } from "react-icons/ai";
-import { SiGmail } from "react-icons/si";
+import { useReducer, useState, FormEvent } from "react";
 import axios, { AxiosResponse } from "axios";
+import Socials from "../../reusable/Socials";
 import Thankyou from "./Thankyou";
 
 //this interface is for setting state
@@ -49,7 +48,7 @@ const Contact = () => {
     setContactInput({ [name]: value });
   };
 
-  const contactSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const contactSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     //set sent state as false
     setSent(false);
@@ -204,24 +203,17 @@ const Contact = () => {
         <section className="connect-section">
           <ul className="connect-ul">
             <li className="connect-li">
-              <a
-                href="https://github.com/haheha24"
-                className="connect-link"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <AiFillGithub style={{ verticalAlign: "top" }} />
-              </a>
+              <Socials github={true} classIcon="social-icon" vertAlign="top" />
             </li>
             <li className="connect-li">
-              <a
-                href="mailto:adriancristallo1@gmail.com"
-                className="connect-link"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <SiGmail style={{ verticalAlign: "top" }} />
-              </a>
+              <Socials
+                linkedin={true}
+                classIcon="social-icon"
+                vertAlign="top"
+              />
+            </li>
+            <li className="connect-li">
+              <Socials gmail={true} classIcon="social-icon" vertAlign="top" />
             </li>
           </ul>
         </section>
