@@ -1,23 +1,12 @@
-/* Generic animations */
-@keyframes section {
-  0% {
-    opacity: 0;
-    transform: translateY(250px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0px);
-  }
-}
-
 /* Generic Classes */
 .section-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: all .25s ease-in;
+  transition: all 0.25s ease-in;
   animation-duration: 1.5s;
   opacity: 0;
+  margin-bottom: 30px;
 }
 .section-title {
   text-align: center;
@@ -25,6 +14,7 @@
   color: var(--white);
   background-color: var(--section-bg-alt2);
   width: 100%;
+  margin-bottom: 30px;
   padding: 10px 0;
   box-shadow: 0 10px 10px var(--black-faded);
 }
