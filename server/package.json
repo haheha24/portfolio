@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "portfolio server",
   "main": "server.js",
+  "engines": {"node": "16.x", "npm": "8.10"},
   "scripts": {
     "start": "node dist/src/server.js",
     "dev": "nodemon dist/src/server.js",
