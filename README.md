@@ -5,4 +5,3 @@ Things to work on:
   - Refactor into smaller components
     - Contact pages specifically.
   - Work on deepening understanding of testing with Jest and React-testing-library.
-  - Add more visual animations and better design
