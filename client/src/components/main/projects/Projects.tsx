@@ -1,5 +1,7 @@
 import "./projects.css";
 import ProjectCard from "./ProjectCard";
+import imgPortfolio from "../../images/portfolio.png"
+import imgMysticCoven from "../../images/mysticcoven.png"
 
 const Projects = () => {
   return (
@@ -8,7 +10,7 @@ const Projects = () => {
         <ProjectCard
           url=""
           github="https://github.com/haheha24/portfolio"
-          image={`/images/portfolio.png`}
+          image={imgPortfolio}
           altTxt="Portfolio Feature Image"
           title="Portfolio"
           description="My portfolio website you are currently viewing."
@@ -16,7 +18,7 @@ const Projects = () => {
         <ProjectCard
           url="https://mysticcoven.com.au/"
           github=""
-          image={`/images/mysticcoven.png`}
+          image={imgMysticCoven}
           altTxt="Mystic Coven Feature Image"
           title="Mystic Coven"
           description="A business website for Mystic Coven. Customised Wordpress theme of Elegant Fashion by Rara Themes."

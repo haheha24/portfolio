@@ -7,6 +7,7 @@ import "./navbar.css";
 import useMediaQuery from "../../../utilities/hooks/useMediaQuery";
 import NavListMap from "./NavListMap";
 import BurgerMenu from "../../reusable/BurgerMenu";
+import imgFeature from "../../images/transluscent_waves.jpg";
 
 const Navbar = () => {
   //react-router uselocation hook
@@ -88,7 +89,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav id="navbar">
+    <nav id="navbar" style={{ backgroundImage: `url(${imgFeature})` }}>
       <BurgerMenu {...burgerProps} ref={navBurgerRef} />
       <ul className={handleUlClass()} ref={navUlRef}>
         <NavListMap

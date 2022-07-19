@@ -1,6 +1,7 @@
 import "./projectCard.css";
 import { useRef } from "react";
 import { GoMarkGithub } from "react-icons/go";
+import imgWorkInProgress from "../../images/work_in_progress.jpg";
 
 interface Card {
   url: string;
@@ -33,11 +34,7 @@ const ProjectCard = ({
   return (
     <figure className="project-card">
       <img
-        src={
-          image.length > 0
-            ? image
-            : `/images/work_in_progress.jpg`
-        }
+        src={image.length > 0 ? image : imgWorkInProgress}
         alt={altTxt}
         className="project-card-img"
         ref={imgRef}
