@@ -9,6 +9,7 @@
     "dev": "nodemon -r dotenv/config dist/src/server.js",
     "build": "tsc -p .",
     "watch": "npm run build -- -w",
+    "postinstall": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
