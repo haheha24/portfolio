@@ -58,4 +58,4 @@ if (process.env.NODE === "development") {
 }
 
 // Port
-app.listen(5000);
+app.listen(process.env.PORT || 5000);
