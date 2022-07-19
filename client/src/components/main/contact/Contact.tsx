@@ -56,7 +56,7 @@ const Contact = () => {
     // Send post request to server, if reponse.status is 200, the form has been redirected to my email
     // Confirmation email has been sent on server. Activate thankyou component.
     const postRequest = axios
-      .post("http://localhost:5000/router/contactEmail", contactInput)
+      .post(`${process.env.REACT_APP_SERVER_URL}/router/contactEmail`, contactInput)
       .then((response: AxiosResponse) => {
         //reset input fields and state
         setContactInput({
