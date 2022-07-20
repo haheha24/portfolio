@@ -36,7 +36,7 @@
 }
 .nav-link:hover {
   text-decoration: underline;
-  text-decoration-color: var(--purple-secondary);
+  text-decoration-color: var(--purple-main);
 }
 .item-1,
 .item-2,
