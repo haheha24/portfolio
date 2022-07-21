@@ -18,3 +18,9 @@
   padding: 10px 0;
   box-shadow: 0 10px 10px var(--black-main);
 }
+
+@media only screen and (max-width: 860px) {
+  #container {
+    padding-top: 50px;
+  }
+}
