@@ -29,7 +29,7 @@ const NavListMap = ({
   const navListArray: INavListArray[] = [
     {
       styles: { grid: "nav-li item-1", fixed: "nav-li nav-li-fixed" },
-      listName: "theCreativeAge",
+      listName: "The Creative Age",
       isString: false,
       endPoint: "/",
       navLinkId: "home",
