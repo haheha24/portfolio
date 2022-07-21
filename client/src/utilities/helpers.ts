@@ -9,7 +9,7 @@ export const scrollToElement = (
   elementId: string
 ): { element: HTMLElement | undefined; position: number | undefined } => {
   /* searches for element id in param and scrolls to it */
-  if (elementId === "homeLink") {
+  if (elementId === "home-menu") {
     window.scrollTo(0, 0);
     return {
       element: undefined,

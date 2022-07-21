@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 import _ from "lodash/debounce";
 //css, utils and components
 import "./navbar.css";
-import useMediaQuery from "../../../utilities/hooks/useMediaQuery";
+import useMediaQuery from "../../../hooks/useMediaQuery";
 import NavListMap from "./NavListMap";
 import { GiHamburgerMenu } from "react-icons/gi";
 import imgFeature from "../../images/transluscent_waves.jpg";

@@ -1,7 +1,7 @@
 import "./main.css";
 import { useEffect, useRef, useReducer } from "react";
 import _ from "lodash/debounce";
-import useMediaQuery from "../../utilities/hooks/useMediaQuery";
+import useMediaQuery from "../../hooks/useMediaQuery";
 import Contact from "./contact/Contact";
 import Projects from "./projects/Projects";
 import About from "./about/About";
@@ -16,13 +16,13 @@ interface IAnimatedState {
 
 //Types of actions
 enum sectionTypes {
-  ABOUTLINK = "aboutLink",
+  ABOUT = "about",
   ABOUT_VISIBLE = "ABOUT_VISIBLE",
   ABOUT_NOT_VISIBLE = "ABOUT_NOT_VISIBLE",
-  PROJECTSLINK = "projectsLink",
+  PROJECTS = "projects",
   PROJECTS_VISIBLE = "PROJECTS_VISIBLE",
   PROJECTS_NOT_VISIBLE = "PROJECTS_NOT_VISIBLE",
-  CONTACTLINK = "contactLink",
+  CONTACT = "contact",
   CONTACT_VISIBLE = "CONTACT_VISIBLE",
   CONTACT_NOT_VISIBLE = "CONTACT_NOT_VISIBLE",
 }
@@ -90,7 +90,7 @@ const Main = () => {
   useEffect(() => {
     // Switch case to handleScroll for each state/section
     const handleScroll = _(() => {
-      if (aboutRef.current!.id === "aboutLink") {
+      if (aboutRef.current!.id === "about") {
         window.scrollY > aboutRef.current!.getBoundingClientRect().top
           ? dispatch({
               type: sectionTypes.ABOUT_VISIBLE,
@@ -101,7 +101,7 @@ const Main = () => {
               ref: aboutRef.current!,
             });
       }
-      if (projectsRef.current!.id === "projectsLink") {
+      if (projectsRef.current!.id === "projects") {
         window.scrollY > projectsRef.current!.getBoundingClientRect().top
           ? dispatch({
               type: sectionTypes.PROJECTS_VISIBLE,
@@ -112,7 +112,7 @@ const Main = () => {
               ref: projectsRef.current!,
             });
       }
-      if (contactRef.current!.id === "contactLink") {
+      if (contactRef.current!.id === "contact") {
         window.scrollY > contactRef.current!.getBoundingClientRect().top
           ? dispatch({
               type: sectionTypes.ABOUT_VISIBLE,
@@ -122,7 +122,6 @@ const Main = () => {
               type: sectionTypes.ABOUT_NOT_VISIBLE,
               ref: contactRef.current!,
             });
-        return;
       }
     }, 100);
     if (window.scrollY === 0 && windowWidth.width <= 860) {
@@ -138,7 +137,7 @@ const Main = () => {
   return (
     <main id="container">
       <Section
-        setId="aboutLink"
+        setId="about"
         setTitle="About Me"
         sectionClass="section-container"
         headingClass="section-title"
@@ -147,7 +146,7 @@ const Main = () => {
         <About />
       </Section>
       <Section
-        setId="projectsLink"
+        setId="projects"
         setTitle="Projects"
         sectionClass="section-container"
         headingClass="section-title"
@@ -156,7 +155,7 @@ const Main = () => {
         <Projects />
       </Section>
       <Section
-        setId="contactLink"
+        setId="contact"
         setTitle="Contact"
         sectionClass="section-container"
         headingClass="section-title"

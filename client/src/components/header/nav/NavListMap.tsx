@@ -13,6 +13,7 @@ interface INavListArray {
   listName: string | ReactChild;
   isString: boolean;
   endPoint: string;
+  scrollTo?: string
   navLinkId: string;
   navLinkClass: string;
   navLinkActive: string;
@@ -32,7 +33,8 @@ const NavListMap = ({
       listName: "The Creative Age",
       isString: false,
       endPoint: "/",
-      navLinkId: "home",
+      scrollTo: "home-menu",
+      navLinkId: "home-menu",
       navLinkClass: "nav-link nav-linkMain",
       navLinkActive: "nav-linkActive",
     },
@@ -41,7 +43,8 @@ const NavListMap = ({
       listName: "About",
       isString: false,
       endPoint: "/about",
-      navLinkId: "about",
+      scrollTo: "about",
+      navLinkId: "about-menu",
       navLinkClass: "nav-link",
       navLinkActive: "nav-linkActive",
     },
@@ -50,7 +53,8 @@ const NavListMap = ({
       listName: "Projects",
       isString: false,
       endPoint: "/projects",
-      navLinkId: "projects",
+      scrollTo: "projects",
+      navLinkId: "projects-menu",
       navLinkClass: "nav-link",
       navLinkActive: "nav-linkActive",
     },
@@ -59,7 +63,8 @@ const NavListMap = ({
       listName: "Contact",
       isString: false,
       endPoint: "/contact",
-      navLinkId: "contact",
+      scrollTo: "contact",
+      navLinkId: "contact-menu",
       navLinkClass: "nav-link",
       navLinkActive: "nav-linkActive",
     },
@@ -118,6 +123,7 @@ const NavListMap = ({
           listName,
           isString,
           endPoint,
+          scrollTo,
           navLinkId,
           navLinkClass,
           navLinkActive,
@@ -129,6 +135,7 @@ const NavListMap = ({
             listName={listName}
             isString={isString}
             endPoint={endPoint}
+            scrollTo={scrollTo}
             navLinkId={navLinkId}
             navLinkClass={navLinkClass}
             navLinkActive={navLinkActive}

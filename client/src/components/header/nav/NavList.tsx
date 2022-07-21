@@ -8,6 +8,7 @@ export interface INavLinkParams {
   listName: string | ReactChild;
   isString: boolean;
   endPoint: string;
+  scrollTo?: string;
   navLinkId: string;
   navLinkClass: string;
   navLinkActive: string;
@@ -18,6 +19,7 @@ const NavList = ({
   listName,
   isString,
   endPoint,
+  scrollTo,
   navLinkId,
   navLinkClass,
   navLinkActive,
@@ -34,7 +36,7 @@ const NavList = ({
             navLinkClass + " " + (!isActive ? "unselected" : navLinkActive)
           }
           onClick={() => {
-            scrollToElement(`${navLinkId}Link`);
+            scrollToElement(scrollTo || "home-menu");
           }}
         >
           {listName === "theCreativeAge" ? (
@@ -47,7 +49,7 @@ const NavList = ({
                   color: "white",
                   verticalAlign: "text-bottom",
                   width: "1em",
-                  height: "1em"
+                  height: "1em",
                 }}
               />
               {listName}
