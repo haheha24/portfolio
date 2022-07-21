@@ -39,11 +39,11 @@ const NavList = ({
             scrollToElement(scrollTo || "home-menu");
           }}
         >
-          {listName === "theCreativeAge" ? (
+          {listName === "The Creative Age" ? (
             <>
               <img
                 src={imgSiteLogo}
-                alt="theCreativeAge site logo"
+                alt="The Creative Age site logo"
                 className="site-logo"
                 style={{
                   color: "white",
