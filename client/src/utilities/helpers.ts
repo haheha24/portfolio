@@ -25,7 +25,9 @@ export const scrollToElement = (
   }
 
   //Get top pixel of id element. - 75 to adjust for section headings.
-  const top = document.getElementById(elementId)?.getBoundingClientRect()!.top! - 75;
+  const top =
+    document.getElementById(elementId)?.getBoundingClientRect()!.top! -
+    (window.innerWidth > 860 ? 75 : 50);
   window.scrollTo(0, top + window.scrollY);
   return {
     element: document.getElementById(elementId)!,
