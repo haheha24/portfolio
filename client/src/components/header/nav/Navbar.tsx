@@ -6,92 +6,81 @@ import _ from "lodash/debounce";
 import "./navbar.css";
 import useMediaQuery from "../../../utilities/hooks/useMediaQuery";
 import NavListMap from "./NavListMap";
-import BurgerMenu from "../../reusable/BurgerMenu";
+import { GiHamburgerMenu } from "react-icons/gi";
 import imgFeature from "../../images/transluscent_waves.jpg";
 
 const Navbar = () => {
-  //react-router uselocation hook
   const location = useLocation();
   const windowDimensions = useMediaQuery();
-
-  //refs for navivation animation and burger menu responsiveness
-  const navBurgerRef = useRef<HTMLButtonElement>(null);
-  const navUlRef = useRef<HTMLUListElement>(null);
-
-  //track if element is visible on screen
   const [isElementVisible, setIsElementVisible] = useState(true);
-
-  //track if on the home page
-  //track if the window width is greater than 860 which is the first CSS breakpoint
+  const [showMenu, setShowMenu] = useState(false);
+  const [menuClass, setMenuClass] = useState("nav-ul");
   const [isGreaterThan860, setIsGreaterThan860] = useState(true);
 
+  //refs for navivation animation and burger menu responsiveness
+  const navRef = useRef<HTMLUListElement>(null);
+
   useEffect(() => {
-    //sets the isHome
-    //callback to set the state of isElementVisible. If the bottom of navUlRef is greater than the scrollY, set true else false
-    const handleScroll = _(() => {
-      window.scrollY < navUlRef.current!.getBoundingClientRect().bottom
-        ? setIsElementVisible(true)
-        : setIsElementVisible(false);
-    }, 100);
-    //this checks if the window width is greater than 860 - the first css breakpoint
-    //sets the state of isGreaterThan860, which will help with conditionally rendering the ul and li classes in the render
-    //also adds the scroll event to the window if the width is greater than 860, else removes it if not.
+    //track window dimension and set isGreaterThan860. This prevents an unncessary eventlistener in mobile view.
     if (windowDimensions.width > 860) {
+      //callback to set the state of isElementVisible. If the bottom of navUlRef is greater than the scrollY, set true else false
+      const handleScroll = _(() => {
+        if (window.scrollY < navRef.current!.getBoundingClientRect().bottom) {
+          setIsElementVisible(true);
+        }
+        if (window.scrollY > navRef.current!.getBoundingClientRect().bottom) {
+          setIsElementVisible(false);
+        }
+      }, 100);
+
       setIsGreaterThan860(true);
+
       window.addEventListener("scroll", handleScroll);
       return () => window.removeEventListener("scroll", handleScroll);
-    } else if (windowDimensions.width <= 860) {
+    } else {
       setIsGreaterThan860(false);
-      return window.removeEventListener("scroll", handleScroll);
     }
   }, [location.pathname, windowDimensions, isGreaterThan860]);
 
-  //Tracks the window dimensions of the page to display the ul element
   useEffect(() => {
-    let newUlRef = navUlRef;
-    let newBurgerRef = navBurgerRef;
-    if (windowDimensions.width <= 860) {
-      newBurgerRef.current?.addEventListener("click", () => {
-        newUlRef.current?.classList.toggle("displayBlock");
-        return () => newUlRef.current?.classList.toggle("displayBlock");
-      });
-      return () =>
-        newBurgerRef.current?.removeEventListener("click", () => {
-          newUlRef.current?.classList.toggle("displayBlock");
-          return () => newUlRef.current?.classList.toggle("displayBlock");
-        });
-    }
-  }, [windowDimensions]);
-
-  /**
-   * conditionally renders the class of the Ul element. This relies on the state of isHome, isElementVisible and isGreaterThan860
-   * @returns "nav-ul" | "nav-ul-fixed"
-   */
-  const handleUlClass = () => {
-    //isVisible860 is met when all 3 states are true
-    const isVisible860 = isGreaterThan860 && isElementVisible;
-    //isVisibleNot860 is met when all but isGreaterThan860 is true.
-    const isVisibleNot860 = isGreaterThan860 === false && isElementVisible;
-    if (isVisible860) {
-      return "nav-ul";
-    } else if (isVisibleNot860) {
-      return "nav-ul-fixed";
+    //controls the class for the ul element
+    if (isGreaterThan860) {
+      //desktop class handling
+      if (isElementVisible) {
+        setMenuClass("nav-ul");
+      } else {
+        setMenuClass("nav-ul-fixed");
+      }
     } else {
-      return "nav-ul-fixed";
+      //Mobile class handling
+      if (showMenu === false) {
+        setMenuClass("nav-ul-fixed");
+      } else {
+        setMenuClass("nav-ul-fixed displayBlock");
+      }
     }
-  };
-
-  const burgerProps = {
-    id: "nav-menuBtn",
-    classBtn: "navbar-burger",
-    stylesBtn: { width: "100%" },
-    stylesIcon: { width: "auto", height: "3em", textAlign: "center" },
-  };
+  }, [isElementVisible, isGreaterThan860, showMenu]);
 
   return (
-    <nav id="navbar" style={{ backgroundImage: `url(${imgFeature})` }}>
-      <BurgerMenu {...burgerProps} ref={navBurgerRef} />
-      <ul className={handleUlClass()} ref={navUlRef}>
+    <nav
+      id="navbar"
+      style={{ backgroundImage: `url(${imgFeature})` }}
+      ref={navRef}
+    >
+      {!isGreaterThan860 && (
+        <button
+          type="button"
+          id="nav-menuBtn"
+          className="navbar-burger"
+          style={{ width: "100%" }}
+          onClick={() => setShowMenu((state) => !state)}
+        >
+          <GiHamburgerMenu
+            style={{ width: "auto", height: "3em", textAlign: "center" }}
+          />
+        </button>
+      )}
+      <ul className={menuClass}>
         <NavListMap
           isElementVisible={isElementVisible}
           isGreaterThan860={isGreaterThan860}

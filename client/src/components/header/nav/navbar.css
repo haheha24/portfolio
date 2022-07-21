@@ -104,14 +104,12 @@
   color: var(--purple-main);
 }
 
-/*  Media Queries  */
-
 .navbar-burger {
   margin: 0 auto;
-  display: none;
   cursor: pointer;
 }
 
+/*  Media Queries  */
 @media only screen and (max-width: 860px) {
   #navbar {
     height: auto;
