@@ -72,7 +72,6 @@ const Navbar = () => {
           type="button"
           id="nav-menuBtn"
           className="navbar-burger"
-          style={{ width: "100%" }}
           onClick={() => setShowMenu((state) => !state)}
         >
           <GiHamburgerMenu
