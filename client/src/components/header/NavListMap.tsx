@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import type { ReactChild } from "react";
 import NavList from "./NavList";
-import Socials from "../../reusable/Socials";
+import Socials from "../reusable/Socials";
 
 interface INavListMapProps {
   isGreaterThan860: boolean;
