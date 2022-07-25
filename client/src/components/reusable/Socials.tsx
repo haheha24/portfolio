@@ -2,7 +2,7 @@ import { AiFillGithub, AiFillLinkedin } from "react-icons/ai";
 import { SiGmail } from "react-icons/si";
 
 interface ISocials {
-  classContainer?: string;
+  classIconContainer?: string;
   classIcon?: string;
   vertAlign?: string;
   github?: boolean;
@@ -11,7 +11,7 @@ interface ISocials {
 }
 
 const Socials = ({
-  classContainer,
+  classIconContainer,
   classIcon,
   vertAlign,
   github,
@@ -20,38 +20,50 @@ const Socials = ({
   ...props
 }: ISocials) => {
   return (
-    <div className={classContainer}>
+    <div className={classIconContainer} data-testid="socials-container">
       {github && (
         <a
           href="https://github.com/haheha24"
           className={classIcon}
           target="_blank"
           rel="noreferrer"
+          data-testid="socials-github"
           {...props}
         >
-          <AiFillGithub style={{ verticalAlign: vertAlign }} />
+          <AiFillGithub
+            style={{ verticalAlign: vertAlign }}
+            data-testid="socials-github-icon"
+          />
         </a>
       )}
       {linkedin && (
         <a
-          href="htthttps://www.linkedin.com/in/adrian-cristallo-784455203/ps://github.com/haheha24"
+          href="https://www.linkedin.com/in/adrian-cristallo-784455203"
           className={classIcon}
           target="_blank"
           rel="noreferrer"
+          data-testid="socials-linkedin"
           {...props}
         >
-          <AiFillLinkedin style={{ verticalAlign: vertAlign }} />
+          <AiFillLinkedin
+            style={{ verticalAlign: vertAlign }}
+            data-testid="socials-linkedin-icon"
+          />
         </a>
       )}
       {gmail && (
         <a
-          href="htthttps://www.linkedin.com/in/adrian-cristallo-784455203/ps://github.com/haheha24"
+          href="mailto:adriancristallo1@gmail.com"
           className={classIcon}
           target="_blank"
           rel="noreferrer"
           {...props}
+          data-testid="socials-gmail"
         >
-          <SiGmail style={{ verticalAlign: vertAlign }} />
+          <SiGmail
+            style={{ verticalAlign: vertAlign }}
+            data-testid="socials-gmail-icon"
+          />
         </a>
       )}
     </div>
