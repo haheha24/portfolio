@@ -28,8 +28,9 @@ const Section = forwardRef<HTMLElement, ISection>((props: ISection, ref?) => {
       className={sectionClass}
       style={sectionStyles}
       ref={ref}
+      data-testid="section-container"
     >
-      <h2 className={headingClass} style={headingStyles}>
+      <h2 className={headingClass} style={headingStyles} data-testid="section-h2" >
         {setTitle}
       </h2>
       {children}
