@@ -7,7 +7,7 @@ import "./header.css";
 import useMediaQuery from "../../hooks/useMediaQuery";
 import NavListMap from "./NavListMap";
 import { GiHamburgerMenu } from "react-icons/gi";
-import imgFeature from "../../images/transluscent_waves.jpg";
+import imgFeature from "../images/transluscent_waves.jpg";
 
 const Header = () => {
   const location = useLocation();

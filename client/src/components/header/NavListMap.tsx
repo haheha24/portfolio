@@ -72,7 +72,7 @@ const NavListMap = ({
       styles: { grid: "nav-li item-5", fixed: "nav-li nav-li-fixed" },
       listName: (
         <Socials
-          classContainer={socialContainer}
+          classIconContainer={socialContainer}
           classIcon="social-icon"
           github={true}
           linkedin={true}

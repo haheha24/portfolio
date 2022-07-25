@@ -1,7 +1,7 @@
 import { ReactChild } from "react";
 import { NavLink } from "react-router-dom";
 import { scrollToElement } from "../../utilities/helpers";
-import imgSiteLogo from "../../images/site_logo_512x512.png";
+import imgSiteLogo from "../images/site_logo_512x512.png";
 
 export interface INavLinkParams {
   liClass: string;
