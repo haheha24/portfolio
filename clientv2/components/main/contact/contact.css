@@ -1,0 +1,111 @@
+/* form */
+.contact-outer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.contact-form-flex {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.contact-input-container {
+  margin: 10px 20px;
+}
+.contact-flex-dirRow {
+  display: flex;
+}
+.contact-flex-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+.contact-flex-dirCol {
+  display: flex;
+  flex-direction: column;
+}
+.contact-inline {
+  align-self: flex-end;
+}
+.contact-label {
+  color: white;
+  padding: 5px;
+}
+.contact-input {
+  font-size: 1.05rem;
+  line-height: 1.05rem;
+  width: 250px;
+  padding: 2.5px 10px;
+}
+.contact-textarea {
+  font-size: 1.25rem;
+  line-height: 1.25rem;
+  padding: 5px 10px;
+  width: 20em;
+  height: 5em;
+}
+.contact-btn {
+  cursor: pointer;
+  color: white;
+  padding: 5px;
+  margin: 20px 0;
+  width: 100px;
+  height: 35px;
+  align-self: center;
+  background-color: var(--purple-secondary);
+  border-radius: 10px;
+  border: 2.5px solid var(--purple-main);
+  font-size: var(--font16);
+}
+.contact-btn:hover {
+  background-color: var(--purple-main);
+}
+
+/* connect */
+.connect-section {
+  margin-top: 10px;
+}
+.connect-title {
+  text-align: center;
+  color: var(--red);
+}
+.connect-ul {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  padding: 5px 10px;
+  border-radius: 10px;
+  align-content: space-around;
+}
+.connect-li {
+  text-decoration: none;
+  font-size: 2em;
+  margin: 15px 0;
+  width: auto;
+  height: auto;
+}
+
+/* media query */
+@media only screen and (max-width: 1210px) {
+  .contact-flex-container {
+    flex-direction: column;
+  }
+  .connect-ul {
+    flex-direction: row;
+    justify-content: center;
+  }
+  .connect-li {
+    margin: 0;
+  }
+}
+@media only screen and (max-width: 860px) {
+  .contact-form-flex,
+  .contact-flex-dirCol {
+    text-align: center;
+    align-items: center;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .contact-textarea {
+    width: 12.5em;
+  }
+}
