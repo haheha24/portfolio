@@ -1,4 +1,4 @@
-import { StyledAnchor } from "../styles/Anchor.styled";
+import { StyledAnchor } from "../styledComponents";
 import styled, { useTheme } from "styled-components";
 import { motion } from "framer-motion";
 import { AiFillGithub, AiFillLinkedin } from "react-icons/ai";

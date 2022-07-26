@@ -1,11 +1,32 @@
 export interface TypeTheme {
   [key: string]: {
-    font: { font16: string; font18: string; font24: string; font32: string };
+    font: {
+      font16: string;
+      font18: string;
+      font24: string;
+      font32: string;
+    };
     fontColor: string;
     body: string;
     section: {
       title: {
+        fontColor: string;
         backgroundColor: string;
+        boxShadow: string;
+      };
+    };
+    about: {
+      skills: {
+        skillsContainer: {
+          boxShadow: string;
+          backgroundColor: string;
+        };
+        skillsBtn: {
+          backgroundColor: string;
+          backgroundColorHover: string;
+          backgroundColorActive: string;
+          border: string;
+        };
       };
     };
     button: {
@@ -55,19 +76,37 @@ export const theme: TypeTheme = {
     fontColor: color.white,
     body: color.blackSecondary,
     section: {
-      title: { backgroundColor: color.purpleMain },
+      title: {
+        fontColor: color.blackMain,
+        backgroundColor: color.purpleMain,
+        boxShadow: color.blackMain,
+      },
+    },
+    about: {
+      skills: {
+        skillsContainer: {
+          boxShadow: color.blackFaded,
+          backgroundColor: color.purpleMain,
+        },
+        skillsBtn: {
+          backgroundColor: color.purpleSecondary,
+          backgroundColorHover: color.purpleMain,
+          backgroundColorActive: color.purpleMain,
+          border: color.purpleMain,
+        },
+      },
     },
     button: {
       color: color.white,
       backgroundColor: color.purpleSecondary,
       backgroundColorHover: color.purpleMain,
-      border: `2.5px solid ${color.purpleMain}`,
+      border: `${color.purpleMain}`,
     },
     anchor: {
       color: color.white,
       backgroundColor: color.purpleSecondary,
       backgroundColorHover: color.purpleMain,
-      border: `2.5px solid ${color.purpleMain}`,
+      border: `${color.purpleMain}`,
     },
     color: {
       white: "#fff",
