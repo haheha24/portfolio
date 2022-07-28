@@ -5,7 +5,7 @@ const Skills = ({ skill }: { skill: string }) => {
     switch (match) {
       case "back":
         return (
-          <SkillsBubble>
+          <>
             <Subtitle>Back-end technologies I have used in projects:</Subtitle>
             <Ul>
               <li>Node.JS</li>
@@ -14,11 +14,11 @@ const Skills = ({ skill }: { skill: string }) => {
               <li>MongoDB Atlas Cloud</li>
               <li>Mongoose.JS</li>
             </Ul>
-          </SkillsBubble>
+          </>
         );
       case "general":
         return (
-          <SkillsBubble>
+          <>
             <Subtitle>
               Other technologies I have experience in using are:
             </Subtitle>
@@ -27,11 +27,11 @@ const Skills = ({ skill }: { skill: string }) => {
               <li>GIT Version Control</li>
               <li>Linux commands</li>
             </Ul>
-          </SkillsBubble>
+          </>
         );
       case "inter":
         return (
-          <SkillsBubble>
+          <>
             <Subtitle>Interpersonal Skills and Values</Subtitle>
             <Paragraph>
               My interpersonal skills are one of my most proudest achievements
@@ -43,11 +43,11 @@ const Skills = ({ skill }: { skill: string }) => {
               web development, and so should you believe in me when I say I can
               help you achieve your goals as well!
             </Paragraph>
-          </SkillsBubble>
+          </>
         );
       default:
         return (
-          <SkillsBubble>
+          <>
             <Subtitle>
               My technical skills I use for web development are:
             </Subtitle>
@@ -60,12 +60,12 @@ const Skills = ({ skill }: { skill: string }) => {
               <li>Next.JS </li>
               <li>Jest</li>
             </Ul>
-          </SkillsBubble>
+          </>
         );
     }
   };
 
-  return <>{matchSkill(skill)}</>;
+  return <SkillsBubble data-testid="Skills">{matchSkill(skill)}</SkillsBubble>;
 };
 
 export default Skills;
