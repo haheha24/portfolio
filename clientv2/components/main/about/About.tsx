@@ -19,7 +19,7 @@ const About = () => {
 
   return (
     <TextContainer>
-      <Paragraph>
+      <Paragraph data-testid="introduction">
         Hello! My name is Adrian Cristallo. I am a web developer with a passion
         for making websites and coding. Looking for opportunities of work in web
         development while I study a Bachelor of Information Technology. I have
@@ -30,12 +30,13 @@ const About = () => {
         in life.
       </Paragraph>
       <SkillsContainer>
-        <SkillsBtnContainer>
+        <SkillsBtnContainer data-testid="skills-btn-container">
           <SkillsBtn
             type="button"
             name="front"
             active={selected === "front" ? true : false}
             onClick={(e) => handleSkillBtn(e)}
+            data-testid="front"
           >
             Frontend Skills
           </SkillsBtn>
@@ -44,6 +45,7 @@ const About = () => {
             name="back"
             active={selected === "back" ? true : false}
             onClick={(e) => handleSkillBtn(e)}
+            data-testid="back"
           >
             Backend Skills
           </SkillsBtn>
@@ -52,6 +54,7 @@ const About = () => {
             name="general"
             active={selected === "general" ? true : false}
             onClick={(e) => handleSkillBtn(e)}
+            data-testid="general"
           >
             General Dev Skills
           </SkillsBtn>
@@ -60,6 +63,7 @@ const About = () => {
             name="inter"
             active={selected === "inter" ? true : false}
             onClick={(e) => handleSkillBtn(e)}
+            data-testid="inter"
           >
             Interpersonal Skills
           </SkillsBtn>
