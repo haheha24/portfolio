@@ -77,7 +77,7 @@ export const theme: TypeTheme = {
     body: color.blackSecondary,
     section: {
       title: {
-        fontColor: color.blackMain,
+        fontColor: color.white,
         backgroundColor: color.purpleMain,
         boxShadow: color.blackMain,
       },
