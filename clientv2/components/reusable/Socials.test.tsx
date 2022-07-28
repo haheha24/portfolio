@@ -1,4 +1,4 @@
-import { render, screen, cleanup } from "@testing-library/react";
+import { render, screen, cleanup } from "test-utils";
 import Socials from "./Socials";
 
 afterEach(() => {
@@ -6,6 +6,10 @@ afterEach(() => {
 });
 
 describe("Socials Component", () => {
+  it("renders the section component", () => {
+    const { container } = render(<Socials />);
+    expect(container.firstChild).toMatchSnapshot();
+  });
   it("Contains three anchors with an icon each", () => {
     render(<Socials github={true} linkedin={true} gmail={true} />);
     const gmail = screen.getByTestId("socials-gmail");
