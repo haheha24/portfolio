@@ -15,7 +15,7 @@ interface ISection {
 const SecctionContainer = motion(StyledSection);
 const H2 = styled(StyledH2)`
     text-align: center;
-    color: ${(props) => props.theme.section.title.fontColor}
+    color: ${(props) => props.theme.section.title.fontColor};
     font-size: 2.5rem;
     width: 100%;
     margin-bottom: 30px;

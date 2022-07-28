@@ -1,4 +1,4 @@
-import { render, cleanup } from "@testing-library/react";
+import { render, cleanup } from "test-utils";
 import Section from "./Section";
 
 afterEach(() => {
@@ -6,6 +6,17 @@ afterEach(() => {
 });
 
 describe("Tests for the Section component", () => {
+  it("renders the section component", () => {
+    const { container } = render(<Section />);
+    expect(container.firstChild).toMatchSnapshot();
+  });
+  it("Section element styles", () => {
+    const { getByTestId } = render(<Section />);
+    expect(getByTestId("section-container")).toHaveStyle({
+      opacity: 0,
+      transform: "translateY(250px) translateZ(0)",
+    });
+  });
   it("Contains a section and h2 element", () => {
     const { getByTestId } = render(<Section />);
     const sectionContainer = getByTestId("section-container");
@@ -28,11 +39,7 @@ describe("Tests for the Section component", () => {
       <Section title="Testing Title" id="test" />
     );
     expect(getByTestId("section-container")).toHaveAttribute("id", "test");
-    expect(getByTestId("section-container")).toHaveClass("section-class");
-    expect(getByTestId("section-container")).toHaveStyle("width: 50px");
 
-    expect(getByTestId("section-h2")).toHaveClass("heading-class");
-    expect(getByTestId("section-h2")).toHaveStyle("width: 50px");
     expect(container).toHaveTextContent("Testing Title");
   });
 });
