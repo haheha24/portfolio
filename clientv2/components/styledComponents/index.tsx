@@ -1,4 +1,3 @@
-import Image from "next/image";
 import styled from "styled-components";
 
 //Media Queries
@@ -26,8 +25,8 @@ const StyledAnchor = styled.a`
   color: ${(props) => props.theme.fontColor};
   background-color: ${(props) => props.theme.anchor.backgroundColor};
 
-  &:active {
-    background-color: ${(props) => props.theme.backgroundColorHover};
+  &:hover {
+    background-color: ${(props) => props.theme.anchor.backgroundColorHover};
   }
 `;
 
@@ -70,13 +69,12 @@ const StyledSection = styled.section`
 `;
 
 //Article
-
 const StyledArticle = styled.article`
   scroll-margin-top: 75px;
 `;
 
 //Image
-const StyledImage = styled(Image)`
+const StyledImage = styled.img`
   width: 100%;
   height: 100%;
 `;

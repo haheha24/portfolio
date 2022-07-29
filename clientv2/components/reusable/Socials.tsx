@@ -15,12 +15,12 @@ const StyledDiv = styled.div`
   display: flex;
 `;
 
-const SocialAnchor = styled(motion(StyledAnchor))`
+const SocialAnchor = motion(styled(StyledAnchor)`
   padding: 10px;
   margin: 0 10px;
   border-radius: 50px;
   border: 2.5px solid ${(props) => props.theme.color.purpleMain};
-`;
+`);
 
 const Socials = ({
   vertAlign,
@@ -39,7 +39,6 @@ const Socials = ({
           target="_blank"
           rel="noreferrer"
           {...props}
-          whileHover={{ backgroundColor: theme.anchor.backgroundColorHover }}
           data-testid="socials-github"
         >
           <AiFillGithub
@@ -54,7 +53,6 @@ const Socials = ({
           target="_blank"
           rel="noreferrer"
           {...props}
-          whileHover={{ backgroundColor: theme.anchor.backgroundColorHover }}
           data-testid="socials-linkedin"
         >
           <AiFillLinkedin
@@ -68,7 +66,6 @@ const Socials = ({
           href="mailto:adriancristallo1@gmail.com"
           rel="noreferrer"
           {...props}
-          whileHover={{ backgroundColor: theme.anchor.backgroundColorHover }}
           data-testid="socials-gmail"
         >
           <SiGmail
