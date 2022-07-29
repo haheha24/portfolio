@@ -8,6 +8,18 @@ export interface TypeTheme {
     };
     fontColor: string;
     body: string;
+    button: {
+      color: string;
+      backgroundColor: string;
+      backgroundColorHover: string;
+      border: string;
+    };
+    anchor: {
+      color: string;
+      backgroundColor: string;
+      backgroundColorHover: string;
+      border: string;
+    };
     section: {
       title: {
         fontColor: string;
@@ -29,17 +41,16 @@ export interface TypeTheme {
         };
       };
     };
-    button: {
-      color: string;
-      backgroundColor: string;
-      backgroundColorHover: string;
-      border: string;
-    };
-    anchor: {
-      color: string;
-      backgroundColor: string;
-      backgroundColorHover: string;
-      border: string;
+    projects: {
+      projectCard: {
+        backgroundColor: string;
+        projectCardCaption: {
+          backgroundColor: string;
+        };
+        projectCardLink: {
+          border: string;
+        };
+      };
     };
     color: {
       white: string;
@@ -75,6 +86,18 @@ export const theme: TypeTheme = {
     },
     fontColor: color.white,
     body: color.blackSecondary,
+    button: {
+      color: color.white,
+      backgroundColor: color.purpleSecondary,
+      backgroundColorHover: color.purpleMain,
+      border: `${color.purpleMain}`,
+    },
+    anchor: {
+      color: color.white,
+      backgroundColor: color.purpleSecondary,
+      backgroundColorHover: color.purpleMain,
+      border: `${color.purpleMain}`,
+    },
     section: {
       title: {
         fontColor: color.white,
@@ -96,17 +119,16 @@ export const theme: TypeTheme = {
         },
       },
     },
-    button: {
-      color: color.white,
-      backgroundColor: color.purpleSecondary,
-      backgroundColorHover: color.purpleMain,
-      border: `${color.purpleMain}`,
-    },
-    anchor: {
-      color: color.white,
-      backgroundColor: color.purpleSecondary,
-      backgroundColorHover: color.purpleMain,
-      border: `${color.purpleMain}`,
+    projects: {
+      projectCard: {
+        backgroundColor: color.blackMain,
+        projectCardCaption: {
+          backgroundColor: color.purpleSecondary,
+        },
+        projectCardLink: {
+          border: color.purpleMain,
+        },
+      },
     },
     color: {
       white: "#fff",
