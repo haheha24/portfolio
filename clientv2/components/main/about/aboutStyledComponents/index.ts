@@ -10,7 +10,7 @@ import {
 const TextContainer = styled(StyledArticle)`
   margin: 0 20%;
 
-  @media only screen and ${device.sm} {
+  @media only screen and (${device.sm}) {
     margin: 0;
   }
 `;
@@ -19,7 +19,7 @@ const Paragraph = styled.p`
   line-height: 2em;
   text-align: justify;
 
-  @media only screen and ${device.sm} {
+  @media only screen and (${device.sm}) {
     text-align: left;
     width: 75%;
     margin: 0 auto;
@@ -40,7 +40,7 @@ const SkillsBtnContainer = styled.div`
   display: flex;
   justify-content: center;
 
-  @media only screen and ${device.sm} {
+  @media only screen and (${device.sm}) {
     flex-direction: column;
   }
 `;
@@ -63,9 +63,9 @@ const SkillsBtn = styled(StyledButton).attrs(
   &:hover {
     background-color: ${(props) =>
       props.theme.about.skills.skillsBtn.backgroundColorHover};
-  };
+  }
 
-  @media only screen and ${device.sm} {
+  @media only screen and (${device.sm}) {
     width: 100%;
     border-radius: 0;
   }
@@ -81,7 +81,7 @@ const SkillsBubble = styled.div`
   background-color: ${(props) =>
     props.theme.about.skills.skillsContainer.backgroundColor};
 
-  @media only screen and ${device.sm} {
+  @media only screen and (${device.sm}) {
     border-radius: 0;
     box-shadow: 0 10px 10px
       ${(props) => props.theme.about.skills.skillsContainer.boxShadow};
@@ -92,7 +92,7 @@ const Subtitle = styled(StyledH3)`
   padding: 10px 0;
   background-color: initial;
 
-  @media only screen and ${device.sm} {
+  @media only screen and (${device.sm}) {
     text-align: left;
     width: 75%;
     margin: 0 auto;
