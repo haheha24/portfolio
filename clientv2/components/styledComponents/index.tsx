@@ -7,14 +7,14 @@ const size = {
   lg: 1210,
 };
 const device = {
-  sm: `(max-width: ${size.sm}px)`,
-  md: `(max-width: ${size.md}px)`,
-  lg: `(max-width: ${size.lg}px)`,
+  sm: `max-width: ${size.sm}px`,
+  md: `max-width: ${size.md}px`,
+  lg: `max-width: ${size.lg}px`,
 };
 
 //Main
 const StyledMain = styled.main`
-  @media only screen and ${device.md} {
+  @media only screen and (${device.md}) {
     padding-top: 50px;
   }
 `;
@@ -46,18 +46,18 @@ const StyledButton = styled.button`
 
 //Headings
 const StyledH1 = styled.h1`
-  color: ${({ theme }) => theme.fontColor}};
-  background-color: ${({ theme }) => theme.body}
+  color: ${({ theme }) => theme.fontColor};
+  background-color: ${({ theme }) => theme.body};
 `;
 
 const StyledH2 = styled.h2`
-  color: ${({ theme }) => theme.fontColor}};
-  background-color: ${({ theme }) => theme.body}
+  color: ${({ theme }) => theme.fontColor};
+  background-color: ${({ theme }) => theme.body};
 `;
 
 const StyledH3 = styled.h3`
-  color: ${({ theme }) => theme.fontColor}};
-  background-color: ${({ theme }) => theme.body}
+  color: ${({ theme }) => theme.fontColor};
+  background-color: ${({ theme }) => theme.body};
 `;
 
 //Section

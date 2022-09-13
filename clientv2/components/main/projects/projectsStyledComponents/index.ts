@@ -14,12 +14,12 @@ const ProjectContainer = styled(StyledArticle)`
   justify-items: center;
   margin: 0 12.5%;
 
-  @media only screen and ${device.md} {
+  @media only screen and (${device.md}) {
     grid-template-columns: repeat(2, 50%);
     border-radius: 0;
     margin: 0 2.5%;
   }
-  @media only screen and ${device.md} {
+  @media only screen and (${device.md}) {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -38,7 +38,7 @@ const ProjectCardFigure = styled.figure`
   background-color: ${(props) =>
     props.theme.projects.projectCard.backgroundColor};
 
-  @media only screen and ${device.md} {
+  @media only screen and (${device.md}) {
     width: 100%;
   }
 `;
@@ -61,14 +61,13 @@ const ProjectCardCaption = styled.figcaption`
   width: 100%;
   height: 100%;
   opacity: 0;
-  transition: .45s ease-in-out;
+  transition: 0.45s ease-in-out;
   z-index: 1;
-}
 `;
 
 const ProjectCardTitle = styled(StyledH1)`
   margin: 10px 0;
-  padding 5px 0;
+  padding: 5px 0;
   background-color: inherit;
 `;
 const ProjectCardText = styled.p`
