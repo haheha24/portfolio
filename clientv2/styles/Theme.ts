@@ -3,6 +3,7 @@ export interface TypeTheme {
     font: {
       font16: string;
       font18: string;
+      font20: string;
       font24: string;
       font32: string;
     };
@@ -52,6 +53,33 @@ export interface TypeTheme {
         };
       };
     };
+    contact: {
+      label: {
+        color: string;
+      };
+      input: {
+        error: {
+          borderColor: string;
+        };
+      };
+      button: {
+        backgroundColor: string;
+        backgroundColorHover: string;
+        border: string;
+      };
+      handleContact: {
+        thankyou: {
+          container: {
+            backgroundColor: string;
+            boxShadow: string;
+          };
+        };
+        closeModal: {
+          backgroundColor: string;
+          fill: string;
+        };
+      };
+    };
     color: {
       white: string;
       black: string;
@@ -59,6 +87,7 @@ export interface TypeTheme {
       blackSecondary: string;
       blackFaded: string;
       blackFaded2: string;
+      red: string;
       purpleMain: string;
       purpleSecondary: string;
     };
@@ -72,6 +101,7 @@ const color = {
   blackSecondary: "hsl(216, 7%, 25%)",
   blackFaded: "hsla(216, 7%, 14%, 0.5)",
   blackFaded2: "hsla(219, 8%, 33%, 0.5)",
+  red: "hsl(0, 100%, 65%)",
   purpleMain: "hsl(260, 100%, 60%)",
   purpleSecondary: "hsl(260, 100%, 33%)",
 };
@@ -81,6 +111,7 @@ export const theme: TypeTheme = {
     font: {
       font16: "1em",
       font18: "1.125em",
+      font20: "1.25em",
       font24: "1.5em",
       font32: "2em",
     },
@@ -130,6 +161,33 @@ export const theme: TypeTheme = {
         },
       },
     },
+    contact: {
+      label: {
+        color: color.white,
+      },
+      input: {
+        error: {
+          borderColor: color.red,
+        },
+      },
+      button: {
+        backgroundColor: color.purpleSecondary,
+        backgroundColorHover: color.purpleMain,
+        border: color.purpleMain,
+      },
+      handleContact: {
+        thankyou: {
+          container: {
+            backgroundColor: color.purpleMain,
+            boxShadow: color.blackFaded,
+          },
+        },
+        closeModal: {
+          backgroundColor: color.white,
+          fill: color.blackSecondary,
+        },
+      },
+    },
     color: {
       white: "#fff",
       black: "#000",
@@ -137,6 +195,7 @@ export const theme: TypeTheme = {
       blackSecondary: "hsl(216, 7%, 25%)",
       blackFaded: "hsla(216, 7%, 14%, 0.5)",
       blackFaded2: "hsla(219, 8%, 33%, 0.5)",
+      red: "hsl(0, 100%, 65%)",
       purpleMain: "hsl(260, 100%, 60%)",
       purpleSecondary: "hsl(260, 100%, 33%)",
     },
