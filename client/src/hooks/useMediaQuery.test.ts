@@ -1,5 +1,5 @@
 import useMediaQuery from "./useMediaQuery";
-import { act, renderHook } from "@testing-library/react-hooks";
+import { act, renderHook } from "@testing-library/react";
 
 /**
  * JSDom doesn't have a method for window.resizeTo() so defining the values properties in innerX in window hacks around it.

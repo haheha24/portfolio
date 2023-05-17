@@ -161,13 +161,16 @@ const About = () => {
     <article className="text-container about-article">
       <p className="about-paragraph">
         Hello! My name is Adrian Cristallo. I am a web developer with a passion
-        for making websites and coding. Looking for opportunities of work in web
-        development while I study a Bachelor of Information Technology. I have
+        for making websites and coding. I am looking for opportunities of work in web
+        development while in the process of studying a Bachelor of Computer Science. I have
         also completed a Bachelor of Arts, majoring in sociology and history. I
-        am always ready to learn new things and technologies as my goal is to
+        am always ready to learn new skills as my goal is to
         make this path into a long-lasting career. On the side I enjoy a little
-        bit of gardening and landscaping. Creativity is my outlet and enjoyment
+        bit of gardening, gaming, and landscaping. Creativity is my outlet and enjoyment
         in life.
+      </p>
+      <p className="about-paragraph">
+        If you are interested or have any questions, I invite you to reach out to me either through email, GitHub or linkedIn!
       </p>
       <div className="about-skills-container">
         <div className="about-btn-container">

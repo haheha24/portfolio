@@ -1,10 +1,10 @@
 import { render, RenderOptions } from "@testing-library/react";
 import type { FC, ReactElement, ReactNode } from "react";
 import { ThemeProvider } from "styled-components";
-import { theme } from "../styles/Theme";
+import { theme } from "../app/(styles)/theme";
 
 const AllTheProviders: FC<{ children: ReactNode }> = ({ children }) => {
-  return <ThemeProvider theme={theme.darkTheme}>{children}</ThemeProvider>;
+  return <ThemeProvider theme={theme.DarkTheme}>{children}</ThemeProvider>;
 };
 
 const customRender = (

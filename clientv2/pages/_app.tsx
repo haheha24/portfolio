@@ -1,8 +1,7 @@
 import "../styles/globals.css";
+import Head from "next/head";
 import type { AppProps } from "next/app";
-
-import { ThemeProvider } from "styled-components";
-import { theme } from "../styles/Theme";
+import Layout from "components/layout";
 
 //Mocks
 if (process.env.NEXT_PUBLIC_API_MOCKING === "true") {
@@ -13,9 +12,16 @@ if (process.env.NEXT_PUBLIC_API_MOCKING === "true") {
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider theme={theme.darkTheme}>
-      <Component {...pageProps} />
-    </ThemeProvider>
+    <>
+      <Head>
+        <title>Adrian Cristallo's Portfolio</title>
+        <meta name="description" content="Adrian Cristallo's Portfolio App" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </>
   );
 }
 

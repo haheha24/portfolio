@@ -1,0 +1,143 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests for the ProjectCard component renders a full prop component, also checks snapshot 1`] = `
+.c7 {
+  font-size: 1.5em;
+  color: #fff;
+  background-color: hsl(260,100%,33%);
+}
+
+.c4 {
+  color: #fff;
+  background-color: hsl(216,7%,25%);
+}
+
+.c1 {
+  width: 100%;
+  height: 100%;
+}
+
+.c0 {
+  height: 250px;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 2%;
+  background-color: hsl(216,7%,14%);
+}
+
+.c2 {
+  -webkit-transition: 0.45s ease-in-out;
+  transition: 0.45s ease-in-out;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  background-color: hsl(260,100%,33%);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  -webkit-transition: 0.45s ease-in-out;
+  transition: 0.45s ease-in-out;
+  z-index: 1;
+}
+
+.c5 {
+  margin: 10px 0;
+  padding: 5px 0;
+  background-color: inherit;
+}
+
+.c6 {
+  margin: 10px 0;
+}
+
+.c8 {
+  font-size: 1.125em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 50px;
+  border: 2.5px solid hsl(260,100%,60%);
+  z-index: 2;
+}
+
+@media only screen and (max-width:860px) {
+  .c0 {
+    width: 100%;
+  }
+}
+
+<figure
+  class="c0"
+>
+  <img
+    alt="Portfolio Feature Image"
+    class="c1 c2"
+    src="./images/portfolio.png"
+  />
+  <figcaption
+    class="c3"
+  >
+    <h1
+      class="c4 c5"
+    >
+      Portfolio
+    </h1>
+    <p
+      class="c6"
+    >
+      My portfolio website you are currently viewing.
+    </p>
+    <a
+      class="c7 c8"
+      href="thecreativeage.com.au"
+      rel="noreferrer"
+      target="_blank"
+    >
+      Visit Website
+    </a>
+    <a
+      class="c7 c8"
+      href="https://github.com/haheha24/portfolio"
+      rel="noreferrer"
+      target="_blank"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        stroke="currentColor"
+        stroke-width="0"
+        style="width: 1.5em; height: 1.33em;"
+        viewBox="0 0 16 16"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+          fill-rule="evenodd"
+        />
+      </svg>
+    </a>
+  </figcaption>
+</figure>
+`;
