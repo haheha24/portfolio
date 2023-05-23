@@ -1,6 +1,6 @@
-import { useState, forwardRef, useEffect } from "react";
-import Link from "next/link";
+import { useState, forwardRef } from "react";
 import { Root, Item, Indicator } from "@radix-ui/react-navigation-menu";
+import NavigationMenuLink from "./NavigationMenuLink";
 
 type NavigationMenuProps = {
   display: "grid" | "fixed";
@@ -20,184 +20,165 @@ const NavigationMenu = forwardRef<HTMLElement, NavigationMenuProps>(
       projects: false,
       contact: false,
     });
-    const [dropDown, setDropDown] = useState(false);
-    const [tap, setTap] = useState({
-      home: false,
-      about: false,
-      projects: false,
-      contact: false,
-    });
-
-    useEffect(() => {
-      if (display === "fixed") {
-        setDropDown(true);
-      }
-    }, []);
 
     const ListProps = {
-      grid: "will-change-transform md:grid md:grid-cols-nav md:grid-rows-nav md:gap-y-2.5 md:gap-x-5 md:justify-center md:w-full md:absolute md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:bg-transparent",
+      grid: "will-change-transform md:grid md:grid-cols-nav md:grid-rows-nav md:gap-y-2.5 md:gap-x-2.5 md:justify-center md:w-full md:bg-transparent",
       fixed:
-        "w-screen md:flex md:justify-center md:fixed md:bg-black-primary md:shadow-lg",
+        "data-[grid=false]:animate-menuSlideDown w-screen md:flex md:fixed md:bg-black-primary md:shadow-lg",
     };
     const ItemProps = {
-      grid: "md:flex md:justify-center md:items-center md:text-center md:bg-transparent-85 md:rounded-xl md:text-dynamic-lg",
-      fixed:
-        "md:py-5 md:text-center md:bg-transparent md:rounded-0 md:text-dynamic-base",
+      general: {
+        grid: "block rounded-0",
+        fixed: "block rounded-0",
+      },
+      one: {
+        grid: "data-[grid=true]:animate-menuSlideDown-itemone md:col-start-1 md:col-end-7 md:row-start-1 md:row-end-2 md:mx-5 md:flex md:justify-center md:items-center md:text-center md:bg-transparent-85 md:rounded-xl lg:text-dynamic-xl md:text-dynamic-lg",
+        fixed:
+          "md:py-5 md: md:text-center md:bg-transparent md:rounded-0 3xl:text-dynamic-lg lg:text-dynamic-base",
+      },
+      two: {
+        grid: "data-[grid=true]:animate-menuSlideDown-itemtwo md:col-start-1 md:col-end-3 md:row-start-2 md:row-end-3 md:mx-5 md:flex md:justify-center md:items-center md:text-center md:bg-transparent-85 md:rounded-xl lg:text-dynamic-xl md:text-dynamic-lg",
+        fixed:
+          "md:py-5 md: md:text-center md:bg-transparent md:rounded-0 3xl:text-dynamic-lg lg:text-dynamic-base",
+      },
+      three: {
+        grid: "data-[grid=true]:animate-menuSlideDown-itemthree md:col-start-3 md:col-end-5 md:row-start-2 md:row-end-3 md:mx-5 md:flex md:justify-center md:items-center md:text-center md:bg-transparent-85 md:rounded-xl lg:text-dynamic-xl md:text-dynamic-lg",
+        fixed:
+          "md:py-5 md: md:text-center md:bg-transparent md:rounded-0 3xl:text-dynamic-lg lg:text-dynamic-base",
+      },
+      four: {
+        grid: "data-[grid=true]:animate-menuSlideDown-itemfour md:col-start-5 md:col-end-7 md:row-start-2 md:row-end-3 md:mx-5 md:flex md:justify-center md:items-center md:text-center md:bg-transparent-85 md:rounded-xl lg:text-dynamic-xl md:text-dynamic-lg",
+        fixed:
+          "md:py-5 md: md:text-center md:bg-transparent md:rounded-0 3xl:text-dynamic-lg lg:text-dynamic-base",
+      },
+      five: {
+        grid: "data-[grid=true]:animate-menuSlideDown-itemfive md:col-start-3 md:col-end-5 md:row-start-3 md:row-end-4 md:mx-5 md:flex md:justify-center md:items-center md:text-center md:bg-transparent-85 md:rounded-xl lg:text-dynamic-xl md:text-dynamic-lg",
+        fixed:
+          "md:py-5 md: md:text-center md:bg-transparent md:rounded-0 3xl:text-dynamic-lg lg:text-dynamic-base",
+      },
     };
-    const activeBtn = {
-      active: "text-purple-primary",
-      inActive: "text-white",
+    const LinkProps = {
+      grid: "py-10 data-[active=true]:text-purple-primary text-white",
+      fixed: "md:py-0 data-[active=true]:text-purple-primary text-white",
     };
-    const AnchorProps =
-      "md:px-5 flex items-center justify-center font-medium h-full w-full hover:underline hover:text-purple-primary";
     return (
       <Root
         id="navbar"
         dir="ltr"
         data-id="Root"
-        className={`hidden fixed md:block md:static md:bg-hero md:bg-100% md:max-h-[62.5rem] md:h-screen overflow-hidden`}
-        onAnimationEnd={() => setDropDown(false)}
+        className="md:block data-[grid=true]:md:absolute data-[grid=true]:top-1/2 data-[grid=true]:left-1/2 data-[grid=true]:md:-translate-x-1/2 data-[grid=true]:md:-translate-y-1/2 w-full data-[grid=false]:md:fixed data-[grid=false]:md:top-0 data-[grid=false]:md:left-0 data-[grid=false]:md:transform-none"
         ref={ref}
+        data-grid={display === "grid" ? true : false}
       >
         <ul
           id="navbarlist"
           aria-orientation="horizontal"
           data-orientation="horizontal"
           dir="ltr"
+          data-grid={display === "grid" ? true : false}
           className={`${ListProps[display]}`}
         >
           <Item
-            className={`block ${
-              active.home ? activeBtn.active : activeBtn.inActive
-            } rounded-0 ${
-              ItemProps[display]
-            } md:col-start-1 md:col-end-7 md:row-start-1 md:row-end-2`}
+            id="site-title"
+            className={`${ItemProps.general[display]} ${ItemProps.one[display]}`}
             key={"the creative age"}
+            data-grid={display === "grid" ? true : false}
           >
-            <Link href={"/"} passHref legacyBehavior scroll={false}>
-              <a
-                className={`${AnchorProps} ${
-                  display === "grid" ? "md:text-dynamic-2xl" : ""
-                } ${tap.home && "animate-tap transition-all"}`}
-                onClick={() => {
-                  setActive({
-                    home: true,
-                    about: false,
-                    projects: false,
-                    contact: false,
-                  });
-                  setTap((state) => ({ ...state, home: true }));
-                  window.scroll(0, 0);
-                }}
-                onAnimationEnd={() =>
-                  setTap((state) => ({ ...state, home: false }))
-                }
-              >
-                The Creative Age
-              </a>
-            </Link>
+            <NavigationMenuLink
+              href="/"
+              scroll={false}
+              className={`${LinkProps[display]} ${
+                display === "grid" ? "md:text-dynamic-2xl" : ""
+              }`}
+              onSelect={() => {
+                setActive({
+                  home: true,
+                  about: false,
+                  projects: false,
+                  contact: false,
+                });
+                window.scroll(0, 0);
+              }}
+              dataActive={active.home}
+            >
+              <h1>The Creative Age</h1>
+            </NavigationMenuLink>
           </Item>
           <Item
-            className={`block ${
-              active.about ? activeBtn.active : activeBtn.inActive
-            } rounded-0 ${
-              ItemProps[display]
-            } md:col-start-1 md:col-end-3 md:row-start-2 md:row-end-3`}
+            className={`${ItemProps.general[display]} ${ItemProps.two[display]}`}
             key={"about"}
+            data-grid={display === "grid" ? true : false}
           >
-            <Link href={"/#about"} passHref legacyBehavior scroll={false}>
-              <a
-                className={`${AnchorProps} ${
-                  tap.about && "animate-tap transition-all"
-                }`}
-                onClick={() => {
-                  setActive({
-                    home: false,
-                    about: true,
-                    projects: false,
-                    contact: false,
-                  });
-                  setTap((state) => ({ ...state, about: true }));
-                }}
-                onAnimationEnd={() =>
-                  setTap((state) => ({ ...state, about: false }))
-                }
-              >
-                About
-              </a>
-            </Link>
+            <NavigationMenuLink
+              href="/#about"
+              scroll={false}
+              className={`${LinkProps[display]}`}
+              onSelect={() => {
+                setActive({
+                  home: false,
+                  about: true,
+                  projects: false,
+                  contact: false,
+                });
+              }}
+              dataActive={active.about}
+            >
+              About
+            </NavigationMenuLink>
           </Item>
           <Item
-            className={
-              "block " +
-              (active.projects ? activeBtn.active : activeBtn.inActive) +
-              " rounded-0 " +
-              ItemProps[display] +
-              " md:col-start-3 md:col-end-5 md:row-start-2 md:row-end-3"
-            }
+            className={`${ItemProps.general[display]} ${ItemProps.three[display]}`}
             key={"projects"}
+            data-grid={display === "grid" ? true : false}
           >
-            <Link href={"/#projects"} passHref legacyBehavior scroll={false}>
-              <a
-                className={`${AnchorProps} ${
-                  tap.projects && "animate-tap transition-all"
-                }`}
-                onClick={() => {
-                  setActive({
-                    home: false,
-                    about: false,
-                    projects: true,
-                    contact: false,
-                  });
-                  setTap((state) => ({ ...state, projects: true }));
-                }}
-                onAnimationEnd={() =>
-                  setTap((state) => ({ ...state, projects: false }))
-                }
-              >
-                Projects
-              </a>
-            </Link>
+            <NavigationMenuLink
+              href="/#projects"
+              scroll={false}
+              className={`${LinkProps[display]}`}
+              onSelect={() => {
+                setActive({
+                  home: false,
+                  about: false,
+                  projects: true,
+                  contact: false,
+                });
+              }}
+              dataActive={active.projects}
+            >
+              Projects
+            </NavigationMenuLink>
           </Item>
           <Item
-            className={
-              "block " +
-              (active.contact ? activeBtn.active : activeBtn.inActive) +
-              " rounded-0 " +
-              ItemProps[display] +
-              " md:col-start-5 md:col-end-7 md:row-start-2 md:row-end-3"
-            }
+            className={`${ItemProps.general[display]} ${ItemProps.four[display]}`}
             key={"contact"}
+            data-grid={display === "grid" ? true : false}
           >
-            <Link href={"/#contact"} passHref legacyBehavior scroll={false}>
-              <a
-                className={`${AnchorProps} ${
-                  tap.contact && "animate-tap transition-all"
-                }`}
-                onClick={() => {
-                  setActive({
-                    home: false,
-                    about: false,
-                    projects: false,
-                    contact: true,
-                  });
-                  setTap((state) => ({ ...state, contact: true }));
-                }}
-                onAnimationEnd={() =>
-                  setTap((state) => ({ ...state, contact: false }))
-                }
-              >
-                Contact
-              </a>
-            </Link>
+            <NavigationMenuLink
+              href="/#contact"
+              scroll={false}
+              className={`${LinkProps[display]}`}
+              onSelect={() => {
+                setActive({
+                  home: false,
+                  about: false,
+                  projects: false,
+                  contact: true,
+                });
+              }}
+              dataActive={active.contact}
+            >
+              Contact
+            </NavigationMenuLink>
           </Item>
           <Item
-            className={
-              "block static right-0 rounded-0 " +
-              ItemProps[display] +
-              " md:col-start-3 md:col-end-5 md:row-start-3 md:row-end-4 " +
-              (display === "fixed" ? "md:ml-auto md:mr-20" : "md:relative")
-            }
+            className={`${ItemProps.general[display]} ${
+              ItemProps.five[display]
+            } ${
+              display === "fixed"
+                ? "md:static md:right-0 md:ml-auto md:mr-20"
+                : "md:relative"
+            }`}
+            data-grid={display === "grid" ? true : false}
             key={"socials"}
           >
             Socials Container
