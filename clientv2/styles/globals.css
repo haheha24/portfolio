@@ -3,8 +3,31 @@
 @tailwind utilities;
 
 @layer base {
-  html, body {
-    @apply scroll-smooth;
-    @apply scroll-pt-[64px]
+  html {
+    @apply scroll-smooth scroll-pt-[64px];
+  }
+  body {
+    @apply bg-black-secondary;
+  }
+}
+@layer utilities {
+  body::-webkit-scrollbar {
+    @apply w-5 h-5;
+  }
+
+  body::-webkit-scrollbar-track {
+    @apply bg-black-primary;
+  }
+
+  body::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-purple-secondary border-purple-primary border-solid border-spacing-3;
+  }
+
+  body::-webkit-scrollbar-thumb:hover {
+    @apply bg-purple-primary;
+  }
+
+  body::-webkit-scrollbar-track-piece {
+    @apply rounded-xl;
   }
 }
