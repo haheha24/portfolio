@@ -1,110 +1,147 @@
-import { FC, useState } from "react";
-import Link from "next/link";
-import { Root, Trigger, Content } from "@radix-ui/react-dropdown-menu";
-import { Root as NavRoot, Item } from "@radix-ui/react-navigation-menu";
-import { GiHamburgerMenu } from "react-icons/gi";
+import { useState } from "react";
+import * as RadixDropDownMenu from "@radix-ui/react-dropdown-menu";
+import * as RadixNavMenu from "@radix-ui/react-navigation-menu";
+import NavigationMenuLink from "./NavigationMenuLink";
 import { NavigationMenuActiveProps } from "./NavigationMenu";
+import { GiHamburgerMenu } from "react-icons/gi";
 
-interface BurgerMenuProps {}
-
-const BurgerMenu: FC<BurgerMenuProps> = ({}) => {
+const BurgerMenu = () => {
   const [active, setActive] = useState<NavigationMenuActiveProps>({
     home: true,
     about: false,
     projects: false,
     contact: false,
   });
+  const ItemProps = "w-full odd:bg-transparent-85 ";
+  const LinkProps =
+    "flex relative hover:text-purple-primary data-[active=true]:text-purple-primary data-[active=false]:text-white";
+  const LinkTextProps = "block w-full py-5 pl-1";
+  const [tap, setTap] = useState(false);
   return (
-    <Root dir="ltr">
-      <Trigger
-        className={"md:hidden fixed top-5 left-10 z-50"}
-        title="Navigation Menu"
+    <RadixDropDownMenu.Root>
+      <RadixDropDownMenu.Trigger
+        onPointerDown={() => {
+          setTap(true);
+        }}
+        onAnimationEnd={() => {
+          setTap(false);
+        }}
+        className={`fixed bottom-10 right-10 z-30 pointer-events-auto ${
+          tap && "animate-tap transition-[scale]"
+        }`}
       >
-        <GiHamburgerMenu size={"2em"} className="rounded-t-md rounded-b-sm" />
-      </Trigger>
-
-      <Content>
-        <NavRoot
+        <GiHamburgerMenu
+          size={45}
+          className="border-2 border-st border-purple-tertiary rounded-sm text-purple-primary bg-transparent-85"
+        />
+      </RadixDropDownMenu.Trigger>
+      <RadixDropDownMenu.Content
+        loop
+        data-align="start"
+        side="left"
+        sideOffset={20}
+        align="end"
+        className="data-[state=open]:animate-openBurgerContent data-[state=closed]:animate-closeBurgerContent transition-transform z-20 sm:overflow-hidden overflow-y-scroll"
+      >
+        <div
+          className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-transparent-85 w-screen h-screen -z-10 pointer-events-none"
+          aria-hidden
+        ></div>
+        <RadixNavMenu.Root
           id="navbar"
           dir="ltr"
-          data-id="Root"
-          className="bg-hero bg-100% h-full w-screen overflow-hidden"
+          data-orientation="vertical"
+          data-id="Navigation-Root"
+          className="bg-black-primary p-[5%] rounded-xl"
         >
-          <ul>
-            <Item>
-              <Link href={"/"} passHref legacyBehavior scroll={false}>
-                <a
-                  className={""}
-                  onClick={() => {
-                    setActive({
-                      home: true,
-                      about: false,
-                      projects: false,
-                      contact: false,
-                    });
-                    window.scroll(0, 0);
-                  }}
-                >
-                  The Creative Age
-                </a>
-              </Link>
-            </Item>
-            <Item>
-              <Link href={"/#about"} passHref legacyBehavior>
-                <a
-                  className={""}
-                  onClick={() => {
-                    setActive({
-                      home: false,
-                      about: true,
-                      projects: false,
-                      contact: false,
-                    });
-                  }}
-                >
-                  About
-                </a>
-              </Link>
-            </Item>
-            <Item>
-              <Link href={"/#projects"} passHref legacyBehavior>
-                <a
-                  className={""}
-                  onClick={() => {
-                    setActive({
-                      home: false,
-                      about: false,
-                      projects: true,
-                      contact: false,
-                    });
-                  }}
-                >
-                  Projects
-                </a>
-              </Link>
-            </Item>
-            <Item>
-              <Link href={"/#contact"} passHref legacyBehavior>
-                <a
-                  className={""}
-                  onClick={() => {
-                    setActive({
-                      home: false,
-                      about: false,
-                      projects: false,
-                      contact: true,
-                    });
-                  }}
-                >
-                  Contact
-                </a>
-              </Link>
-            </Item>
-            <Item>Social Container</Item>
-          </ul>
-        </NavRoot>
-      </Content>
-    </Root>
+          <RadixNavMenu.List
+            className="text-white w-full h-full"
+            data-orientation="vertical"
+          >
+            <RadixNavMenu.Item className={`${ItemProps}`}>
+              <NavigationMenuLink
+                href="/"
+                scroll={false}
+                className={`${LinkProps}`}
+                onSelect={() => {
+                  setActive({
+                    home: true,
+                    about: false,
+                    projects: false,
+                    contact: false,
+                  });
+                  window.scroll(0, 0);
+                }}
+                flex={false}
+                dataActive={active.home}
+              >
+                <span className={`${LinkTextProps}`}>The Creative Age</span>
+              </NavigationMenuLink>
+            </RadixNavMenu.Item>
+            <RadixNavMenu.Item className={`${ItemProps}`}>
+              <NavigationMenuLink
+                href="/#about"
+                scroll={false}
+                className={`${LinkProps}`}
+                onSelect={() => {
+                  setActive({
+                    home: false,
+                    about: true,
+                    projects: false,
+                    contact: false,
+                  });
+                }}
+                flex={false}
+                dataActive={active.about}
+              >
+                <span className={`${LinkTextProps}`}>About</span>
+              </NavigationMenuLink>
+            </RadixNavMenu.Item>
+            <RadixNavMenu.Item className={`${ItemProps}`}>
+              <NavigationMenuLink
+                href="/#projects"
+                scroll={false}
+                className={`${LinkProps}`}
+                onSelect={() => {
+                  setActive({
+                    home: false,
+                    about: false,
+                    projects: true,
+                    contact: false,
+                  });
+                }}
+                flex={false}
+                dataActive={active.projects}
+              >
+                <span className={`${LinkTextProps}`}>Projects</span>
+              </NavigationMenuLink>
+            </RadixNavMenu.Item>
+            <RadixNavMenu.Item className={`${ItemProps}`}>
+              <NavigationMenuLink
+                href="/#contact"
+                scroll={false}
+                className={`${LinkProps}`}
+                onSelect={() => {
+                  setActive({
+                    home: false,
+                    about: false,
+                    projects: false,
+                    contact: true,
+                  });
+                }}
+                flex={false}
+                dataActive={active.contact}
+              >
+                <span className={`${LinkTextProps}`}>Contact</span>
+              </NavigationMenuLink>
+            </RadixNavMenu.Item>
+            <RadixNavMenu.Item className={`${ItemProps}`}>
+              Social Container
+            </RadixNavMenu.Item>
+          </RadixNavMenu.List>
+        </RadixNavMenu.Root>
+      </RadixDropDownMenu.Content>
+    </RadixDropDownMenu.Root>
   );
 };
 
