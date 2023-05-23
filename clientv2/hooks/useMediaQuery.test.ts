@@ -1,5 +1,5 @@
 import useMediaQuery from "./useMediaQuery";
-import { act, renderHook } from "@testing-library/react";
+import { act, renderHook } from "test-utils";
 
 /**
  * JSDom doesn't have a method for window.resizeTo() so defining the values properties in innerX in window hacks around it.
@@ -7,7 +7,7 @@ import { act, renderHook } from "@testing-library/react";
  * JSDom it mocks it by grabbing redefining the window properties innerWidth and innerHeight.
  * These are the same values of what window.resizeTo() would mutate.
  */
-const customResize = (width: number, height: number) => {
+/* const customResize = (width: number, height: number) => {
   Object.defineProperty(window, "innerWidth", {
     writable: true,
     configurable: true,
@@ -17,11 +17,10 @@ const customResize = (width: number, height: number) => {
     writable: true,
     configurable: true,
     value: height,
-  });
-  return;
-};
+  }); 
+};*/
 
-const { rerender, result } = renderHook(() => useMediaQuery());
+const { rerender, result } = renderHook(useMediaQuery);
 
 describe("useMediaQuery hook tests", () => {
   it("get the initial width and height of the window", () => {
@@ -32,8 +31,19 @@ describe("useMediaQuery hook tests", () => {
     expect(result.current.width).toBe(window.innerWidth);
     expect(result.current.height).toBe(window.innerHeight);
     act(() => {
-      customResize(860, 768);
-      rerender();
+      /* customResize(860, 768); */
+      Object.defineProperty(window, "innerWidth", {
+        writable: true,
+        configurable: true,
+        value: 860,
+      });
+      Object.defineProperty(window, "innerHeight", {
+        writable: true,
+        configurable: true,
+        value: 768,
+      });
+      window.dispatchEvent(new Event("resize"));
+      /* rerender(); */
     });
     expect(result.current.width).toBe(860);
     expect(result.current.height).toBe(768);

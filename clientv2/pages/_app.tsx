@@ -1,14 +1,27 @@
 import "../styles/globals.css";
+import Head from "next/head";
 import type { AppProps } from "next/app";
+import Layout from "components/layout";
 
-import { ThemeProvider } from "styled-components";
-import { theme } from "../styles/Theme";
+//Mocks
+if (process.env.NEXT_PUBLIC_API_MOCKING === "true") {
+  import("../mocks").then(({ setupMocks }) => {
+    setupMocks();
+  });
+}
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider theme={theme.darkTheme}>
-      <Component {...pageProps} />
-    </ThemeProvider>
+    <>
+      <Head>
+        <title>Adrian Cristallo's Portfolio</title>
+        <meta name="description" content="Adrian Cristallo's Portfolio App" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </>
   );
 }
 
