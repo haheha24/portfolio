@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const plugin = require("tailwindcss/plugin");
+
 module.exports = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
@@ -27,6 +29,9 @@ module.exports = {
           tertiary: "hsl(260, 100%, 75%)",
         },
       },
+      padding: {
+        full: "100%",
+      },
       backgroundImage: {
         hero: "url('/images/transluscent_waves.jpg')",
         logo: "url('/images/site_logo_512x512.png')",
@@ -42,20 +47,46 @@ module.exports = {
       },
       fontSize: {
         "dynamic-base": "clamp(16px, 1vw, 96px)",
-        "dynamic-lg": "clamp(18px, 2vw, 96px)",
+        "dynamic-lg": "clamp(18px, 1.5vw, 96px)",
         "dynamic-xl": "clamp(24px, 2.5vw, 96px)",
         "dynamic-2xl": "clamp(28px, 4vw, 96px)",
       },
       gridTemplateRows: {
-        nav: "repeat(3, 25vh)",
+        nav: "repeat(3, 1fr)",
       },
       gridTemplateColumns: {
-        nav: "repeat(6, 15%)",
+        nav: "repeat(6, 1fr)",
       },
       keyframes: {
-        opacity: {
-          "0%": { opacity: 0 },
-          "100%": { opacity: 1 },
+        closeBurgerContent: {
+          "0%": {
+            opacity: 1,
+            transform: "translateY(0)",
+          },
+          "100%": {
+            opacity: 0,
+            transform: "translateY(10px)",
+          },
+        },
+        openBurgerContent: {
+          "0%": {
+            opacity: 0,
+            transform: "translateY(10px)",
+          },
+          "100%": {
+            opacity: 1,
+            transform: "translateY(0)",
+          },
+        },
+        menuSlideDown: {
+          "0%": {
+            opacity: 0,
+            transform: "translateY(-20px)",
+          },
+          "100%": {
+            opacity: 1,
+            transform: "translateY(0)",
+          },
         },
         tap: {
           "0%, 80%": {
@@ -70,13 +101,28 @@ module.exports = {
         },
       },
       animation: {
-        "opacity-itemone": "opacity 0.55s ease-in-out 1",
-        "opacity-itemtwo": "opacity 0.80s ease-in-out 1",
-        "opacity-itemthree": "opacity 1.05s ease-in-out 1",
-        "opacity-itemfour": "opacity 1.3s ease-in-out 1",
+        closeBurgerContent: "closeBurgerContent 0.2s ease-in-out 1",
+        openBurgerContent: "openBurgerContent 0.2s ease-in-out 1",
+        menuSlideDown: "menuSlideDown 0.5s ease-in 1",
+        "menuSlideDown-itemone": "menuSlideDown 0.5s ease-in-out 1",
+        "menuSlideDown-itemtwo": "menuSlideDown 0.75s ease-in-out 1",
+        "menuSlideDown-itemthree": "menuSlideDown 1.25s ease-in-out 1",
+        "menuSlideDown-itemfour": "menuSlideDown 0.85s ease-in-out 1",
+        "menuSlideDown-itemfour": "menuSlideDown 1.25s ease-in-out 1",
         tap: "tap 0.25s ease-in 1",
       },
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(function ({ addComponents }) {
+      addComponents({
+        "[data-radix-popper-content-wrapper]": {
+          transform: "translate(-50%, -50%)!important",
+          top: "50%!important",
+          left: "50%!important",
+          width: "80%",
+        },
+      });
+    }),
+  ],
 };
