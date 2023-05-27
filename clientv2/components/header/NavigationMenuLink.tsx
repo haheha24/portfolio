@@ -1,21 +1,21 @@
 import NextLink from "next/link";
-import { Link } from "@radix-ui/react-navigation-menu";
-import { AnchorHTMLAttributes, ReactEventHandler, useState } from "react";
+import { Link, NavigationMenuLinkProps } from "@radix-ui/react-navigation-menu";
+import { useState, PointerEventHandler, AnimationEventHandler } from "react";
 
 type BaseProps = {
   href: string;
   scroll?: boolean;
   className?: string;
   flex?: boolean;
-  onClick?: ReactEventHandler<HTMLAnchorElement>;
+  onPointerDown?: PointerEventHandler;
+  onAnimationEnd?: AnimationEventHandler;
   dataActive?: boolean;
   animation?: string;
-  onAnimationEnd?: () => void;
   children?: React.ReactNode;
 };
 
-export type NavigationMenuLinkProps = BaseProps &
-  Omit<AnchorHTMLAttributes<HTMLAnchorElement>, keyof BaseProps>;
+export type NavMenuLinkProps = BaseProps &
+  Omit<NavigationMenuLinkProps, keyof BaseProps>;
 
 const NavigationMenuLink = ({
   href,
@@ -23,11 +23,12 @@ const NavigationMenuLink = ({
   className = "",
   flex = true,
   onPointerDown,
+  onAnimationEnd,
   dataActive,
   animation = "animate-tap transition-transform",
-  onAnimationEnd,
   children,
-}: NavigationMenuLinkProps) => {
+  ...props
+}: NavMenuLinkProps) => {
   const [animate, setAnimate] = useState(false);
   const flexProps = "flex items-center justify-center";
   return (
@@ -43,10 +44,11 @@ const NavigationMenuLink = ({
           setAnimate(true);
           if (onPointerDown) onPointerDown(e);
         }}
-        onAnimationEnd={() => {
+        onAnimationEnd={(e) => {
           setAnimate(false);
-          if (onAnimationEnd) onAnimationEnd();
+          if (onAnimationEnd) onAnimationEnd(e);
         }}
+        {...props}
       >
         {children}
       </Link>
