@@ -1,25 +1,28 @@
 import NextLink from "next/link";
-import { Link as NavLink } from "@radix-ui/react-navigation-menu";
-import { ComponentPropsWithoutRef, useState } from "react";
+import { Link } from "@radix-ui/react-navigation-menu";
+import { AnchorHTMLAttributes, ReactEventHandler, useState } from "react";
 
-type NavigationMenuLinkProps = {
+type BaseProps = {
   href: string;
   scroll?: boolean;
   className?: string;
   flex?: boolean;
-  onSelect?: () => void;
+  onClick?: ReactEventHandler<HTMLAnchorElement>;
   dataActive?: boolean;
   animation?: string;
   onAnimationEnd?: () => void;
   children?: React.ReactNode;
-} & ComponentPropsWithoutRef<"a">;
+};
+
+export type NavigationMenuLinkProps = BaseProps &
+  Omit<AnchorHTMLAttributes<HTMLAnchorElement>, keyof BaseProps>;
 
 const NavigationMenuLink = ({
   href,
   scroll,
   className = "",
   flex = true,
-  onSelect,
+  onPointerDown,
   dataActive,
   animation = "animate-tap transition-transform",
   onAnimationEnd,
@@ -29,16 +32,16 @@ const NavigationMenuLink = ({
   const flexProps = "flex items-center justify-center";
   return (
     <NextLink href={href} passHref legacyBehavior scroll={scroll}>
-      <NavLink
-        className={`${className} md:px-5 ${
+      <Link
+        className={`md:px-5 ${
           flex ? flexProps : ""
-        } font-medium h-full w-full hover:underline hover:text-purple-primary ${
-          animate && animation
-        }`}
+        } font-medium h-full w-full hover:underline hover:text-purple-primary${
+          className ? " " + className : ""
+        } ${animate && animation}`}
         data-active={dataActive}
-        onSelect={() => {
+        onPointerDown={(e) => {
           setAnimate(true);
-          if (onSelect) onSelect();
+          if (onPointerDown) onPointerDown(e);
         }}
         onAnimationEnd={() => {
           setAnimate(false);
@@ -46,7 +49,7 @@ const NavigationMenuLink = ({
         }}
       >
         {children}
-      </NavLink>
+      </Link>
     </NextLink>
   );
 };
