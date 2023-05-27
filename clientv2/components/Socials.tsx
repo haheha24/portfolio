@@ -27,7 +27,7 @@ const Socials = ({
 }: SocialsProps) => {
   return (
     <div
-      className={`flex ${row ? "flex-row" : "flex-col"} gap-5`}
+      className={`flex ${row ? "flex-row" : "flex-col"} gap-5 justify-center`}
       data-testid="socials-container"
     >
       {github && (
