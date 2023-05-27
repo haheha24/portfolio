@@ -1,4 +1,4 @@
-import { render, fireEvent, cleanup, waitFor } from "@testing-library/react";
+import { render, fireEvent, cleanup } from "@testing-library/react";
 import NavigationMenuLink from "./NavigationMenuLink";
 import { Root, List, Item } from "@radix-ui/react-navigation-menu";
 
