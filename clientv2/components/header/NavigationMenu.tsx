@@ -1,6 +1,7 @@
 import { useState, forwardRef } from "react";
 import { Root, Item, Indicator } from "@radix-ui/react-navigation-menu";
 import NavigationMenuLink from "./NavigationMenuLink";
+import Socials from "../Socials";
 
 type NavigationMenuProps = {
   display: "grid" | "fixed";
@@ -34,27 +35,27 @@ const NavigationMenu = forwardRef<HTMLElement, NavigationMenuProps>(
       one: {
         grid: "data-[grid=true]:animate-menuSlideDown-itemone md:col-start-1 md:col-end-7 md:row-start-1 md:row-end-2 md:mx-5 md:flex md:justify-center md:items-center md:text-center md:bg-transparent-85 md:rounded-xl lg:text-dynamic-xl md:text-dynamic-lg",
         fixed:
-          "md:py-5 md: md:text-center md:bg-transparent md:rounded-0 3xl:text-dynamic-lg lg:text-dynamic-base",
+          "md:py-2.5 md:text-center md:bg-transparent md:rounded-0 3xl:text-dynamic-lg lg:text-dynamic-base",
       },
       two: {
         grid: "data-[grid=true]:animate-menuSlideDown-itemtwo md:col-start-1 md:col-end-3 md:row-start-2 md:row-end-3 md:mx-5 md:flex md:justify-center md:items-center md:text-center md:bg-transparent-85 md:rounded-xl lg:text-dynamic-xl md:text-dynamic-lg",
         fixed:
-          "md:py-5 md: md:text-center md:bg-transparent md:rounded-0 3xl:text-dynamic-lg lg:text-dynamic-base",
+          "md:py-2.5 md:text-center md:bg-transparent md:rounded-0 3xl:text-dynamic-lg lg:text-dynamic-base",
       },
       three: {
         grid: "data-[grid=true]:animate-menuSlideDown-itemthree md:col-start-3 md:col-end-5 md:row-start-2 md:row-end-3 md:mx-5 md:flex md:justify-center md:items-center md:text-center md:bg-transparent-85 md:rounded-xl lg:text-dynamic-xl md:text-dynamic-lg",
         fixed:
-          "md:py-5 md: md:text-center md:bg-transparent md:rounded-0 3xl:text-dynamic-lg lg:text-dynamic-base",
+          "md:py-2.5 md:text-center md:bg-transparent md:rounded-0 3xl:text-dynamic-lg lg:text-dynamic-base",
       },
       four: {
         grid: "data-[grid=true]:animate-menuSlideDown-itemfour md:col-start-5 md:col-end-7 md:row-start-2 md:row-end-3 md:mx-5 md:flex md:justify-center md:items-center md:text-center md:bg-transparent-85 md:rounded-xl lg:text-dynamic-xl md:text-dynamic-lg",
         fixed:
-          "md:py-5 md: md:text-center md:bg-transparent md:rounded-0 3xl:text-dynamic-lg lg:text-dynamic-base",
+          "md:py-2.5 md:text-center md:bg-transparent md:rounded-0 3xl:text-dynamic-lg lg:text-dynamic-base",
       },
       five: {
         grid: "data-[grid=true]:animate-menuSlideDown-itemfive md:col-start-3 md:col-end-5 md:row-start-3 md:row-end-4 md:mx-5 md:flex md:justify-center md:items-center md:text-center md:bg-transparent-85 md:rounded-xl lg:text-dynamic-xl md:text-dynamic-lg",
         fixed:
-          "md:py-5 md: md:text-center md:bg-transparent md:rounded-0 3xl:text-dynamic-lg lg:text-dynamic-base",
+          "md:py-2.5 md:text-center md:bg-transparent md:rounded-0 3xl:text-dynamic-lg lg:text-dynamic-base",
       },
     };
     const LinkProps = {
@@ -90,7 +91,7 @@ const NavigationMenu = forwardRef<HTMLElement, NavigationMenuProps>(
               className={`${LinkProps[display]} ${
                 display === "grid" ? "md:text-dynamic-2xl" : ""
               }`}
-              onSelect={() => {
+              onClick={() => {
                 setActive({
                   home: true,
                   about: false,
@@ -101,7 +102,7 @@ const NavigationMenu = forwardRef<HTMLElement, NavigationMenuProps>(
               }}
               dataActive={active.home}
             >
-              <h1>The Creative Age</h1>
+              The Creative Age
             </NavigationMenuLink>
           </Item>
           <Item
@@ -113,7 +114,7 @@ const NavigationMenu = forwardRef<HTMLElement, NavigationMenuProps>(
               href="/#about"
               scroll={false}
               className={`${LinkProps[display]}`}
-              onSelect={() => {
+              onClick={() => {
                 setActive({
                   home: false,
                   about: true,
@@ -135,7 +136,7 @@ const NavigationMenu = forwardRef<HTMLElement, NavigationMenuProps>(
               href="/#projects"
               scroll={false}
               className={`${LinkProps[display]}`}
-              onSelect={() => {
+              onClick={() => {
                 setActive({
                   home: false,
                   about: false,
@@ -157,7 +158,7 @@ const NavigationMenu = forwardRef<HTMLElement, NavigationMenuProps>(
               href="/#contact"
               scroll={false}
               className={`${LinkProps[display]}`}
-              onSelect={() => {
+              onClick={() => {
                 setActive({
                   home: false,
                   about: false,
@@ -181,7 +182,14 @@ const NavigationMenu = forwardRef<HTMLElement, NavigationMenuProps>(
             data-grid={display === "grid" ? true : false}
             key={"socials"}
           >
-            Socials Container
+            <Socials
+              github
+              linkedin
+              gmail
+              className="mx-2.5 p-2.5 text-2xl hover:bg-purple-primary bg-purple-secondary border-purple-primary border-[2.5px] rounded-full transition-colors duration-150 ease-out"
+              width={"1em"}
+              height={"1em"}
+            />
           </Item>
         </ul>
         <Indicator />

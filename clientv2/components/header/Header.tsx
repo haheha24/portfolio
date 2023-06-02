@@ -8,8 +8,6 @@ import FeatureImg from "../../public/images/transluscent_waves.jpg";
 
 interface HeaderNavigation {
   viewport: number;
-  featureOnly?: boolean;
-  fixedOnly?: boolean;
 }
 
 export interface IActiveMenu {
@@ -23,11 +21,12 @@ const Header = ({ viewport: viewport }: HeaderNavigation) => {
   const featureRef = useRef<HTMLImageElement>(null);
   const { isElementVisible, isDesktop } = useElementVisibility(
     viewport,
-    featureRef
+    featureRef,
+    1
   );
 
   return (
-    <header id="header" className="md:mb-16 relative">
+    <header id="header" className="md:mb-28 relative">
       <div
         id="feature-image-container"
         className="w-full relative md:max-h-[62.5rem]"

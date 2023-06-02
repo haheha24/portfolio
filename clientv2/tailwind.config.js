@@ -114,13 +114,16 @@ module.exports = {
     },
   },
   plugins: [
-    plugin(function ({ addComponents }) {
+    plugin(function ({ addComponents, theme }) {
       addComponents({
         "[data-radix-popper-content-wrapper]": {
           transform: "translate(-50%, -50%)!important",
           top: "50%!important",
           left: "50%!important",
           width: "80%",
+        },
+        "[data-radix-menu-content]": {
+          borderRadius: theme("borderRadius.xl"),
         },
       });
     }),
