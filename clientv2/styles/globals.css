@@ -4,7 +4,7 @@
 
 @layer base {
   html {
-    @apply scroll-smooth scroll-pt-[64px];
+    @apply scroll-smooth scroll-pt-[80px];
   }
   body {
     @apply bg-black-secondary;
