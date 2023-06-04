@@ -13,6 +13,7 @@ type BaseProps<T> = {
   children?: ReactNode;
   onPointerDown?: PointerEventHandler<T>;
   onAnimationEnd?: AnimationEventHandler<T>;
+  tapAnimation?: boolean;
 };
 
 type ButtonProps = BaseProps<HTMLButtonElement> &
@@ -51,6 +52,7 @@ const Button = (props: LinkProps) => {
       scroll,
       onPointerDown,
       onAnimationEnd,
+      tapAnimation = true,
       ...rest
     } = props;
     return (
@@ -62,11 +64,11 @@ const Button = (props: LinkProps) => {
           target="_blank"
           rel="noopener noreferrer"
           onPointerDown={(e) => {
-            setTap(true);
+            if (tapAnimation) setTap(true);
             if (onPointerDown) onPointerDown(e);
           }}
           onAnimationEnd={(e) => {
-            setTap(false);
+            if (tapAnimation) setTap(false);
             if (onAnimationEnd) onAnimationEnd(e);
           }}
           {...rest}
@@ -77,16 +79,23 @@ const Button = (props: LinkProps) => {
     );
   }
 
-  const { className, as, onPointerDown, onAnimationEnd, ...rest } = props;
+  const {
+    className,
+    as,
+    onPointerDown,
+    onAnimationEnd,
+    tapAnimation = true,
+    ...rest
+  } = props;
   return (
     <button
       className={`${tap && "animate-tap"}${className ? " " + className : ""}`}
       onPointerDown={(e) => {
-        setTap(true);
+        if (tapAnimation) setTap(true);
         if (onPointerDown) onPointerDown(e);
       }}
       onAnimationEnd={(e) => {
-        setTap(false);
+        if (tapAnimation) setTap(false);
         if (onAnimationEnd) onAnimationEnd(e);
       }}
       {...rest}

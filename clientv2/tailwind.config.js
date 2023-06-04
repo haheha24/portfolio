@@ -48,8 +48,10 @@ module.exports = {
       fontSize: {
         "dynamic-base": "clamp(16px, 1vw, 96px)",
         "dynamic-lg": "clamp(18px, 1.5vw, 96px)",
-        "dynamic-xl": "clamp(24px, 2.5vw, 96px)",
-        "dynamic-2xl": "clamp(28px, 4vw, 96px)",
+        "dynamic-xl": "clamp(24px, 2vw, 96px)",
+        "dynamic-2xl": "clamp(28px, 2vw, 96px)",
+        "dynamic-3xl": "clamp(32px, 2vw, 96px)",
+        "dynamic-4xl": "clamp(36px, 2vw, 96px)",
       },
       gridTemplateRows: {
         nav: "repeat(3, 1fr)",
@@ -58,6 +60,14 @@ module.exports = {
         nav: "repeat(6, 1fr)",
       },
       keyframes: {
+        spring: {
+          "0%": { overflow: "hidden", transform: "translateY(-30px)" },
+          "50%": { transform: "translateY(0)" },
+          "75%": { overflow: "hidden", transform: "translateY(-7.5px)" },
+          "90%": { transform: "translateY(0)" },
+          "95%": { overflow: "hidden", transform: "translateY(-2.5px)" },
+          "100%": { transform: "translateY(0)" },
+        },
         closeBurgerContent: {
           "0%": {
             opacity: 1,
@@ -101,6 +111,7 @@ module.exports = {
         },
       },
       animation: {
+        spring: "spring 0.45s ease 1",
         closeBurgerContent: "closeBurgerContent 0.2s ease-in-out 1",
         openBurgerContent: "openBurgerContent 0.2s ease-in-out 1",
         menuSlideDown: "menuSlideDown 0.5s ease-in 1",
