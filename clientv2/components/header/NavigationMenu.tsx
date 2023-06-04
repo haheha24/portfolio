@@ -186,7 +186,7 @@ const NavigationMenu = forwardRef<HTMLElement, NavigationMenuProps>(
               github
               linkedin
               gmail
-              className="mx-2.5 p-2.5 text-2xl hover:bg-purple-primary bg-purple-secondary border-purple-primary border-[2.5px] rounded-full transition-colors duration-150 ease-out"
+              className="mx-2.5 p-2.5 text-dynamic-2xl hover:bg-purple-primary bg-purple-secondary border-purple-primary border-[2.5px] rounded-full transition-colors duration-150 ease-out"
               width={"1em"}
               height={"1em"}
             />
