@@ -1,5 +1,4 @@
 import "@testing-library/jest-dom/extend-expect";
-import "jest-styled-components";
 import { mswServer } from "./mocks/mswServer";
 
 //** Conditions for mocking API requests **/
