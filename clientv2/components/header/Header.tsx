@@ -39,14 +39,9 @@ const Header = ({ viewport: viewport }: HeaderNavigation) => {
           className="max-h-[1000px]"
         />
         {!isDesktop && (
-          <div
-            id="heading-bg"
-            className="w-[80%] h-1/3 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-purple-primary bg-transparent-85 rounded-xl"
-          >
-            <h1 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-dynamic-lg text-purple-primary">
-              The Creative Age
-            </h1>
-          </div>
+          <h1 className="w-[80%] leading-[3] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 align-baseline text-center text-dynamic-4xl text-purple-primary bg-transparent-85 rounded-xl">
+            The Creative Age
+          </h1>
         )}
       </div>
       {isDesktop && (
