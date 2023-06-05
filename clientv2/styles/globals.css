@@ -4,7 +4,7 @@
 
 @layer base {
   html {
-    @apply scroll-smooth md:scroll-pt-[68px] text-white;
+    @apply scroll-smooth md:scroll-pt-[68px] scroll-pt-0 text-white;
   }
   body {
     @apply bg-black-secondary text-dynamic-base;
