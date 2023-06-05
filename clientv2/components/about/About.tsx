@@ -19,7 +19,7 @@ const About = () => {
     "lg:text-dynamic-lg data-[active=true]:bg-purple-primary bg-purple-secondary hover:bg-purple-primary p-2 sm:rounded-t-3xl border-t-[2.5px] border-x-[2.5px] border-solid border-black-primary transition-colors";
 
   return (
-    <section id="about" className="m-0 border-purple-primary space-y-5">
+    <section id="about" className="space-y-5">
       <H2>About</H2>
       <p className={PClass}>
         <span className="text-dynamic-2xl">Welcome!</span> My name is{" "}
