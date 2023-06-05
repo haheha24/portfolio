@@ -21,13 +21,13 @@ describe("Test coverage for the NavigationMenu, built with radix UI NavigationMe
   test("Test which nav link is active", () => {
     const { getByText } = render(<NavigationMenu display="grid" />);
     //Check that The Creative Age is the first to be active
-    expect(getByText("The Creative Age")).toHaveAttribute(
+    expect(getByText("The Creative Age").parentElement).toHaveAttribute(
       "data-active",
       "true"
     );
     expect(getByText("About")).toHaveAttribute("data-active", "false");
     fireEvent.click(getByText("About"));
-    expect(getByText("The Creative Age")).toHaveAttribute(
+    expect(getByText("The Creative Age").parentElement).toHaveAttribute(
       "data-active",
       "false"
     );
