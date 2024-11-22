@@ -46,18 +46,21 @@ module.exports = {
         "1/6": "15%",
       },
       fontSize: {
-        "dynamic-base": "clamp(16px, 0.9vw, 96px)",
-        "dynamic-lg": "clamp(18px, 1.125vw, 96px)",
-        "dynamic-xl": "clamp(24px, 1.25vw, 96px)",
-        "dynamic-2xl": "clamp(30px, 1.375vw, 96px)",
-        "dynamic-3xl": "clamp(36px, 1.5vw, 96px)",
-        "dynamic-4xl": "clamp(44px, 1.625vw, 96px)",
+        "dynamic-base": "clamp(16px, 1vw, 24px)",
+        "dynamic-lg": "clamp(16px, 1.125vw, 28px)",
+        "dynamic-xl": "clamp(16px, 1.25vw, 36px)",
+        "dynamic-2xl": "clamp(16px, 2.5vw, 40px)",
+        "dynamic-3xl": "clamp(16px, 5vw, 46px)",
+        "dynamic-4xl": "clamp(16px, 10vw, 60px)",
       },
       gridTemplateRows: {
         nav: "repeat(3, 1fr)",
       },
       gridTemplateColumns: {
         nav: "repeat(6, 1fr)",
+      },
+      aspectRatio: {
+        "4/3": "4 / 3",
       },
       keyframes: {
         spring: {

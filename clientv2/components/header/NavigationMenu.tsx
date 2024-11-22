@@ -33,7 +33,7 @@ const NavigationMenu = forwardRef<HTMLElement, NavigationMenuProps>(
         fixed: "block rounded-0",
       },
       one: {
-        grid: "data-[grid=true]:animate-menuSlideDown-itemone md:col-start-1 md:col-end-7 md:row-start-1 md:row-end-2 md:flex md:justify-center md:items-center md:text-center md:bg-transparent-85 md:rounded-xl lg:text-dynamic-4xl md:text-dynamic-3xl",
+        grid: "data-[grid=true]:animate-menuSlideDown-itemone md:col-start-1 md:col-end-7 md:row-start-1 md:row-end-2 md:flex md:justify-center md:items-center md:text-center md:bg-transparent-85 md:rounded-xl 2xl:text-dynamic-4xl lg:text-dynamic-3xl md:text-dynamic-2xl",
         fixed:
           "md:py-2.5 md:text-center md:bg-transparent md:rounded-0 lg:text-dynamic-lg",
       },
@@ -58,7 +58,7 @@ const NavigationMenu = forwardRef<HTMLElement, NavigationMenuProps>(
       },
     };
     const LinkProps = {
-      grid: "py-10 data-[active=true]:text-purple-primary text-white",
+      grid: "xl:py-16 lg:py-14 py-10 data-[active=true]:text-purple-primary text-white",
       fixed: "md:py-0 data-[active=true]:text-purple-primary text-white",
     };
     return (
@@ -72,7 +72,6 @@ const NavigationMenu = forwardRef<HTMLElement, NavigationMenuProps>(
       >
         <ul
           id="navbarlist"
-          aria-orientation="horizontal"
           data-orientation="horizontal"
           dir="ltr"
           data-grid={display === "grid" ? true : false}
@@ -194,5 +193,7 @@ const NavigationMenu = forwardRef<HTMLElement, NavigationMenuProps>(
     );
   }
 );
+
+NavigationMenu.displayName = "NavigationMenu";
 
 export default NavigationMenu;

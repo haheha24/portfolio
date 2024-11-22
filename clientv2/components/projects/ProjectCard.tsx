@@ -32,23 +32,21 @@ const ProjectCard = ({
   };
 
   return (
-    <figure className="h-[250px] md:w-auto w-full relative rounded-xl overflow-hidden m-[2%] md:flex-[1_0_calc(25%-10px)] sm:flex-[1_0_calc(33%-10px)] flex-[1_1_auto)] bg-black-primary">
+    <figure className="relative rounded-3xl overflow-hidden bg-black-primary flex flex-col items-center justify-center m-auto w-full max-w-sm shadow-md duration-200 hover:scale-105 hover:shadow-2xl transition-all">
       <Image
         src={image}
-        width={500}
-        height={500}
         alt={altTxt}
-        className="w-full h-full duration-200 ease-in-out"
+        className="w-full h-[250px] aspect-4/3 duration-200 hover:scale-150 ease-in-out"
         ref={imgRef}
       />
       <figcaption
         className="flex flex-col justify-center font-semibold text-center space-y-5 bg-transparent-85 absolute top-0 left-0 w-full h-full opacity-0 hover:opacity-100 duration-500 ease-in-out"
-        onMouseOver={() => {
+        /* onMouseOver={() => {
           imgMouseOverHandler();
         }}
         onMouseOut={() => {
           imgMouseOutHandler();
-        }}
+        }} */
       >
         <h3 className="py-[5px]">{title}</h3>
         <p className="ml-[5%]">{description}</p>
