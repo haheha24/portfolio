@@ -3,8 +3,6 @@ import { H2 } from "components/Heading";
 import portfolioImg from "../../public/images/portfolio.png";
 import WIP from "../../public/images/work_in_progress.jpg";
 
-"sm:grid md:grid-cols-[repeat(3, 33%)] sm:grid-cols-[repeat(2,50%)] flex flex-col md:justify-center gap-3 sm:items-start items-center rounded-none md:mx-[12.5%] mx-[5%]"
-
 const Projects = () => {
   return (
     <section id="projects" className="w-full">
