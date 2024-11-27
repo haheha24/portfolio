@@ -26,6 +26,7 @@ yarn-error.log*
 
 # personal
 *copy.tsx
+*copy.ts
 *.txt
 
 # MSW
