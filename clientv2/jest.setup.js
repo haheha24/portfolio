@@ -1,17 +1,17 @@
 import "@testing-library/jest-dom/extend-expect";
-import { mswServer } from "./mocks/mswServer";
+import { server } from "./mocks/node";
 
 //** Conditions for mocking API requests **/
 beforeEach(() => {
-  mswServer.listen();
+  server.listen();
 });
 
 afterEach(() => {
-  mswServer.resetHandlers();
+  server.resetHandlers();
 });
 
 afterAll(() => {
-  mswServer.close();
+  server.close();
 });
 //*****************************************/
 

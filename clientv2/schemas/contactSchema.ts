@@ -2,7 +2,6 @@ import { object, string } from "yup";
 
 export interface IContactForm {
   name: string;
-  typeForm: string;
   email: string;
   subject: string;
   message: string;

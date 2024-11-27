@@ -35,19 +35,30 @@ const Contact = () => {
                 },
                 body: JSON.stringify({ contact: values }),
               });
-              const data = await res.json();
 
-              if (data.error) setSubmitError(data.error);
-              if (data.success) setSent(true);
-
-              resetForm();
+              // Handle HTTP errors
+              if (!res.ok) {
+                throw new Error(`HTTP error! status: ${res.status}`);
+              }
+              const data: { success: boolean; error?: { message: string } } =
+                await res.json();
+             
+              if (data.success) {
+                setSent(true);
+                resetForm();
+              } else {
+                setSubmitError(data.error?.message);
+              }
             } catch (error) {
-              setSent(false);
-              setSubmitError("Something went wrong, please try again.");
+              setSubmitError(
+                error instanceof Error
+                  ? error.message
+                  : "Something went wrong, please try again. If this continues, you can email directly at adriancristallo1@gmail.com"
+              );
             }
           }}
         >
-          {({ handleChange, handleSubmit, errors, values }) => (
+          {({ handleChange, handleSubmit, isSubmitting, errors, values }) => (
             <Form
               id="contact-form"
               className="flex flex-col items-center 2xl:max-w-2xl lg:max-w-lg max-w-sm mx-auto"
@@ -140,13 +151,26 @@ const Contact = () => {
                 required
                 spellCheck={true}
               />
-              <Button
-                type="submit"
-                form="contact-form"
-                className="p-1 my-5 w-24 align-baseline self-center bg-purple-secondary hover:bg-purple-primary rounded-xl border-[2.5px] border-solid border-purple-primary"
-              >
-                Send
-              </Button>
+              {isSubmitting ? (
+                <svg
+                  viewBox="0 0 24 24"
+                  className="origin-center stroke-purple-primary fill-purple-secondary w-10 h-10 animate-spin"
+                >
+                  <path
+                    d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,19a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z"
+                    opacity=".65"
+                  />
+                  <path d="M10.14,1.16a11,11,0,0,0-9,8.92A1.59,1.59,0,0,0,2.46,12,1.52,1.52,0,0,0,4.11,10.7a8,8,0,0,1,6.66-6.61A1.42,1.42,0,0,0,12,2.69h0A1.57,1.57,0,0,0,10.14,1.16Z" />
+                </svg>
+              ) : (
+                <Button
+                  type="submit"
+                  form="contact-form"
+                  className="p-1 my-5 w-24 align-baseline self-center bg-purple-secondary hover:bg-purple-primary rounded-xl border-[2.5px] border-solid border-purple-primary"
+                >
+                  Send
+                </Button>
+              )}
             </Form>
           )}
         </Formik>
@@ -158,7 +182,7 @@ const Contact = () => {
         >
           <p className="py-5 px-2.5">
             Thank you for your enquiry. <br />A confirmation email will be sent
-            and you&amp;ll receive response within 48 hours.
+            and you&#39;ll receive a response within 48 hours.
           </p>
         </Modal>
       )}

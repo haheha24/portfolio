@@ -62,6 +62,11 @@ module.exports = {
       aspectRatio: {
         "4/3": "4 / 3",
       },
+      clipPath: {
+        circle: "circle(50% at 50% 50%)",
+        ellipse: "ellipse(50% 50% at 50% 50%)",
+        polygon: "polygon(50% 0%, 0% 100%, 100% 100%)",
+      },
       keyframes: {
         spring: {
           "0%": { overflow: "hidden", transform: "translateY(-30px)" },
@@ -112,6 +117,10 @@ module.exports = {
             scale: "1",
           },
         },
+        spinner: {
+          "0%": { clipPath: "circle(0% at 50% 50%)" },
+          "100%": { clipPath: "circle(100% at 50% 50%)" },
+        },
       },
       animation: {
         spring: "spring 0.45s ease 1",
@@ -141,5 +150,6 @@ module.exports = {
         },
       });
     }),
+    require("tailwind-clip-path"),
   ],
 };

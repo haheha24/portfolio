@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import Image, { StaticImageData } from "next/image";
-import { GoMarkGithub } from "react-icons/go";
+import { FaGithub } from "react-icons/fa";
 import Button from "components/Button";
 
 interface Card {
@@ -15,7 +15,7 @@ interface Card {
 const ProjectCard = ({
   url,
   github = undefined,
-  image,
+  image = "",
   altTxt = "",
   title = "",
   description = "",
@@ -36,6 +36,8 @@ const ProjectCard = ({
       <Image
         src={image}
         alt={altTxt}
+        width={500}
+        height={500}
         className="w-full h-[250px] aspect-4/3 duration-200 ease-in-out"
         ref={imgRef}
       />
@@ -70,7 +72,7 @@ const ProjectCard = ({
             target="_blank"
             rel="noreferrer"
           >
-            <GoMarkGithub style={{ width: "1.5em", height: "1.33em" }} />
+            <FaGithub style={{ width: "1.5em", height: "1.33em" }} />
           </Button>
         ) : (
           ""

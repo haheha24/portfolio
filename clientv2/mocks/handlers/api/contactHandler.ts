@@ -1,31 +1,42 @@
-import { rest } from "msw";
+import { http, HttpResponse } from "msw";
 import { contactSchema } from "../../../schemas/contactSchema";
 import type { IContactForm } from "../../../schemas/contactSchema";
 
-interface ContactReq {
-  contact: IContactForm
-}
+// Mock `sgMail.send` to simulate the SendGrid behavior
+const mockSendGrid = async (message: any) => {
+  console.log("Mocking email send for:", message);
+  return Promise.resolve({ status: "success" });
+};
 
 interface ContactResponseBody {
   success: boolean;
-  error?: unknown;
+  error?: unknown | JSON;
 }
 
-const contactHandler = rest.post<ContactReq, {}, ContactResponseBody>(
-  "/api/contact",
-  async (req, res, ctx) => {
-    try {
-      const contactEmail: IContactForm = await req.json<ContactReq>().then((data) => data.contact);
-      console.log(contactEmail)
-      if (await contactSchema.validate(contactEmail))
-        return res(ctx.status(200), ctx.json({ success: true }));
-    } catch (error) {
-      return res(
-        ctx.status(400),
-        ctx.json({ success: false, error: JSON.stringify(error) })
-      );
-    }
+const contactHandler = http.post<
+  {},
+  { contact: IContactForm },
+  ContactResponseBody,
+  "/api/contact"
+>("/api/contact", async ({ request }) => {
+  try {
+    const data: { contact: IContactForm } = await request.json();
+    const contact = data.contact;
+    const validateContacts = await contactSchema.validate(contact);
+    await Promise.all([
+      mockSendGrid({ to: "me@test.com", ...validateContacts }),
+      mockSendGrid({ to: validateContacts.email, ...validateContacts }),
+    ]);
+    return HttpResponse.json(
+      { success: true, error: undefined },
+      { status: 200 }
+    );
+  } catch (error) {
+    return HttpResponse.json(
+      { success: false, error: JSON.stringify(error) },
+      { status: 500 }
+    );
   }
-);
+});
 
 export default contactHandler;

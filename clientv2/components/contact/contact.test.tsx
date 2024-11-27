@@ -1,4 +1,4 @@
-import { render, cleanup } from "@testing-library/react";
+import { render, cleanup, act } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Contact from "./Contact";
 
@@ -24,10 +24,11 @@ describe("Run tests for the contact form component.", () => {
       }
       await user.click(touch);
     };
-    const name = queryByLabelText(/Name/);
-    const email = queryByLabelText(/Email/);
-    const subject = queryByLabelText(/Subject/);
-    const message = queryByLabelText(/Message/);
+    const name = queryByLabelText(/Name/) as HTMLLabelElement;
+    const email = queryByLabelText(/Email/) as HTMLLabelElement;
+    const subject = queryByLabelText(/Subject/) as HTMLLabelElement;
+    const message = queryByLabelText(/Message/) as HTMLLabelElement;
+
     //Name Input
     expect(name).toBeRequired();
     await inputThenClick(name!, null, email!);
@@ -94,7 +95,7 @@ describe("Run tests for the contact form component.", () => {
     expect(message).toBeRequired();
     await inputThenClick(message!, null, email!);
     expect(getByTestId("contact-message")).toHaveTextContent(
-      "Please enter a message for the email"
+      "Message: message is a required field"
     );
     await inputThenClick(message!, "a", email!);
     expect(getByTestId("contact-message")).not.toHaveTextContent(
