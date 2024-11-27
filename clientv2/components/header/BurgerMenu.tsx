@@ -4,6 +4,7 @@ import * as RadixNavMenu from "@radix-ui/react-navigation-menu";
 import NavigationMenuLink from "./NavigationMenuLink";
 import { NavigationMenuActiveProps } from "./NavigationMenu";
 import { GiHamburgerMenu } from "react-icons/gi";
+import Socials from "components/Socials";
 
 const BurgerMenu = () => {
   const [active, setActive] = useState<NavigationMenuActiveProps>({
@@ -29,6 +30,7 @@ const BurgerMenu = () => {
         className={`fixed bottom-10 right-10 z-30 pointer-events-auto ${
           tap && "animate-tap transition-[scale]"
         }`}
+        role="button"
       >
         <GiHamburgerMenu
           size={45}
@@ -52,7 +54,7 @@ const BurgerMenu = () => {
           dir="ltr"
           data-orientation="vertical"
           data-id="Navigation-Root"
-          className="bg-black-primary p-[5%] rounded-xl"
+          className="bg-black-primary p-[5%] rounded-xl border-purple-primary border-[2.5px]"
         >
           <RadixNavMenu.List
             className="text-white w-full h-full"
@@ -62,8 +64,8 @@ const BurgerMenu = () => {
               <NavigationMenuLink
                 href="/"
                 scroll={false}
-                className={`${LinkProps}`}
-                onSelect={() => {
+                className={`${LinkProps} ${LinkTextProps}`}
+                onClick={() => {
                   setActive({
                     home: true,
                     about: false,
@@ -75,15 +77,15 @@ const BurgerMenu = () => {
                 flex={false}
                 dataActive={active.home}
               >
-                <span className={`${LinkTextProps}`}>The Creative Age</span>
+                The Creative Age
               </NavigationMenuLink>
             </RadixNavMenu.Item>
             <RadixNavMenu.Item className={`${ItemProps}`}>
               <NavigationMenuLink
                 href="/#about"
                 scroll={false}
-                className={`${LinkProps}`}
-                onSelect={() => {
+                className={`${LinkProps} ${LinkTextProps}`}
+                onClick={() => {
                   setActive({
                     home: false,
                     about: true,
@@ -94,15 +96,15 @@ const BurgerMenu = () => {
                 flex={false}
                 dataActive={active.about}
               >
-                <span className={`${LinkTextProps}`}>About</span>
+                About
               </NavigationMenuLink>
             </RadixNavMenu.Item>
             <RadixNavMenu.Item className={`${ItemProps}`}>
               <NavigationMenuLink
                 href="/#projects"
                 scroll={false}
-                className={`${LinkProps}`}
-                onSelect={() => {
+                className={`${LinkProps} ${LinkTextProps}`}
+                onClick={() => {
                   setActive({
                     home: false,
                     about: false,
@@ -113,15 +115,15 @@ const BurgerMenu = () => {
                 flex={false}
                 dataActive={active.projects}
               >
-                <span className={`${LinkTextProps}`}>Projects</span>
+                Projects
               </NavigationMenuLink>
             </RadixNavMenu.Item>
             <RadixNavMenu.Item className={`${ItemProps}`}>
               <NavigationMenuLink
                 href="/#contact"
                 scroll={false}
-                className={`${LinkProps}`}
-                onSelect={() => {
+                className={`${LinkProps} ${LinkTextProps}`}
+                onClick={() => {
                   setActive({
                     home: false,
                     about: false,
@@ -132,11 +134,18 @@ const BurgerMenu = () => {
                 flex={false}
                 dataActive={active.contact}
               >
-                <span className={`${LinkTextProps}`}>Contact</span>
+                Contact
               </NavigationMenuLink>
             </RadixNavMenu.Item>
             <RadixNavMenu.Item className={`${ItemProps}`}>
-              Social Container
+              <Socials
+                github
+                gmail
+                linkedin
+                className="m-2.5 p-2.5 hover:bg-purple-primary bg-purple-secondary border-purple-primary border-[2.5px] rounded-full transition-colors duration-150 ease-out"
+                width={"1em"}
+                height={"1em"}
+              />
             </RadixNavMenu.Item>
           </RadixNavMenu.List>
         </RadixNavMenu.Root>

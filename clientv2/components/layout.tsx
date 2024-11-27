@@ -1,3 +1,4 @@
+import Footer from "./Footer";
 import Header from "./header/Header";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
@@ -5,7 +6,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     <>
       <Header viewport={768} />
       {children}
-      <footer style={{ height: 200 }}>FOOTER</footer>
+      <Footer>{""}</Footer>
     </>
   );
 };

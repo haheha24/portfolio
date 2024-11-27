@@ -1,52 +1,57 @@
 import NextLink from "next/link";
-import { Link as NavLink } from "@radix-ui/react-navigation-menu";
-import { ComponentPropsWithoutRef, useState } from "react";
+import { Link, NavigationMenuLinkProps } from "@radix-ui/react-navigation-menu";
+import { useState, PointerEventHandler, AnimationEventHandler } from "react";
 
-type NavigationMenuLinkProps = {
+type BaseProps = {
   href: string;
   scroll?: boolean;
   className?: string;
   flex?: boolean;
-  onSelect?: () => void;
+  onPointerDown?: PointerEventHandler;
+  onAnimationEnd?: AnimationEventHandler;
   dataActive?: boolean;
   animation?: string;
-  onAnimationEnd?: () => void;
   children?: React.ReactNode;
-} & ComponentPropsWithoutRef<"a">;
+};
+
+export type NavMenuLinkProps = BaseProps &
+  Omit<NavigationMenuLinkProps, keyof BaseProps>;
 
 const NavigationMenuLink = ({
   href,
   scroll,
   className = "",
   flex = true,
-  onSelect,
+  onPointerDown,
+  onAnimationEnd,
   dataActive,
   animation = "animate-tap transition-transform",
-  onAnimationEnd,
   children,
-}: NavigationMenuLinkProps) => {
+  ...props
+}: NavMenuLinkProps) => {
   const [animate, setAnimate] = useState(false);
   const flexProps = "flex items-center justify-center";
   return (
     <NextLink href={href} passHref legacyBehavior scroll={scroll}>
-      <NavLink
-        className={`${className} md:px-5 ${
+      <Link
+        className={`md:px-5 ${
           flex ? flexProps : ""
-        } font-medium h-full w-full hover:underline hover:text-purple-primary ${
-          animate && animation
-        }`}
+        } font-medium h-full w-full hover:underline hover:text-purple-primary${
+          className ? " " + className : ""
+        } ${animate && animation}`}
         data-active={dataActive}
-        onSelect={() => {
+        onPointerDown={(e) => {
           setAnimate(true);
-          if (onSelect) onSelect();
+          if (onPointerDown) onPointerDown(e);
         }}
-        onAnimationEnd={() => {
+        onAnimationEnd={(e) => {
           setAnimate(false);
-          if (onAnimationEnd) onAnimationEnd();
+          if (onAnimationEnd) onAnimationEnd(e);
         }}
+        {...props}
       >
         {children}
-      </NavLink>
+      </Link>
     </NextLink>
   );
 };

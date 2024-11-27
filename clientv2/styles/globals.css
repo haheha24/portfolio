@@ -4,10 +4,10 @@
 
 @layer base {
   html {
-    @apply scroll-smooth scroll-pt-[64px];
+    @apply scroll-smooth md:scroll-pt-[68px] scroll-pt-0 text-white;
   }
   body {
-    @apply bg-black-secondary;
+    @apply bg-black-secondary text-dynamic-base;
   }
 }
 @layer utilities {

@@ -11,8 +11,10 @@ const customJestConfig = {
   setupFilesAfterEnv: ["<rootDir>/jest.setup.js"],
   // if using TypeScript with a baseUrl set to the root directory then you need the below for alias' to work
   moduleDirectories: ["node_modules", "<rootDir>/", "<rootDir>/utils"],
-  testEnvironment: "jest-environment-jsdom",
-  snapshotResolver: "./snapshotResolver.js",
+  // Use jest-fixed-jsdom to make msw worker compatible due to lack of Node features in jest-environment-jsdom.
+  // Alternately suggested to use Vitest (No Node.Js global issues and native ESM support)
+  // testEnvironment: "jest-environment-jsdom"
+  testEnvironment: "jest-fixed-jsdom",
 };
 
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async

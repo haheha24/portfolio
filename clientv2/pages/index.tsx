@@ -1,12 +1,15 @@
+import About from "components/about/About";
+import Contact from "components/contact/Contact";
+import Projects from "components/projects/Projects";
 import type { NextPage } from "next";
 
 const Home: NextPage = () => {
   return (
-    <>
-      <div style={{height: 500}} id={"about"}>about</div>
-      <div style={{height: 500}} id={"projects"}>project</div>
-      <div style={{height: 500}} id={"contact"}>contact</div>
-    </>
+    <main className="flex flex-col items-center space-y-10">
+      <About />
+      <Projects />
+      <Contact />
+    </main>
   );
 };
 

@@ -19,11 +19,6 @@
     "jsx": "preserve",
     "incremental": true,
     "baseUrl": ".",
-    "paths": {
-      "test-utils": [
-        "./utils/test-utils"
-      ]
-    },
     "plugins": [
       {
         "name": "next"
