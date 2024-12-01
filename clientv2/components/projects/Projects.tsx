@@ -1,10 +1,10 @@
 import ProjectCard from "./ProjectCard";
 import { H2 } from "components/Heading";
-import portfolioImg from "../../public/images/portfolio.png";
-import WIP from "../../public/images/work_in_progress.jpg";
-import movieRestApp from "../../public/images/movie-rest-app.png";
-import naughtsAndCrosses from "../../public/images/naughts-and-crosses.png";
-import connect4 from "../../public/images/connect4.png";
+import portfolioImg from "../../public/images/portfolio_1920x1080.webp";
+import WIP from "../../public/images/work_in_progress_1920x1080.webp";
+import movieRestApp from "../../public/images/movie-rest-app_1920x1080.webp";
+import naughtsAndCrosses from "../../public/images/naughts-and-crosses_1920x1080.webp";
+import connect4 from "../../public/images/connect4_1920x1080.webp";
 
 const Projects = () => {
   return (
