@@ -4,7 +4,7 @@ import useElementVisibility from "hooks/useElementVisibility";
 import NavigationMenu from "./NavigationMenu";
 import BurgerMenu from "./BurgerMenu";
 import Image from "next/image";
-import FeatureImg from "../../public/images/transluscent_waves.jpg";
+import FeatureImg from "../../public/images/transluscent_waves_1920x1080.webp";
 
 interface HeaderNavigation {
   viewport: number;
@@ -29,14 +29,15 @@ const Header = ({ viewport: viewport }: HeaderNavigation) => {
     <header id="header" className="md:mb28 relative">
       <div
         id="feature-image-container"
-        className="w-full relative md:max-h-[62.5rem]"
+        className="w-full relative"
       >
         <Image
           src={FeatureImg}
           alt="Feature Image"
           priority
           ref={featureRef}
-          className="max-h-[1000px]"
+          height={1000}
+          className="w-full max-h-screen"
         />
         {!isDesktop && (
           <h1 className="w-[80%] leading-[3] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 align-baseline text-center text-dynamic-4xl text-purple-primary bg-transparent-85 rounded-xl">
