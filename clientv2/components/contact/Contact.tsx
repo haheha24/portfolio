@@ -25,9 +25,11 @@ const Contact = () => {
           }}
           validationSchema={contactSchema}
           onSubmit={async (values, { resetForm }) => {
+            // Set initial values for state
             setSent(false);
             setSubmitError(undefined);
             try {
+              // fetch end point
               const res = await fetch("/api/contact", {
                 method: "POST",
                 headers: {
@@ -36,13 +38,13 @@ const Contact = () => {
                 body: JSON.stringify({ contact: values }),
               });
 
-              // Handle HTTP errors
               if (!res.ok) {
                 throw new Error(`HTTP error! status: ${res.status}`);
               }
               const data: { success: boolean; error?: { message: string } } =
                 await res.json();
-             
+
+              // Process result
               if (data.success) {
                 setSent(true);
                 resetForm();
@@ -151,6 +153,24 @@ const Contact = () => {
                 required
                 spellCheck={true}
               />
+              <p className="my-2 text-dynamic-lg text-center">
+                By submitting this form, you consent to your information being
+                used solely for responding to your inquiry. No information is
+                stored or shared beyond this purpose.
+              </p>
+              <label htmlFor="tos" className="md:mx-4 md:text-center">
+                <Field
+                  type="checkbox"
+                  name="tos"
+                  id="tos"
+                  className="m-2 scale-150 cursor-pointer"
+                  data-testid="contact-tos"
+                  required
+                />
+                I consent to my information being used solely for responding to
+                my inquiry.
+              </label>
+
               {isSubmitting ? (
                 <svg
                   viewBox="0 0 24 24"

@@ -1,94 +1,45 @@
-"use client";
-
 import Skills from "./Skills";
-import React, { useState } from "react";
-import Button from "components/Button";
 import { H2 } from "components/Heading";
 
 const About = () => {
-  const [selected, setSelected] = useState("front");
-
-  const handleSkillBtn = (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => {
-    setSelected(e.currentTarget.name);
-  };
-
   const PClass = "list-inside md:mx-[12.5%] mx-2 my-0 text-dynamic-lg";
-  const ButtonClass =
-    "lg:text-dynamic-lg data-[active=true]:bg-purple-primary bg-purple-secondary hover:bg-purple-primary p-2 sm:rounded-t-3xl border-t-[2.5px] border-x-[2.5px] border-solid border-black-primary transition-colors";
-
   return (
     <section id="about" className="space-y-5">
       <H2>About</H2>
       <p className={PClass}>
-        <span className="text-dynamic-2xl">Welcome!</span> My name is{" "}
+        Welcome! My name is{" "}
         <span className="text-dynamic-2xl">Adrian Cristallo</span>.
       </p>
       <p className={PClass}>
-        I am a web developer with a passion for making websites and coding. I am
-        looking for opportunities of work in web development while in the
-        process of studying a Bachelor of Computer Science. I have also
-        completed a Bachelor of Arts, majoring in sociology and history.
+        An aspiring junior developer eager to leverage my strong analytical
+        skills and foundational programming knowledge in Python, JavaScript and
+        C++ to create efficient and user-friendly software solutions. Passionate
+        about continuous learning, solving complex problems, and contributing to
+        innovative development projects. I have recently completed a Diploma of
+        Information Technology, and prior to this, a Bachelor of Arts majoring
+        in Sociology and History.
       </p>
       <p className={PClass}>
         I am always ready to learn new skills as my goal is to make this path
-        into a long-lasting career. On the side I enjoy a little bit of
-        gardening, gaming, and landscaping. Creativity is my outlet and
-        enjoyment in life.
+        into a long-lasting career. On the side I enjoy a staying fit, gardening
+        and landscaping, as well as gaming! Being creative fulfils me and brings
+        me the most joy, whether it be writing code, drawing, or more abstract
+        activites such as philosophical conversations or problem solving.
+        Creating and using all of the different aspects of information
+        technology is so incredibly fascinating that I had to start learning it
+        myself. I began learning web development in 2020 during Covid and have
+        taught myself nearly everything I know about programming and IT.
       </p>
-      <div aria-label="container" className="flex flex-col md:mx-[12.5%] pt-5">
-        <div
-          aria-label="button container"
-          className="flex sm:flex-row flex-col"
-        >
-          <Button
-            type="button"
-            name="front"
-            aria-label="Frontend Skills Button"
-            className={`${ButtonClass}`}
-            tapAnimation={false}
-            data-active={selected === "front" ? true : false}
-            onClick={(e) => handleSkillBtn(e)}
-          >
-            <h3>Frontend Skills</h3>
-          </Button>
-          <Button
-            type="button"
-            name="back"
-            aria-label="Backend Skills Button"
-            className={`${ButtonClass}`}
-            tapAnimation={false}
-            data-active={selected === "back" ? true : false}
-            onClick={(e) => handleSkillBtn(e)}
-          >
-            <h3>Backend Skills</h3>
-          </Button>
-          <Button
-            type="button"
-            name="general"
-            aria-label="General Skills Button"
-            className={`${ButtonClass}`}
-            tapAnimation={false}
-            data-active={selected === "general" ? true : false}
-            onClick={(e) => handleSkillBtn(e)}
-          >
-            <h3>General Dev Skills</h3>
-          </Button>
-          <Button
-            type="button"
-            name="inter"
-            aria-label="Interpersonal Skills Button"
-            className={`${ButtonClass}`}
-            tapAnimation={false}
-            data-active={selected === "inter" ? true : false}
-            onClick={(e) => handleSkillBtn(e)}
-          >
-            <h3>Interpersonal Skills</h3>
-          </Button>
-        </div>
-        <Skills skill={selected} />
-      </div>
+      <p className={PClass}>
+        My interpersonal skills are one of my most proudest achievements in life
+        so far. I believe strongly that transparent communication can lead to
+        most problems being solved when engaging with respect and compassion.
+        These values have lead to my successes in life and continue to define my
+        decisions and actions. I courageously trust myself to achieve my goals
+        in building a professional career in software development. So when I say
+        I can help you achieve your professional goals, you should believe it!
+      </p>
+      <Skills />
     </section>
   );
 };
