@@ -1,9 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  compiler: {
-    styledComponents: true,
-  },
   webpack: (config, context) => {
     //https://velog.io/@jihyeong00/Next.js-Project-Fails-to-Compile-due-to-Package-path-.browser-is-not-exported-from-package-nodemodulesmsw
     if (context?.isServer) {
