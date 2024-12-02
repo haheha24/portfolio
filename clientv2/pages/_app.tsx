@@ -14,7 +14,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>Adrian Cristallo's Portfolio</title>
+        <title>Adrian Cristallo%apos;s Portfolio</title>
         <meta name="description" content="Adrian Cristallo's Portfolio App" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
