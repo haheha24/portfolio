@@ -127,4 +127,9 @@ describe("Run tests for the contact form component.", () => {
     await user.type(message!, "This message is for testing purposes");
     expect(message).toHaveDisplayValue("This message is for testing purposes");
   });
+
+  /**
+   * Need to test that the modal comes up correctly.
+   * Need to test for API errors being correctly shown.
+   */
 });
